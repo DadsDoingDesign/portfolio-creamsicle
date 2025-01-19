@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { Navigation } from '@/components/navigation/Navigation';
 import { Hero } from '@/components/hero/Hero';
-import { CaseStudyPreview } from '@/components/case-study/CaseStudyPreview';
+import CaseStudyPreview from '@/components/case-study/CaseStudyPreview';
 import { projects } from '@/lib/data';
 
 export default function Home() {
