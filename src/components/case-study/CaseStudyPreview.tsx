@@ -149,30 +149,53 @@ export const CaseStudyPreview = ({
             </div>
           </div>
 
-          {/* Navigation Controls */}
-          <div className="flex justify-between items-center mt-8">
+          {/* Navigation Arrows */}
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-8 pointer-events-none">
             <button
-              onClick={onPrevious}
+              onClick={() => onPrevious()}
+              className={`p-2 rounded-full bg-black/20 backdrop-blur-sm text-white hover:bg-black/40 transition-all pointer-events-auto ${
+                isFirst ? 'opacity-0' : 'opacity-100'
+              }`}
               disabled={isFirst}
-              className={`p-2 rounded-full text-white ${
-                isFirst
-                  ? 'opacity-50 cursor-not-allowed'
-                  : 'hover:text-amber-400 transition-colors'
-              }`}
             >
-              <ArrowLeftIcon className="w-6 h-6" />
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
             </button>
             <button
-              onClick={onNext}
-              disabled={isLast}
-              className={`p-2 rounded-full text-white ${
-                isLast
-                  ? 'opacity-50 cursor-not-allowed'
-                  : 'hover:text-amber-400 transition-colors'
+              onClick={() => onNext()}
+              className={`p-2 rounded-full bg-black/20 backdrop-blur-sm text-white hover:bg-black/40 transition-all pointer-events-auto ${
+                isLast ? 'opacity-0' : 'opacity-100'
               }`}
+              disabled={isLast}
             >
-              <ArrowRightIcon className="w-6 h-6" />
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M9 18l6-6-6-6" />
+              </svg>
             </button>
+          </div>
+
+          {/* Breathing Gradient Border */}
+          <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-amber-500 animate-gradient-xy" />
           </div>
         </motion.div>
       ) : (
