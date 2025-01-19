@@ -82,53 +82,66 @@ export const CaseStudyPreview = ({
           transition={{ duration: 0.5 }}
           className="w-full h-full flex flex-col"
         >
-          <div className="flex-1 flex">
+          <div className="flex-1 flex items-center justify-center px-20">
             {/* Project Info */}
-            <div className="w-1/2 pr-8 flex flex-col justify-center">
+            <div className="w-[400px] flex flex-col">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <h1 className="text-5xl font-bold mb-6 text-white">{project.title}</h1>
-                <p className="text-xl text-white/80 mb-8">{project.description}</p>
+                <h1 className="text-7xl font-bold mb-6 text-white">{project.title}</h1>
                 
                 {/* Categories */}
-                <div className="flex flex-wrap gap-3 mb-8">
+                <div className="flex flex-wrap gap-2 mb-8">
                   {project.categories.map((category, index) => (
-                    <span
-                      key={index}
-                      className="px-4 py-2 bg-amber-400/10 text-amber-400 rounded-full text-sm"
-                    >
+                    <span key={index} className="text-amber-400">
                       {category}
+                      {index < project.categories.length - 1 && (
+                        <span className="mx-2 text-amber-400">•</span>
+                      )}
                     </span>
                   ))}
                 </div>
+
+                <p className="text-xl text-white/80 mb-8 leading-relaxed">{project.description}</p>
 
                 {/* CTA */}
                 <button
                   onClick={() => setIsViewingCaseStudy(true)}
                   className="inline-flex items-center px-6 py-3 border border-amber-400 text-amber-400 rounded-lg hover:bg-amber-400 hover:text-black transition-colors"
                 >
-                  View Case Study
-                  <ArrowRightIcon className="w-5 h-5 ml-2" />
+                  Read Case Study
+                  <svg 
+                    width="20" 
+                    height="20" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    className="ml-2"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 5v14M19 12l-7 7-7-7" />
+                  </svg>
                 </button>
               </motion.div>
             </div>
 
             {/* Preview Image */}
-            <div className="w-1/2 relative">
+            <div className="flex-1 flex justify-center items-center">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3 }}
-                className="relative h-[500px] rounded-2xl overflow-hidden"
+                className="relative w-full aspect-[4/3] max-w-4xl"
               >
                 <Image
                   src={project.previewImage}
                   alt={`${project.title} Preview`}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority
                 />
