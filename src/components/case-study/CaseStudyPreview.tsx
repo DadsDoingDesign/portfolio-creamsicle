@@ -14,6 +14,8 @@ interface CaseStudyPreviewProps {
   isLast?: boolean;
   onPrevious?: () => void;
   onNext?: () => void;
+  isViewingCaseStudy?: boolean;
+  onViewCaseStudy?: () => void;
 }
 
 const renderContent = (content: ContentBlock[]) => {
@@ -52,14 +54,16 @@ export default function CaseStudyPreview({
   isFirst = false, 
   isLast = false,
   onPrevious = () => {},
-  onNext = () => {}
+  onNext = () => {},
+  isViewingCaseStudy = false,
+  onViewCaseStudy = () => {},
 }: CaseStudyPreviewProps) {
-  const [isViewingCaseStudy, setIsViewingCaseStudy] = useState(false);
+  const [isViewingCaseStudyState, setIsViewingCaseStudy] = useState(isViewingCaseStudy);
   const [currentFrame, setCurrentFrame] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = () => {
-    if (!scrollContainerRef.current || !isViewingCaseStudy) return;
+    if (!scrollContainerRef.current || !isViewingCaseStudyState) return;
     
     const { scrollTop, clientHeight, scrollHeight } = scrollContainerRef.current;
     const scrollProgress = scrollTop / (scrollHeight - clientHeight);
@@ -73,8 +77,8 @@ export default function CaseStudyPreview({
   const nextFrame = project.frames[currentFrame + 1];
 
   return (
-    <div className={`w-full h-full transition-all duration-300 ${isViewingCaseStudy ? 'fixed inset-0 z-50 bg-background-primary' : 'relative'}`}>
-      {!isViewingCaseStudy ? (
+    <div className={`w-full h-full transition-all duration-300 ${isViewingCaseStudyState ? 'fixed inset-0 z-50 bg-background-primary' : 'relative'}`}>
+      {!isViewingCaseStudyState ? (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -108,7 +112,7 @@ export default function CaseStudyPreview({
 
                 {/* CTA */}
                 <button
-                  onClick={() => setIsViewingCaseStudy(true)}
+                  onClick={onViewCaseStudy}
                   className="inline-flex items-center px-6 py-3 border border-amber-400 text-amber-400 rounded-lg hover:bg-amber-400 hover:text-black transition-colors"
                 >
                   Read Case Study
@@ -150,49 +154,50 @@ export default function CaseStudyPreview({
           </div>
 
           {/* Navigation Arrows */}
-          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-8 pointer-events-none">
-            <button
-              onClick={onPrevious}
-              className={`p-2 rounded-full bg-black/20 backdrop-blur-sm text-white hover:bg-black/40 transition-all pointer-events-auto ${
-                isFirst ? 'opacity-0' : 'opacity-100'
-              }`}
-              disabled={isFirst}
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+          {!isViewingCaseStudyState && (
+            <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-8 pointer-events-none">
+              <button
+                onClick={onPrevious}
+                className={`p-2 rounded-full bg-black/20 backdrop-blur-sm text-white hover:bg-black/40 transition-all pointer-events-auto ${
+                  isFirst ? 'opacity-0' : 'opacity-100'
+                }`}
+                disabled={isFirst}
               >
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
-            <button
-              onClick={onNext}
-              className={`p-2 rounded-full bg-black/20 backdrop-blur-sm text-white hover:bg-black/40 transition-all pointer-events-auto ${
-                isLast ? 'opacity-0' : 'opacity-100'
-              }`}
-              disabled={isLast}
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <button
+                onClick={onNext}
+                className={`p-2 rounded-full bg-black/20 backdrop-blur-sm text-white hover:bg-black/40 transition-all pointer-events-auto ${
+                  isLast ? 'opacity-0' : 'opacity-100'
+                }`}
+                disabled={isLast}
               >
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
-          </div>
-
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          )}
           {/* Breathing Gradient Border */}
           <div className="absolute inset-0 -z-10">
             <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-amber-500 animate-gradient-xy" />

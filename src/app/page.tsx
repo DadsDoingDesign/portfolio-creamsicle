@@ -5,10 +5,12 @@ import { AnimatePresence } from 'framer-motion';
 import { Hero } from '@/components/hero/Hero';
 import CaseStudyPreview from '@/components/case-study/CaseStudyPreview';
 import { projects } from '@/lib/data';
+import Navigation from '@/components/navigation/Navigation';
 
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showCaseStudies, setShowCaseStudies] = useState(false);
+  const [isViewingCaseStudy, setIsViewingCaseStudy] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -72,22 +74,32 @@ export default function Home() {
     <div className="fixed inset-0 animate-gradient-xy bg-gradient-to-br from-orange-500 to-amber-500">
       <div 
         ref={containerRef} 
-        className="relative h-full w-full bg-black/90 backdrop-blur-sm"
+        className={`relative h-full w-full ${!isViewingCaseStudy ? 'p-6' : ''}`}
       >
-        <AnimatePresence mode="wait">
-          {!showCaseStudies ? (
-            <Hero key="hero" onCaseStudiesClick={handleCaseStudiesClick} />
-          ) : (
-            <CaseStudyPreview
-              key="case-studies"
-              project={currentProject}
-              onNext={handleNext}
-              onPrevious={handlePrevious}
-              isFirst={currentIndex === 0}
-              isLast={currentIndex === projects.length - 1}
-            />
-          )}
-        </AnimatePresence>
+        <div className={`h-full w-full flex flex-col ${!isViewingCaseStudy ? 'bg-black/90 backdrop-blur-sm rounded-2xl border border-orange-500/30' : 'bg-black'}`}>
+          <Navigation 
+            isViewingCaseStudy={isViewingCaseStudy} 
+            onBack={() => setIsViewingCaseStudy(false)} 
+          />
+          <div className="flex-1">
+            <AnimatePresence mode="wait">
+              {!showCaseStudies ? (
+                <Hero key="hero" onCaseStudiesClick={handleCaseStudiesClick} />
+              ) : (
+                <CaseStudyPreview
+                  key="case-studies"
+                  project={currentProject}
+                  onNext={handleNext}
+                  onPrevious={handlePrevious}
+                  isFirst={currentIndex === 0}
+                  isLast={currentIndex === projects.length - 1}
+                  isViewingCaseStudy={isViewingCaseStudy}
+                  onViewCaseStudy={() => setIsViewingCaseStudy(true)}
+                />
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
     </div>
   );
