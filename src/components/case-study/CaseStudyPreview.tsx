@@ -6,22 +6,14 @@ import Link from 'next/link';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { useState, useRef } from 'react';
 import { Navigation } from '../navigation/Navigation';
-import { Frame as CaseStudyFrame, ContentBlock } from '../../lib/case-studies/apploi';
+import { Project } from '@/lib/data';
 
 interface CaseStudyPreviewProps {
-  project: {
-    id: string;
-    title: string;
-    description: string;
-    categories: string[];
-    previewImage: string;
-    frames: CaseStudyFrame[];
-  };
+  project: Project;
   onNext?: () => void;
   onPrevious?: () => void;
   isFirst?: boolean;
   isLast?: boolean;
-  direction?: 'left' | 'right';
 }
 
 export const CaseStudyPreview = ({
@@ -30,7 +22,6 @@ export const CaseStudyPreview = ({
   onPrevious,
   isFirst,
   isLast,
-  direction,
 }: CaseStudyPreviewProps) => {
   const [isViewingCaseStudy, setIsViewingCaseStudy] = useState(false);
   const [currentFrame, setCurrentFrame] = useState(0);
@@ -50,7 +41,7 @@ export const CaseStudyPreview = ({
 
   const nextFrame = project.frames[currentFrame + 1];
 
-  const renderContent = (content: ContentBlock[]) => {
+  const renderContent = (content: any[]) => {
     return content.map((block, index) => {
       switch (block.type) {
         case 'paragraph':
@@ -111,9 +102,9 @@ export const CaseStudyPreview = ({
 
         <motion.div
           key={project.id}
-          initial={{ opacity: 0, x: direction === 'right' ? 100 : -100 }}
+          initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: direction === 'right' ? -100 : 100 }}
+          exit={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.3 }}
           className={`w-full h-full flex gap-12 ${isViewingCaseStudy ? 'px-20 py-20 mt-20' : 'px-12 py-12'}`}
         >

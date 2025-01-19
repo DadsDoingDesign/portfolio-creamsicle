@@ -69,20 +69,6 @@ export default function Home() {
   };
 
   const currentProject = projects[currentIndex];
-  
-  // Map project technologies to categories for display
-  const getCategories = (project: typeof projects[0]) => {
-    return project.technologies.slice(0, 2).map(tech => {
-      switch (tech) {
-        case 'React':
-          return 'Frontend Development';
-        case 'Node.js':
-          return 'Backend Development';
-        default:
-          return tech;
-      }
-    });
-  };
 
   return (
     <div className="fixed inset-0 p-6 animate-gradient-breathing bg-gradient-to-b from-orange-400 to-amber-400">
@@ -100,16 +86,12 @@ export default function Home() {
                 <Hero key="hero" onCaseStudiesClick={handleCaseStudiesClick} />
               ) : (
                 <CaseStudyPreview
-                  key="case-study"
-                  project={{
-                    ...currentProject,
-                    categories: getCategories(currentProject)
-                  }}
+                  key="case-studies"
+                  project={currentProject}
                   onNext={handleNext}
                   onPrevious={handlePrevious}
                   isFirst={currentIndex === 0}
                   isLast={currentIndex === projects.length - 1}
-                  direction="right"
                 />
               )}
             </AnimatePresence>
@@ -124,19 +106,18 @@ const breathingAnimation = `
   .animate-gradient-breathing {
     background: linear-gradient(to bottom, #fb923c, #fbbf24, #fb923c);
     background-size: 100% 200%;
-    animation: gradientBreathing 6s ease-in-out infinite;
+    animation: gradient-breathing 8s ease infinite;
   }
-
-  @keyframes gradientBreathing {
-    0%, 30%, 100% {
-      background-position: 0% 0%;
+  
+  @keyframes gradient-breathing {
+    0% {
+      background-position: 50% 0%;
     }
-    45%, 55% {
-      background-position: 0% 100%;
+    50% {
+      background-position: 50% 100%;
+    }
+    100% {
+      background-position: 50% 0%;
     }
   }
 `;
-
-const style = document.createElement('style');
-style.textContent = breathingAnimation;
-document.head.appendChild(style);
