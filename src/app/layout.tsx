@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Navigation } from "@/components/navigation/Navigation";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,7 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth dark">
-      <body className="font-sans antialiased bg-background-primary text-white">{children}</body>
+      <body className="font-sans antialiased bg-black min-h-screen">
+        <Navigation />
+        {children}
+      </body>
     </html>
   );
 }

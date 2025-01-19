@@ -130,19 +130,19 @@ export const CaseStudyPreview = ({
             </div>
 
             {/* Preview Image */}
-            <div className="flex-1 flex justify-center items-center">
+            <div className="flex-1 flex justify-center items-center h-full">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3 }}
-                className="relative w-full aspect-[4/3] max-w-4xl"
+                className="relative w-full h-full"
               >
                 <Image
                   src={project.previewImage}
                   alt={`${project.title} Preview`}
                   fill
                   className="object-contain"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 75vw"
                   priority
                 />
               </motion.div>
