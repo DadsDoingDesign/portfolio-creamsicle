@@ -1,6 +1,6 @@
 import { Frame } from './case-studies/apploi';
 
-interface Project {
+export interface Project {
   id: string;
   title: string;
   description: string;
