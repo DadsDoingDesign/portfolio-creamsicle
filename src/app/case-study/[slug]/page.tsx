@@ -11,12 +11,12 @@ interface Props {
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
-    slug: project.slug,
+    slug: project.id,
   }));
 }
 
 export default function CaseStudyPage({ params }: Props) {
-  const project = projects.find((p) => p.slug === params.slug);
+  const project = projects.find((p) => p.id === params.slug);
 
   if (!project) {
     notFound();
