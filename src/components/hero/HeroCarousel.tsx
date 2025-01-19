@@ -63,3 +63,22 @@ export const HeroCarousel = ({ projects }: HeroCarouselProps) => {
 };
 
 export default HeroCarousel;
+
+const breathingAnimation = `
+  @keyframes gradientBreathing {
+    0%, 100% {
+      background: linear-gradient(to bottom right, #fb923c, #fbbf24);
+    }
+    50% {
+      background: linear-gradient(to bottom right, #fbbf24, #fb923c);
+    }
+  }
+
+  .animate-gradient-breathing {
+    animation: gradientBreathing 8s ease-in-out infinite;
+  }
+`;
+
+const style = document.createElement('style');
+style.textContent = breathingAnimation;
+document.head.appendChild(style);

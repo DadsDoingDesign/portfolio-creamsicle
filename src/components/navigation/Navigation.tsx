@@ -5,7 +5,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronDownIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 
-export const Navigation = () => {
+interface NavigationProps {
+  isViewingCaseStudy?: boolean;
+  onBack?: () => void;
+}
+
+export const Navigation = ({ isViewingCaseStudy, onBack }: NavigationProps) => {
   return (
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
@@ -15,13 +20,34 @@ export const Navigation = () => {
       <div className="w-full flex items-center justify-between">
         {/* Logo and Left-aligned menu items */}
         <div className="flex items-center gap-8">
-          <Image
-            src="/dendenlogo.svg"
-            alt="Denden Logo"
-            width={40}
-            height={40}
-            className="w-auto h-8"
-          />
+          {isViewingCaseStudy ? (
+            <button
+              onClick={onBack}
+              className="flex items-center gap-2 text-amber-400 hover:text-amber-500 transition-colors"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+              Back
+            </button>
+          ) : (
+            <Image
+              src="/dendenlogo.svg"
+              alt="Denden Logo"
+              width={40}
+              height={40}
+              className="w-auto h-8"
+            />
+          )}
           <Link 
             href="/case-studies"
             className="label-tiny text-white hover:text-amber-500 transition-colors flex items-center gap-1"

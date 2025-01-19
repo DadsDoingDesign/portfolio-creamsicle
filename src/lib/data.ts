@@ -24,6 +24,23 @@ export const projects = [
         text: 'Healthcare facilities needed a more efficient way to manage their recruitment process and handle the increased demand for healthcare workers.',
       },
     ],
+    frames: [
+      {
+        title: 'Why not?',
+        content: 'Apploi is building out a new staffing tool they just acquired (OnCall). Their goal is to help care facilities optimize their bottom line. But most users don\'t understand the tool without hand holding and extensive onboarding.',
+        image: '/images/apploi-preview.png'
+      },
+      {
+        title: 'What\'s the impact',
+        content: '8 new facilities added with existing clients, Onboarding reduced to 1 day from 1 week, users had near perfect task completion.',
+        image: '/images/apploi-impact.png'
+      },
+      {
+        title: 'The Process',
+        content: 'Through extensive user research and iterative design, we identified key pain points in the user journey and developed intuitive solutions that drastically reduced the learning curve.',
+        image: '/images/apploi-process.png'
+      }
+    ]
   },
   {
     id: '2',

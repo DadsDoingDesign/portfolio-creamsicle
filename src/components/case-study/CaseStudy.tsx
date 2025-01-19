@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 interface CaseStudyProps {
   title: string;
@@ -32,8 +34,16 @@ export const CaseStudy = ({
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-7xl mx-auto px-4"
+        className="max-w-7xl mx-auto"
       >
+        {/* Back Button */}
+        <Link 
+          href="/" 
+          className="inline-flex items-center px-4 py-2 mb-8 text-sm font-medium text-amber-400 hover:text-amber-500 transition-colors"
+        >
+          <ArrowLeftIcon className="w-5 h-5 mr-2" />
+          Back
+        </Link>
         {/* Header */}
         <header className="mb-16">
           <h1 className="text-5xl font-bold mb-6">{title}</h1>
