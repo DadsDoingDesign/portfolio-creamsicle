@@ -85,7 +85,7 @@ export default function Home() {
   };
 
   return (
-    <div className="fixed inset-0 p-6 bg-gradient-to-b from-orange-400 to-amber-400">
+    <div className="fixed inset-0 p-6 animate-gradient-breathing bg-gradient-to-b from-orange-400 to-amber-400">
       <div 
         ref={containerRef} 
         className="relative h-full w-full bg-background-primary rounded-2xl"
@@ -119,3 +119,24 @@ export default function Home() {
     </div>
   );
 }
+
+const breathingAnimation = `
+  .animate-gradient-breathing {
+    background: linear-gradient(to bottom, #fb923c, #fbbf24, #fb923c);
+    background-size: 100% 200%;
+    animation: gradientBreathing 6s ease-in-out infinite;
+  }
+
+  @keyframes gradientBreathing {
+    0%, 30%, 100% {
+      background-position: 0% 0%;
+    }
+    45%, 55% {
+      background-position: 0% 100%;
+    }
+  }
+`;
+
+const style = document.createElement('style');
+style.textContent = breathingAnimation;
+document.head.appendChild(style);
