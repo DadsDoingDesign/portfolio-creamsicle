@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { useState, useRef } from 'react';
 import { Navigation } from '../navigation/Navigation';
-import { Frame as CaseStudyFrame } from '../../lib/case-studies/apploi';
+import { Frame as CaseStudyFrame, ContentBlock } from '../../lib/case-studies/apploi';
 
 interface CaseStudyPreviewProps {
   project: {
@@ -49,6 +49,37 @@ export const CaseStudyPreview = ({
   };
 
   const nextFrame = project.frames[currentFrame + 1];
+
+  const renderContent = (content: ContentBlock[]) => {
+    return content.map((block, index) => {
+      switch (block.type) {
+        case 'paragraph':
+          return <p key={index} className="text-white/80 text-lg mb-4">{block.content}</p>;
+        case 'bullet-list':
+          return (
+            <ul key={index} className="list-disc list-inside text-white/80 text-lg mb-4">
+              {Array.isArray(block.content) && block.content.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          );
+        case 'number-list':
+          return (
+            <ol key={index} className="list-decimal list-inside text-white/80 text-lg mb-4">
+              {Array.isArray(block.content) && block.content.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ol>
+          );
+        case 'stat':
+          return <div key={index} className="text-2xl font-bold text-white mb-4">{block.content}</div>;
+        case 'quote':
+          return <blockquote key={index} className="border-l-4 border-white/20 pl-4 text-white/80 italic text-lg mb-4">{block.content}</blockquote>;
+        default:
+          return null;
+      }
+    });
+  };
 
   return (
     <motion.div 
@@ -109,15 +140,20 @@ export const CaseStudyPreview = ({
                   {project.frames.map((frame, index) => (
                     <div key={index} className="mb-24 min-h-[calc(100vh-200px)] flex flex-col justify-center">
                       <h3 className="text-white text-3xl font-bold mb-4">{frame.title}</h3>
-                      <p className="text-white/80 text-lg">{frame.content}</p>
+                      {frame.subtitle && <h4 className="text-white/80 text-xl mb-4">{frame.subtitle}</h4>}
+                      <div className="text-white/80 text-lg">{renderContent(frame.content)}</div>
                       {frame.image && (
                         <div className="mt-8 relative h-[400px]">
                           <Image
-                            src={frame.image}
-                            alt={frame.title}
+                            src={frame.image.src}
+                            alt={frame.image.alt}
                             fill
                             className="object-contain"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           />
+                          {frame.image.caption && (
+                            <p className="text-white/60 text-sm mt-2 text-center">{frame.image.caption}</p>
+                          )}
                         </div>
                       )}
                     </div>
