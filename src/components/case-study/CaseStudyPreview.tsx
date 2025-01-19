@@ -6,12 +6,7 @@ import Link from 'next/link';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { useState, useRef } from 'react';
 import { Navigation } from '../navigation/Navigation';
-
-interface Frame {
-  title: string;
-  content: string;
-  image?: string;
-}
+import { Frame as CaseStudyFrame } from '../../lib/case-studies/apploi';
 
 interface CaseStudyPreviewProps {
   project: {
@@ -20,13 +15,13 @@ interface CaseStudyPreviewProps {
     description: string;
     categories: string[];
     previewImage: string;
-    frames: Frame[];
+    frames: CaseStudyFrame[];
   };
-  onNext: () => void;
-  onPrevious: () => void;
-  isFirst: boolean;
-  isLast: boolean;
-  direction: 'left' | 'right';
+  onNext?: () => void;
+  onPrevious?: () => void;
+  isFirst?: boolean;
+  isLast?: boolean;
+  direction?: 'left' | 'right';
 }
 
 export const CaseStudyPreview = ({
