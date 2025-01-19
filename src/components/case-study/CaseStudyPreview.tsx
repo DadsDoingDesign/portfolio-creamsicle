@@ -10,10 +10,10 @@ import { ContentBlock } from '@/lib/case-studies/apploi';
 
 interface CaseStudyPreviewProps {
   project: Project;
-  onNext?: () => void;
-  onPrevious?: () => void;
   isFirst?: boolean;
   isLast?: boolean;
+  onPrevious?: () => void;
+  onNext?: () => void;
 }
 
 const renderContent = (content: ContentBlock[]) => {
@@ -47,13 +47,13 @@ const renderContent = (content: ContentBlock[]) => {
   });
 };
 
-export const CaseStudyPreview = ({
-  project,
-  onNext,
-  onPrevious,
-  isFirst,
-  isLast,
-}: CaseStudyPreviewProps) => {
+export default function CaseStudyPreview({ 
+  project, 
+  isFirst = false, 
+  isLast = false,
+  onPrevious = () => {},
+  onNext = () => {}
+}: CaseStudyPreviewProps) {
   const [isViewingCaseStudy, setIsViewingCaseStudy] = useState(false);
   const [currentFrame, setCurrentFrame] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -152,7 +152,7 @@ export const CaseStudyPreview = ({
           {/* Navigation Arrows */}
           <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-8 pointer-events-none">
             <button
-              onClick={() => onPrevious()}
+              onClick={onPrevious}
               className={`p-2 rounded-full bg-black/20 backdrop-blur-sm text-white hover:bg-black/40 transition-all pointer-events-auto ${
                 isFirst ? 'opacity-0' : 'opacity-100'
               }`}
@@ -172,7 +172,7 @@ export const CaseStudyPreview = ({
               </svg>
             </button>
             <button
-              onClick={() => onNext()}
+              onClick={onNext}
               className={`p-2 rounded-full bg-black/20 backdrop-blur-sm text-white hover:bg-black/40 transition-all pointer-events-auto ${
                 isLast ? 'opacity-0' : 'opacity-100'
               }`}
