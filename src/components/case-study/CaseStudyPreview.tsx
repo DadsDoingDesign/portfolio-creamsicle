@@ -7,6 +7,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { useState, useRef } from 'react';
 import { Navigation } from '../navigation/Navigation';
 import { Project } from '@/lib/data';
+import { ContentBlock } from '@/lib/case-studies/apploi';
 
 interface CaseStudyPreviewProps {
   project: Project;
@@ -15,6 +16,37 @@ interface CaseStudyPreviewProps {
   isFirst?: boolean;
   isLast?: boolean;
 }
+
+const renderContent = (content: ContentBlock[]) => {
+  return content.map((block, index) => {
+    switch (block.type) {
+      case 'paragraph':
+        return <p key={index} className="text-white/80 text-lg mb-4">{block.content as string}</p>;
+      case 'bullet-list':
+        return (
+          <ul key={index} className="list-disc list-inside text-white/80 text-lg mb-4">
+            {Array.isArray(block.content) && (block.content as string[]).map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        );
+      case 'number-list':
+        return (
+          <ol key={index} className="list-decimal list-inside text-white/80 text-lg mb-4">
+            {Array.isArray(block.content) && (block.content as string[]).map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ol>
+        );
+      case 'stat':
+        return <div key={index} className="text-2xl font-bold text-white mb-4">{block.content as string}</div>;
+      case 'quote':
+        return <blockquote key={index} className="border-l-4 border-white/20 pl-4 text-white/80 italic text-lg mb-4">{block.content as string}</blockquote>;
+      default:
+        return null;
+    }
+  });
+};
 
 export const CaseStudyPreview = ({
   project,
@@ -40,37 +72,6 @@ export const CaseStudyPreview = ({
   };
 
   const nextFrame = project.frames[currentFrame + 1];
-
-  const renderContent = (content: any[]) => {
-    return content.map((block, index) => {
-      switch (block.type) {
-        case 'paragraph':
-          return <p key={index} className="text-white/80 text-lg mb-4">{block.content}</p>;
-        case 'bullet-list':
-          return (
-            <ul key={index} className="list-disc list-inside text-white/80 text-lg mb-4">
-              {Array.isArray(block.content) && block.content.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-          );
-        case 'number-list':
-          return (
-            <ol key={index} className="list-decimal list-inside text-white/80 text-lg mb-4">
-              {Array.isArray(block.content) && block.content.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ol>
-          );
-        case 'stat':
-          return <div key={index} className="text-2xl font-bold text-white mb-4">{block.content}</div>;
-        case 'quote':
-          return <blockquote key={index} className="border-l-4 border-white/20 pl-4 text-white/80 italic text-lg mb-4">{block.content}</blockquote>;
-        default:
-          return null;
-      }
-    });
-  };
 
   return (
     <motion.div 
