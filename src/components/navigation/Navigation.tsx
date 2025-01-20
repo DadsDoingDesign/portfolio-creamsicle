@@ -15,7 +15,7 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="w-full flex items-center justify-between px-8 py-6"
+      className="w-full flex items-center justify-between"
     >
       <div className="flex items-center gap-8">
         {isViewingCaseStudy ? (

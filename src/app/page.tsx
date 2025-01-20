@@ -76,7 +76,7 @@ export default function Home() {
         ref={containerRef} 
         className={`relative h-full w-full ${!isViewingCaseStudy ? 'p-6' : ''}`}
       >
-        <div className={`h-full w-full flex flex-col ${!isViewingCaseStudy ? 'primary-bg rounded-2xl border border-orange-500/30' : 'primary-bg'}`}>
+        <div className={`h-full w-full flex flex-col px-20 py-10 gap-10 ${!isViewingCaseStudy ? 'primary-bg rounded-2xl border border-orange-500/30' : 'primary-bg'}`}>
           <Navigation 
             isViewingCaseStudy={isViewingCaseStudy} 
             onBack={() => setIsViewingCaseStudy(false)} 

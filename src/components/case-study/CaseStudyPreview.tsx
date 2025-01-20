@@ -199,7 +199,7 @@ export default function CaseStudyPreview({
             </div>
           )}
           {/* Border */}
-          <div className="absolute -inset-[1px] rounded-2xl border border-orange-500/30" />
+          <div className="absolute -inset-[1px] rounded-2xl" />
         </motion.div>
       ) : (
         <motion.div
