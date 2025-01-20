@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full">
-      <body className="font-sans antialiased min-h-screen bg-gradient-to-br from-orange-400 to-amber-400">
+      <body className="font-sans antialiased min-h-screen gradient-animate">
         <main className="relative h-full">
           {children}
         </main>

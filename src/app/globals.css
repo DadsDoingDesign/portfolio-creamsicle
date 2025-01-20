@@ -49,3 +49,22 @@ html {
 .primary-bg {
   @apply bg-neutral-950;
 }
+
+/* Gradient Animation */
+.gradient-animate {
+  background-size: 400% 400%;
+  animation: gradient 4s ease infinite;
+  @apply bg-gradient-to-b from-orange-400 to-amber-400;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}
