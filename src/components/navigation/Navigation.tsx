@@ -46,27 +46,7 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
             className="w-auto h-8"
           />
         )}
-        <Link 
-          href="/case-studies"
-          className="text-sm font-medium text-white hover:text-amber-500 transition-colors flex items-center gap-1"
-        >
-          Case Studies
-          <ChevronDownIcon className="w-4 h-4" />
-        </Link>
-        <Link 
-          href="/visual-explorations"
-          className="text-sm font-medium text-white hover:text-amber-500 transition-colors flex items-center gap-1"
-        >
-          Visual Explorations
-          <ChevronDownIcon className="w-4 h-4" />
-        </Link>
-        <Link 
-          href="/about"
-          className="text-sm font-medium text-white hover:text-amber-500 transition-colors flex items-center gap-1"
-        >
-          About
-          <ChevronDownIcon className="w-4 h-4" />
-        </Link>
+        {/* Navigation links hidden until content is ready */}
       </div>
 
       <div className="flex items-center gap-6">
