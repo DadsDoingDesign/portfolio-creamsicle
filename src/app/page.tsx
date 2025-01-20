@@ -71,12 +71,12 @@ export default function Home() {
   const currentProject = projects[currentIndex];
 
   return (
-    <div className="fixed inset-0 animate-gradient-xy bg-gradient-to-br from-orange-500 to-amber-500">
+    <div className="fixed inset-0 primary-bg">
       <div 
         ref={containerRef} 
         className={`relative h-full w-full ${!isViewingCaseStudy ? 'p-6' : ''}`}
       >
-        <div className={`h-full w-full flex flex-col ${!isViewingCaseStudy ? 'bg-black/90 backdrop-blur-sm rounded-2xl border border-orange-500/30' : 'bg-black'}`}>
+        <div className={`h-full w-full flex flex-col ${!isViewingCaseStudy ? 'primary-bg rounded-2xl border border-orange-500/30' : 'primary-bg'}`}>
           <Navigation 
             isViewingCaseStudy={isViewingCaseStudy} 
             onBack={() => setIsViewingCaseStudy(false)} 

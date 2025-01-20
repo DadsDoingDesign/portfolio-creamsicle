@@ -198,10 +198,8 @@ export default function CaseStudyPreview({
               </button>
             </div>
           )}
-          {/* Breathing Gradient Border */}
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-amber-500 animate-gradient-xy" />
-          </div>
+          {/* Border */}
+          <div className="absolute -inset-[1px] rounded-2xl border border-orange-500/30" />
         </motion.div>
       ) : (
         <motion.div
