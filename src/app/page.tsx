@@ -71,12 +71,12 @@ export default function Home() {
   const currentProject = projects[currentIndex];
 
   return (
-    <div className="fixed inset-0 primary-bg">
+    <div className="fixed inset-0">
       <div 
         ref={containerRef} 
-        className={`relative h-full w-full ${!isViewingCaseStudy ? 'p-6' : ''}`}
+        className={`relative h-full w-full primary-bg ${!isViewingCaseStudy ? 'p-6' : ''}`}
       >
-        <div className={`h-full w-full flex flex-col px-20 py-10 gap-10 ${!isViewingCaseStudy ? 'primary-bg rounded-2xl border border-orange-500/30' : 'primary-bg'}`}>
+        <div className={`h-full w-full flex flex-col px-20 py-10 gap-10 ${!isViewingCaseStudy ? 'rounded-2xl border border-orange-500/30' : ''}`}>
           <Navigation 
             isViewingCaseStudy={isViewingCaseStudy} 
             onBack={() => setIsViewingCaseStudy(false)} 
