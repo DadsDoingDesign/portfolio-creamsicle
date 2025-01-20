@@ -1,5 +1,5 @@
 import { CaseStudy } from '@/components/case-study/CaseStudy';
-import { Navigation } from '@/components/navigation/Navigation';
+import Navigation from '@/components/navigation/Navigation';
 import { projects } from '@/lib/data';
 import { notFound } from 'next/navigation';
 
