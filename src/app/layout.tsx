@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Navigation from '@/components/navigation/Navigation';
 
 export const metadata: Metadata = {
   title: "Denis Dukhvalov - Portfolio",
@@ -15,8 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth dark">
-      <body className="font-sans antialiased bg-black min-h-screen">
-        <Navigation />
+      <body className="font-sans antialiased min-h-screen bg-gradient-to-br from-orange-400 to-amber-400">
         {children}
       </body>
     </html>
