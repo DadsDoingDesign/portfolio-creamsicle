@@ -3,15 +3,16 @@ import { CaseStudy } from '@/types/case-study';
 export const umba: CaseStudy = {
   id: 'umba',
   title: 'Umba',
-  description: 'Creating alignment between the users, business, and product',
+  description: 'Why not?',
   previewImage: '/case-studies/umba/umba_image_frame_1.png',
   categories: ['Product Strategy', 'Analytics', 'UX Design'],
   frames: [
     {
       type: 'intro',
       title: 'Umba',
+      subtitle: 'Why not?',
       content: {
-        mainText: "With a stricter approval target on the lending algorithim, many new and existing users were getting declined for loan applications. This lead to most new users dropping off shortly after the loan decline. I was tasked with finding a way to reduce this dropoff.",
+        mainText: "With a stricter approval target on the lending algorithm, many new and existing users were getting declined for loan applications. This lead to most new users dropping off shortly after the loan decline. I was tasked with finding a way to reduce this dropoff.",
         team: [
           { role: 'Product Designer', highlight: true },
           { role: 'Product Manager' },
@@ -27,25 +28,26 @@ export const umba: CaseStudy = {
       },
       image: {
         src: '/case-studies/umba/umba_image_frame_1.png',
-        alt: 'Umba app interface'
+        alt: 'Umba app interface showing balance, account details, and transaction history'
       },
       layout: 'right-image'
     },
     {
       type: 'problem',
-      title: 'I got declined... Now what?',
-      subtitle: 'So why should I stay?',
+      title: 'The Challenge',
+      subtitle: 'Understanding the Problem',
       content: {
-        mainText: "The current loan decline flow forces users out of the app, with little context on what they can do to become qualified for a loan.",
+        mainText: "Umba needed to increase user engagement with secondary features that were crucial for business growth.",
         bulletPoints: [
-          'Graphic is frustrating to users',
-          'Users rarely have a second account',
-          'Unclear what to do to qualify'
+          'Low adoption of key features',
+          'Unclear user incentives',
+          'Disconnected user journey',
+          'Limited analytics insights'
         ]
       },
       image: {
         src: '/case-studies/umba/umba_image_frame_2.png',
-        alt: 'Loan decline screen'
+        alt: 'Visualization of key challenges identified through research'
       },
       layout: 'right-image'
     },
