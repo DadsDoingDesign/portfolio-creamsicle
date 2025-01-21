@@ -4,7 +4,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  previewImage: string;
+  thumbnail: string;
   frames: Frame[];
   categories: string[];
 }
@@ -14,7 +14,7 @@ export const projects: Project[] = [
     id: '1',
     title: 'Apploi',
     description: 'Healthcare recruitment platform revolutionizing the hiring process',
-    previewImage: '/case-studies/apploi/preview.png',
+    thumbnail: '/case-studies/apploi/preview.png',
     categories: ['Product Design', 'UX Research', 'UI Design'],
     frames: [
       {
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     id: '2',
     title: 'Umba',
     description: 'Using analytics to incentivize user behavior with secondary product features to drive business KPIs',
-    previewImage: '/case-studies/umba/preview.png',
+    thumbnail: '/case-studies/umba/preview.png',
     categories: ['Product Strategy', 'Analytics', 'UX Design'],
     frames: [
       {
