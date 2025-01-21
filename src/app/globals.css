@@ -15,6 +15,10 @@
     @apply text-sm font-medium;
   }
 
+  h3 {
+    @apply text-orange-400 text-xl font-semibold;
+  }
+
   body {
     @apply text-white;
   }

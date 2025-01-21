@@ -1,152 +1,116 @@
-import { Frame, ContentBlock } from './apploi';
+import { CaseStudy } from '@/types/case-study';
 
-export const umba = {
+export const umba: CaseStudy = {
   id: 'umba',
   title: 'Umba',
-  description: 'Using analytics to incentivize user behavior with secondary product features to drive business KPIs',
+  description: 'Creating alignment between the users, business, and product',
+  thumbnail: '/case-studies/umba/umba_image_frame_1.png',
   categories: ['Product Strategy', 'Analytics', 'UX Design'],
-  previewImage: '/images/umba-preview.png',
   frames: [
     {
-      title: 'The Challenge',
-      subtitle: 'Understanding the Problem',
-      content: [
-        {
-          type: 'paragraph',
-          content: 'Umba needed to increase user engagement with secondary features that were crucial for business growth. The main challenges were:'
-        },
-        {
-          type: 'bullet-list',
-          content: [
-            'Low adoption of key features',
-            'Unclear user incentives',
-            'Disconnected user journey',
-            'Limited analytics insights'
-          ]
-        }
-      ],
+      type: 'intro',
+      title: 'Umba',
+      content: {
+        mainText: 'With a stricter approval target on the lending algorithm, many new and existing users were getting declined for loan applications. This lead to most new users dropping off shortly after the loan decline. I was tasked with finding a way to reduce this dropoff.',
+        team: [
+          { role: 'Product Designer', highlight: true },
+          { role: 'Product Manager' },
+          { role: '2 Engineers' },
+          { role: 'Data Analyst' },
+          { role: 'QA Analyst' }
+        ],
+        timeline: [
+          { phase: 'Week 1', duration: 'Design' },
+          { phase: 'Week 2', duration: 'Develop' },
+          { phase: 'Week 3', duration: 'QA & Launch' }
+        ]
+      },
       image: {
-        src: '/images/umba/challenge.png',
-        alt: 'Umba challenge visualization',
-        caption: 'Key challenges identified through user research'
-      }
+        src: '/case-studies/umba/umba_image_frame_1.png',
+        alt: 'Umba app interface'
+      },
+      layout: 'right-image'
     },
     {
-      title: 'The Approach',
-      subtitle: 'Data-Driven Strategy',
-      content: [
-        {
-          type: 'paragraph',
-          content: 'We developed a data-driven strategy to understand and influence user behavior:'
-        },
-        {
-          type: 'number-list',
-          content: [
-            'Analytics Implementation',
-            'Behavioral Analysis',
-            'Incentive Design'
-          ]
-        },
-        {
-          type: 'bullet-list',
-          content: [
-            'Set up comprehensive tracking',
-            'Identified key metrics',
-            'Created user segments',
-            'Established baselines',
-            'User flow mapping',
-            'Drop-off point identification',
-            'Feature usage patterns',
-            'Engagement metrics',
-            'Reward system development',
-            'Progress visualization',
-            'Achievement unlocks',
-            'Social proof elements'
-          ]
-        }
-      ],
+      type: 'problem',
+      title: 'I got declined... Now what?',
+      content: {
+        mainText: 'The current loan decline flow forces users out of the app, with little context on what they can do to become qualified for a loan.',
+        bulletPoints: [
+          'Graphic is frustrating to users',
+          'Users rarely have a second account',
+          'Unclear what to do to qualify'
+        ]
+      },
       image: {
-        src: '/images/umba/approach.png',
-        alt: 'Umba approach diagram',
-        caption: 'Our systematic approach to solving the engagement challenge'
-      }
+        src: '/case-studies/umba/umba_image_frame_2.png',
+        alt: 'Loan decline screen'
+      },
+      layout: 'right-image'
     },
     {
-      title: 'The Solution',
-      subtitle: 'Cohesive User Experience',
-      content: [
-        {
-          type: 'paragraph',
-          content: 'Our solution focused on creating a cohesive user experience that naturally guided users to key features:'
-        },
-        {
-          type: 'number-list',
-          content: [
-            'User Interface Updates',
-            'Engagement Features',
-            'Analytics Integration'
-          ]
-        },
-        {
-          type: 'bullet-list',
-          content: [
-            'Redesigned navigation',
-            'Enhanced visibility of key features',
-            'Added progress indicators',
-            'Implemented rewards dashboard',
-            'Achievement system',
-            'Progress tracking',
-            'Social sharing',
-            'Personalized recommendations',
-            'Real-time tracking',
-            'A/B testing framework',
-            'User behavior analysis',
-            'Performance monitoring'
-          ]
-        }
-      ],
-      image: {
-        src: '/images/umba/solution.png',
-        alt: 'Umba solution showcase',
-        caption: 'The redesigned interface with enhanced engagement features'
-      }
+      type: 'metrics',
+      title: 'Creating alignment between the users, business, and product',
+      content: {
+        metrics: [
+          {
+            label: "What's important to users",
+            value: "Clear Path",
+            description: "Have a clear path for how to get a loan."
+          },
+          {
+            label: "What's important to the business",
+            value: "Risk Management",
+            description: "Curbing risky loans through the ML based algorithm."
+          },
+          {
+            label: "What's important for the product",
+            value: "Trust",
+            description: "Build and keep trust with users through reliable service."
+          }
+        ],
+        bulletPoints: [
+          'Users voice there concerns in reviews, to customer support, and during interviews',
+          'The business metrics are set during leadership meetings to align with investors',
+          'Product works cross team to determine what is indicative of a good experience'
+        ]
+      },
+      layout: 'three-column'
     },
     {
-      title: 'The Results',
-      subtitle: 'Measurable Impact',
-      content: [
-        {
-          type: 'paragraph',
-          content: 'The implementation led to significant improvements across all key metrics:'
-        },
-        {
-          type: 'bullet-list',
-          content: [
-            '65% increase in feature adoption',
-            '40% higher user engagement',
-            '35% improvement in retention',
-            '50% increase in key business KPIs'
-          ]
-        },
-        {
-          type: 'paragraph',
-          content: 'Long-term Impact:'
-        },
-        {
-          type: 'bullet-list',
-          content: [
-            'Sustainable user growth',
-            'Reduced acquisition costs',
-            'Improved user satisfaction',
-            'Higher lifetime value'
-          ]
-        }
-      ],
+      type: 'research',
+      title: 'Testing user motivations',
+      content: {
+        mainText: 'With a fake door test we were able to see what users were most inclined to interact with when if came to growing their loan eligibility.',
+        bulletPoints: [
+          'Users are interested in becoming eligible',
+          'Not all users engage with the same features',
+          'We need more incentive to retain more users'
+        ]
+      },
       image: {
-        src: '/images/umba/results.png',
-        alt: 'Umba results visualization',
-        caption: 'Key results and long-term impact'
-      }
+        src: '/case-studies/umba/umba_image_frame_4.png',
+        alt: 'User testing results'
+      },
+      layout: 'left-image'
+    },
+    {
+      type: 'solution',
+      title: 'Looking at the data',
+      subtitle: 'Some surprises are good!',
+      content: {
+        mainText: 'Our data analyst showed the team that more than half the users were clicking into the rewards tab after loan decline.',
+        bulletPoints: [
+          'We have a clear user incentive',
+          'We can utilize organic movement',
+          'The rewards tab is a blank slate'
+        ]
+      },
+      image: {
+        src: '/case-studies/umba/umba_image_frame_5.png',
+        alt: 'Data analysis results'
+      },
+      layout: 'right-image'
     }
   ]
-} as const;
+};

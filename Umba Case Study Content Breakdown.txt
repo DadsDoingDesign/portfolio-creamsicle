@@ -1,0 +1,176 @@
+Umba Case Study Content Breakdown
+
+Frame 1
+
+Div: width fill, height fill, gap 24, flex horizontal, padding (left 40, right 40, top 24, bottom 24)
+	Div: width 400px, gap 40
+		H1: "Umba"
+		Div: width fill, height hug, gap 16, flex vertical	
+			H3: "What's the issue?"
+			P1: "With a stricter approval target on the lending algorithim, many new and existing users were getting declined for loan applications. This lead to most new users dropping off shortly after the loan decline. I was tasked with finding a way to reduce this dropoff."
+		Div: width fill, height hug, gap 16, flex vertical	
+			H3: "What was my impact?"
+			P1: "40% increase in the # of users retained after loan decline."
+		Div: width fill, height hug, gap 24, flex horizontal
+			Div: width fill, height hug, gap 16, flex vertical
+				H3: "Team"
+				Div: width fill, gap 4, flex vertical
+					Span: amber 400
+						P1: "Product Designer"
+					P1: "Product Manager"
+					P1: "2 Engineers"
+					P1: "Data Analyst"
+					P1: "QA Analyst"
+				Div: width fill, gap 4, flex vertical
+					P1: "Week 1: Design"
+					P1: "Week 2: Develop"
+					P1: "Week 3: QA & Launch"
+	Div: width fill, height fill
+		Image: @umba_image_frame_1, fill fit
+
+
+Frame 2
+Div: width fill, height fill, gap 24, flex horizontal, padding (left 40, right 40, top 24, bottom 24)
+	Div: width 400px, gap 40
+		H2: "I got declined... Now what?"
+		Div: width fill, height hug, gap 16, flex vertical	
+			H3: "So why should I stay?"
+			P1: "The current loan decline flow forces users out of the app, with little context on what they can do to become qualified for a loan."
+		Div: width fill, height fill, gap 16, flex vertical	
+			H3: "What was the negative impact?"
+			P1: "We see 70% of users deleting the app after a loan decline."
+		Div: width fill, height hug, gap 16, flex vertical
+			Span: amber 400
+				H3: "What could be happening?"
+			Div: bulleted list, width fill, height hug, gap 4, flex vertical 
+				P1: "Graphic is frustrating to users"
+				P1: "Users rarely have a second account"
+				P1: "Unclear what to do to qualify"
+	Div: width fill, height fill
+		Image: @umba_image_frame_2, fill fit
+
+Frame 3
+Div: width fill, height fill, gap 80, flex vertical, padding (left 40, right 40, top 24, bottom 24)
+	H2: "Creating alignment between the users, business, and product"
+	Div: width fill, height fill, gap 40, flex horizontal		
+		Div: width fill, height hug, gap 16, padding (left 20, right 20, top 16, bottom 16)
+			Div: width fill, height hug, gap 8, padding (bottom 16)
+				H3: "What’s important to users"
+				P1: "Have a clear path for how to get a loan."
+			Div: width fill, height 1, fill amber 400
+			Span: amber 400
+				H3: "% of users retained"
+		Div: width fill, height hug, gap 16, padding (left 20, right 20, top 16, bottom 16)
+			Div: width fill, height hug, gap 8, padding (bottom 16)
+				H3: "What’s important to the business"
+				P1: "Curbing risky loans through the ML based algorithm."
+			Div: width fill, height 1, fill amber 400
+			Span: amber 400
+				H3: "% of loans defaulted"
+		Div: width fill, height hug, gap 16, padding (left 20, right 20, top 16, bottom 16)
+			Div: width fill, height hug, gap 8, padding (bottom 16)
+				H3: "What’s important for the product"
+				P1: "Build and keep trust with users through reliable service."
+			Div: width fill, height 1, fill amber 400
+			Span: amber 400
+				H3: "# of loan decline support tickets"
+	Div: width fill, height hug, gap 16, flex vertical
+			Span: amber 400
+				H3: "How did we set these metrics?"
+			Div: bulleted list, width fill, height hug, gap 4, flex vertical 
+				P1: "Users voice there concerns in reviews, to customer support, and during interviews"
+				P1: "The business metrics are set during leadership meetings to align with investors"
+				P1: "Product works cross team to determine what is indicative of a good experience"
+
+Frame 4
+Div: width fill, height fill, gap 24, flex horizontal, padding (left 40, right 40, top 24, bottom 24)
+	Div: width 400px, gap 40
+		H2: "Testing user motivations"
+		Div: width fill, height hug, gap 16, flex vertical	
+			H3: "What are people willing to do?"
+			P1: "With a fake door test we were able to see what users were most inclined to interact with when if came to growing their loan eligibility."
+		Div: width fill, height fill, gap 16, flex vertical	
+			H3: "What were the results"
+			P1: "We see 20% of users completed other feature flows such as bill pay & buying airtime."
+		Div: width fill, height hug, gap 16, flex vertical
+			Span: amber 400
+				H3: "What did we learn?"
+			Div: bulleted list, width fill, height hug, gap 4, flex vertical 
+				P1: "Users are interested in becoming eligible"
+				P1: "Not all users engage with the same features"
+				P1: "We need more incentive to retain more users"
+	Div: width fill, height fill
+		Image: @umba_image_frame_4, fill fit
+
+Frame 5
+Div: width fill, height fill, gap 24, flex horizontal, padding (left 40, right 40, top 24, bottom 24)
+	Div: width 400px, gap 40
+		H2: "Looking at the data"
+		Div: width fill, height hug, gap 16, flex vertical	
+			H3: "Some surprises are good!"
+			P1: "Our data analyst showed the team that more than half the users were clicking into the rewards tab after loan decline."
+		Div: width fill, height fill, gap 16, flex vertical	
+			H3: "But we were dropping the ball"
+			P1: "The current “rewards” tab was nothing more than analytics on most likely empty data. No wonder users deleted the app afterwards."
+		Div: width fill, height hug, gap 16, flex vertical
+			Span: amber 400
+				H3: "What’s the opportunity?"
+			Div: bulleted list, width fill, height hug, gap 4, flex vertical 
+				P1: "We have a clear user incentive"
+				P1: "We can utilize organic movement"
+				P1: "The rewards tab is a blank slate"
+	Div: width fill, height fill
+		Image: @umba_image_frame_5, fill fit
+
+Frame 6
+Div: width fill, height fill, gap 24, flex horizontal, padding (left 40, right 40, top 24, bottom 24)
+	Div: width 400px, gap 40
+		H2: "Leveraging organic movement"
+		Div: width fill, height hug, gap 16, flex vertical	
+			H3: "Combining our learnings"
+			P1: "We know users are open to trying other features to grow their loan eligibility. We also know users are organically moving to the rewards tab in hopes of some money."
+		Div: width fill, height fill, gap 16, flex vertical	
+			H3: "Creating a symbiotic system"
+			P1: "Using the incentive of monetary rewards, I developed a First Time User Experience that exposes users to all features within Umba."
+		Div: width fill, height hug, gap 16, flex vertical
+			Span: amber 400
+				H3: "What do we hope this accomplishes?"
+			Div: bulleted list, width fill, height hug, gap 4, flex vertical 
+				P1: "Creates user habits around banking features"
+				P1: "Leaves the users with a positive experience"
+				P1: "Give users a head start to grow eligibility"
+	Div: width fill, height fill
+		Image: @umba_image_frame_6, fill fit
+
+Frame 7
+Div: width fill, height fill, gap 80, flex vertical, padding (left 40, right 40, top 24, bottom 24)
+	H2: "Halved losses for the month and planned for long term growth"
+	Div: width fill, height fill, gap 40, flex horizontal		
+		Div: width fill, height hug, gap 16, padding (left 20, right 20, top 16, bottom 16)
+			Div: width fill, height hug, gap 8
+				H3: "Users impact"
+				Span: amber 400
+					H3: "40% of users retained"
+			Div: width fill, height 1, fill amber 400
+			P1: "Features like bill pay & airtime turned out to be sticky features"
+		Div: width fill, height hug, gap 16, padding (left 20, right 20, top 16, bottom 16)
+			Div: width fill, height hug, gap 8
+				H3: "Business impact"
+				Span: amber 400
+					H3: "<5% of loans defaulted"
+			Div: width fill, height 1, fill amber 400
+			P1: "We set key levers that users can pull to affect our algorithm"
+		Div: width fill, height hug, gap 16, padding (left 20, right 20, top 16, bottom 16)
+			Div: width fill, height hug, gap 8
+				H3: "Product impact"
+				Span: amber 400
+					H3: "2 week ticket backlog cut to 1 day"
+			Div: width fill, height 1, fill amber 400
+			P1: "CE & Product set shared metrics that aligned our teams"
+	Div: width fill, height hug, gap 16, flex vertical
+			Span: amber 400
+				H3: "How did we launch & validate?"
+			Div: bulleted list, width fill, height hug, gap 4, flex vertical 
+				P1: "Released in stages of users by 10%, 30%, 100%"
+				P1: "Worked with finance to set reward amounts relative to average acquisition & retention costs"
+				P1: "Partnered with CE to get support ticket data and consistent reporting on ticket backlog"
