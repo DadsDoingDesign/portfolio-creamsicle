@@ -217,23 +217,6 @@ export default function CaseStudyPreview({
               onScroll={handleScroll}
               className="h-full overflow-y-auto px-6 md:px-20 py-20 scroll-smooth"
             >
-              {/* Hero Image */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="relative h-[300px] md:h-[600px] mb-16 max-h-[1200px]"
-              >
-                <Image
-                  src={project.previewImage}
-                  alt={`${project.title} Preview`}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 75vw"
-                  priority
-                />
-              </motion.div>
-
               {project.frames.map((frame, index) => (
                 <motion.div 
                   key={index} 

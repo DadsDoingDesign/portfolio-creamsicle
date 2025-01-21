@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { CaseStudy as CaseStudyType } from '@/types/case-study';
+import { CaseStudy as CaseStudyType, CaseStudyFrame } from '@/types/case-study';
 import { IntroFrame, MetricsFrame, ContentFrame } from './frames';
 
 const frameVariants = {
@@ -12,7 +12,7 @@ const frameVariants = {
 };
 
 export const CaseStudy = ({ title, description, frames }: CaseStudyType) => {
-  const renderFrame = (frame, index) => {
+  const renderFrame = (frame: CaseStudyFrame, index: number) => {
     const props = { frame, key: index };
     
     switch (frame.type) {
