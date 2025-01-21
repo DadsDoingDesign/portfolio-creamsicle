@@ -89,18 +89,18 @@ export default function CaseStudyPreview({
           >
             <div className="flex-1 flex flex-col-reverse md:flex-row items-center justify-center px-6 md:px-20 gap-8 md:gap-16 h-full">
               {/* Project Info */}
-              <div className="w-full md:w-[400px] flex flex-col mt-8 md:mt-0 shrink-0">
+              <div className="w-full md:w-[clamp(300px,25vw,400px)] flex flex-col mt-8 md:mt-0 shrink-0">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <h1 className="text-4xl md:text-7xl font-bold mb-6 text-white">{project.title}</h1>
+                  <h1 className="text-[clamp(2rem,5vw,4.5rem)] font-bold mb-6 text-white leading-tight">{project.title}</h1>
                   
                   {/* Categories */}
                   <div className="flex flex-wrap gap-2 mb-8">
                     {project.categories.map((category, index) => (
-                      <span key={index} className="text-amber-400">
+                      <span key={index} className="text-amber-400 text-[clamp(1rem,1.5vw,1.125rem)]">
                         {category}
                         {index < project.categories.length - 1 && (
                           <span className="mx-2 text-amber-400">•</span>
@@ -109,14 +109,14 @@ export default function CaseStudyPreview({
                     ))}
                   </div>
 
-                  <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed">{project.description}</p>
+                  <p className="text-[clamp(1rem,1.5vw,1.25rem)] text-white/80 mb-8 leading-relaxed">{project.description}</p>
 
                   {/* CTA */}
                   <button
                     onClick={() => {
                       onViewCaseStudy(true);
                     }}
-                    className="inline-flex items-center px-6 py-3 border border-amber-400 text-amber-400 rounded-lg hover:bg-amber-400 hover:text-black transition-colors"
+                    className="inline-flex items-center px-6 py-3 border border-amber-400 text-amber-400 rounded-lg hover:bg-amber-400 hover:text-black transition-colors text-[clamp(1rem,1.2vw,1.125rem)]"
                   >
                     Read Case Study
                     <svg 
@@ -137,7 +137,7 @@ export default function CaseStudyPreview({
               </div>
 
               {/* Preview Image */}
-              <div className="w-full md:flex-1 h-full flex items-center justify-center min-h-[300px] md:min-h-[600px] max-w-[1200px]">
+              <div className="w-full md:flex-1 h-full flex items-center justify-center min-h-[300px] md:min-h-[600px] max-w-[1200px] max-h-[1200px]">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -222,7 +222,7 @@ export default function CaseStudyPreview({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="relative h-[300px] md:h-[600px] mb-16"
+                className="relative h-[300px] md:h-[600px] mb-16 max-h-[1200px]"
               >
                 <Image
                   src={project.previewImage}
@@ -250,7 +250,7 @@ export default function CaseStudyPreview({
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.5, delay: 0.5 + (index * 0.1) }}
-                      className="mt-8 relative h-[400px]"
+                      className="mt-8 relative h-[400px] max-h-[1200px]"
                     >
                       <Image
                         src={frame.image.src}
