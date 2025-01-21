@@ -60,12 +60,12 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
           <ArrowTopRightOnSquareIcon className="w-4 h-4" />
         </Link>
         <Link 
-          href="https://twitter.com/DadsDoingDesign" 
+          href="https://www.linkedin.com/in/denisdukhvalov/" 
           target="_blank"
           rel="noopener noreferrer"
           className="text-sm font-medium text-white hover:text-amber-500 transition-colors flex items-center gap-1"
         >
-          Twitter
+          LinkedIn
           <ArrowTopRightOnSquareIcon className="w-4 h-4" />
         </Link>
         <Link 
