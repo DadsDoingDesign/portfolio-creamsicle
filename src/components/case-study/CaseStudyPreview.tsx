@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { useState, useRef } from 'react';
 import { Project } from '@/lib/data';
-import { ContentBlock } from '@/lib/case-studies/apploi';
+import { CaseStudyFrame } from '@/types/case-study';
 
 interface CaseStudyPreviewProps {
   project: Project;
@@ -18,35 +18,65 @@ interface CaseStudyPreviewProps {
   onViewCaseStudy?: (viewing: boolean) => void;
 }
 
-const renderContent = (content: ContentBlock[]) => {
-  return content.map((block, index) => {
-    switch (block.type) {
-      case 'paragraph':
-        return <p key={index} className="text-white/80 text-lg mb-4">{block.content as string}</p>;
-      case 'bullet-list':
-        return (
-          <ul key={index} className="list-disc list-inside text-white/80 text-lg mb-4">
-            {Array.isArray(block.content) && (block.content as string[]).map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
-        );
-      case 'number-list':
-        return (
-          <ol key={index} className="list-decimal list-inside text-white/80 text-lg mb-4">
-            {Array.isArray(block.content) && (block.content as string[]).map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ol>
-        );
-      case 'stat':
-        return <div key={index} className="text-2xl font-bold text-white mb-4">{block.content as string}</div>;
-      case 'quote':
-        return <blockquote key={index} className="border-l-4 border-white/20 pl-4 text-white/80 italic text-lg mb-4">{block.content as string}</blockquote>;
-      default:
-        return null;
-    }
-  });
+const renderContent = (content: CaseStudyFrame['content']) => {
+  const elements: JSX.Element[] = [];
+
+  if (content.mainText) {
+    elements.push(
+      <p key="main-text" className="text-white/80 text-lg mb-4">{content.mainText}</p>
+    );
+  }
+
+  if (content.bulletPoints) {
+    elements.push(
+      <ul key="bullet-points" className="list-disc list-inside text-white/80 text-lg mb-4">
+        {content.bulletPoints.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </ul>
+    );
+  }
+
+  if (content.metrics) {
+    elements.push(
+      <div key="metrics" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
+        {content.metrics.map((metric, i) => (
+          <div key={i} className="bg-white/5 p-6 rounded-lg">
+            <div className="text-2xl font-bold text-amber-400 mb-2">{metric.value}</div>
+            <div className="text-lg font-medium text-white mb-1">{metric.label}</div>
+            <div className="text-white/60">{metric.description}</div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (content.team) {
+    elements.push(
+      <div key="team" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
+        {content.team.map((member, i) => (
+          <div key={i} className={`p-4 rounded-lg ${member.highlight ? 'bg-amber-400/10 text-amber-400' : 'bg-white/5 text-white/80'}`}>
+            {member.role}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (content.timeline) {
+    elements.push(
+      <div key="timeline" className="space-y-4 mb-4">
+        {content.timeline.map((item, i) => (
+          <div key={i} className="flex items-start gap-4">
+            <div className="w-24 shrink-0 text-amber-400 font-medium">{item.phase}</div>
+            <div className="text-white/80">{item.duration}</div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  return elements;
 };
 
 export default function CaseStudyPreview({ 
