@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence, useAnimation } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
@@ -60,25 +60,6 @@ export default function CaseStudyPreview({
 }: CaseStudyPreviewProps) {
   const [currentFrame, setCurrentFrame] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const controls = useAnimation();
-  const [dragStartX, setDragStartX] = useState(0);
-
-  const handleDragStart = (event: MouseEvent | TouchEvent | PointerEvent) => {
-    setDragStartX('touches' in event ? event.touches[0].clientX : event.clientX);
-  };
-
-  const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    const DRAG_THRESHOLD = 50; // minimum drag distance to trigger navigation
-    const dragDistance = info.offset.x;
-    
-    if (Math.abs(dragDistance) > DRAG_THRESHOLD) {
-      if (dragDistance > 0 && !isFirst) {
-        onPrevious();
-      } else if (dragDistance < 0 && !isLast) {
-        onNext();
-      }
-    }
-  };
 
   const handleScroll = () => {
     if (!scrollContainerRef.current || !isViewingCaseStudy) return;
@@ -95,7 +76,7 @@ export default function CaseStudyPreview({
   const nextFrame = project.frames[currentFrame + 1];
 
   return (
-    <motion.div className="relative w-full h-full">
+    <div className="w-full h-full">
       <AnimatePresence mode="wait">
         {!isViewingCaseStudy ? (
           <motion.div
@@ -105,26 +86,21 @@ export default function CaseStudyPreview({
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
             className="w-full h-full flex flex-col"
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.2}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
           >
             <div className="flex-1 flex flex-col-reverse md:flex-row items-center justify-center px-6 md:px-20 gap-8 md:gap-16 h-full">
               {/* Project Info */}
-              <div className="w-full md:w-[clamp(300px,25vw,400px)] flex flex-col mt-8 md:mt-0 shrink-0">
+              <div className="w-full md:w-[clamp(300px,30vw,500px)] flex flex-col mt-8 md:mt-0 shrink-0">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <h1 className="text-[clamp(1.75rem,8vw,6rem)] font-bold mb-6 text-white leading-tight">{project.title}</h1>
+                  <h1 className="text-[clamp(2.5rem,8vw,6.5rem)] font-bold mb-6 text-white leading-[1.1]">{project.title}</h1>
                   
                   {/* Categories */}
                   <div className="flex flex-wrap gap-2 mb-8">
                     {project.categories.map((category, index) => (
-                      <span key={index} className="text-amber-400 text-[clamp(1rem,1.5vw,1.125rem)]">
+                      <span key={index} className="text-amber-400 text-[clamp(0.875rem,1.2vw,1.25rem)]">
                         {category}
                         {index < project.categories.length - 1 && (
                           <span className="mx-2 text-amber-400">•</span>
@@ -133,14 +109,14 @@ export default function CaseStudyPreview({
                     ))}
                   </div>
 
-                  <p className="text-[clamp(1rem,1.5vw,1.25rem)] text-white/80 mb-8 leading-relaxed">{project.description}</p>
+                  <p className="text-[clamp(1rem,1.4vw,1.5rem)] text-white/80 mb-8 leading-relaxed">{project.description}</p>
 
                   {/* CTA */}
                   <button
                     onClick={() => {
                       onViewCaseStudy(true);
                     }}
-                    className="inline-flex items-center px-6 py-3 border border-amber-400 text-amber-400 rounded-lg hover:bg-amber-400 hover:text-black transition-colors text-[clamp(1rem,1.2vw,1.125rem)]"
+                    className="inline-flex items-center px-6 py-3 border border-amber-400 text-amber-400 rounded-lg hover:bg-amber-400 hover:text-black transition-colors text-[clamp(0.875rem,1.2vw,1.25rem)]"
                   >
                     Read Case Study
                     <svg 
@@ -225,14 +201,6 @@ export default function CaseStudyPreview({
                 </button>
               </div>
             )}
-            {/* Mobile Gesture Hint */}
-            <div className="md:hidden absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 text-sm flex items-center gap-2">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M17 8l-1-4-3.5 2-3.5-2-1 4M6.2 10.8c-.2.2-.3.4-.3.7v7c0 .6.4 1 1 1h10c.6 0 1-.4 1-1v-7c0-.3-.1-.5-.3-.7"/>
-                <path d="M8 14h8M8 17h8"/>
-              </svg>
-              Swipe to navigate
-            </div>
           </motion.div>
         ) : (
           <motion.div
@@ -323,6 +291,6 @@ export default function CaseStudyPreview({
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 };
