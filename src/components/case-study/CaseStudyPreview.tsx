@@ -87,7 +87,7 @@ export default function CaseStudyPreview({
             transition={{ duration: 0.5 }}
             className="w-full h-full flex flex-col"
           >
-            <div className="flex-1 flex flex-col-reverse md:flex-row items-center justify-center px-6 md:px-20">
+            <div className="flex-1 flex flex-col-reverse md:flex-row items-center justify-center px-6 md:px-20 gap-8 md:gap-16">
               {/* Project Info */}
               <div className="w-full md:w-[400px] flex flex-col mt-8 md:mt-0">
                 <motion.div
@@ -137,19 +137,19 @@ export default function CaseStudyPreview({
               </div>
 
               {/* Preview Image */}
-              <div className="flex-1 flex justify-center items-center h-full w-full md:w-auto">
+              <div className="w-full md:w-[500px] flex justify-center items-center">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.3 }}
-                  className="relative w-full aspect-video md:w-full md:h-full"
+                  className="relative w-full pt-[56.25%]"
                 >
                   <Image
                     src={project.previewImage}
                     alt={`${project.title} Preview`}
                     fill
-                    className="object-contain"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 75vw"
+                    className="object-contain absolute top-0 left-0"
+                    sizes="(max-width: 768px) 90vw, 500px"
                     priority
                   />
                 </motion.div>
