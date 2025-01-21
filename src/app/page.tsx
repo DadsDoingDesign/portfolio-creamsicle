@@ -110,7 +110,7 @@ export default function Home() {
                   isFirst={currentIndex === 0}
                   isLast={currentIndex === projects.length - 1}
                   isViewingCaseStudy={isViewingCaseStudy}
-                  onViewCaseStudy={() => setIsViewingCaseStudy(true)}
+                  onViewCaseStudy={(viewing: boolean) => setIsViewingCaseStudy(viewing)}
                 />
               )}
             </AnimatePresence>

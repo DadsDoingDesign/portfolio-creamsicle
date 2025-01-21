@@ -15,7 +15,7 @@ interface CaseStudyPreviewProps {
   onPrevious?: () => void;
   onNext?: () => void;
   isViewingCaseStudy?: boolean;
-  onViewCaseStudy?: () => void;
+  onViewCaseStudy?: (viewing: boolean) => void;
 }
 
 const renderContent = (content: ContentBlock[]) => {
@@ -58,12 +58,11 @@ export default function CaseStudyPreview({
   isViewingCaseStudy = false,
   onViewCaseStudy = () => {},
 }: CaseStudyPreviewProps) {
-  const [isViewingCaseStudyState, setIsViewingCaseStudy] = useState(isViewingCaseStudy);
   const [currentFrame, setCurrentFrame] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = () => {
-    if (!scrollContainerRef.current || !isViewingCaseStudyState) return;
+    if (!scrollContainerRef.current || !isViewingCaseStudy) return;
     
     const { scrollTop, clientHeight, scrollHeight } = scrollContainerRef.current;
     const scrollProgress = scrollTop / (scrollHeight - clientHeight);
@@ -77,8 +76,8 @@ export default function CaseStudyPreview({
   const nextFrame = project.frames[currentFrame + 1];
 
   return (
-    <div className={`w-full h-full transition-all duration-300 ${isViewingCaseStudyState ? 'fixed inset-0 z-50 bg-background-primary' : 'relative'}`}>
-      {!isViewingCaseStudyState ? (
+    <div className={`w-full h-full transition-all duration-300 ${isViewingCaseStudy ? 'fixed inset-0 z-50 bg-background-primary' : 'relative'}`}>
+      {!isViewingCaseStudy ? (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -113,8 +112,7 @@ export default function CaseStudyPreview({
                 {/* CTA */}
                 <button
                   onClick={() => {
-                    onViewCaseStudy();
-                    setIsViewingCaseStudy(true);
+                    onViewCaseStudy(true);
                   }}
                   className="inline-flex items-center px-6 py-3 border border-amber-400 text-amber-400 rounded-lg hover:bg-amber-400 hover:text-black transition-colors"
                 >
@@ -157,7 +155,7 @@ export default function CaseStudyPreview({
           </div>
 
           {/* Navigation Arrows */}
-          {!isViewingCaseStudyState && (
+          {!isViewingCaseStudy && (
             <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-8 pointer-events-none">
               <button
                 onClick={onPrevious}
@@ -201,8 +199,6 @@ export default function CaseStudyPreview({
               </button>
             </div>
           )}
-          {/* Border */}
-          <div className="absolute -inset-[1px] rounded-2xl" />
         </motion.div>
       ) : (
         <motion.div
@@ -218,7 +214,7 @@ export default function CaseStudyPreview({
             className="h-full overflow-y-auto px-20 py-20"
           >
             <button
-              onClick={() => setIsViewingCaseStudy(false)}
+              onClick={() => onViewCaseStudy(false)}
               className="fixed top-10 left-10 text-white hover:text-amber-400 transition-colors"
             >
               <ArrowLeftIcon className="w-6 h-6" />
