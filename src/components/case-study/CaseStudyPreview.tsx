@@ -137,7 +137,7 @@ export default function CaseStudyPreview({
               </div>
 
               {/* Preview Image */}
-              <div className="w-full md:flex-1 h-full flex items-center justify-center min-h-[300px] md:min-h-[600px]">
+              <div className="w-full md:flex-1 h-full flex items-center justify-center min-h-[300px] md:min-h-[600px] max-w-[1200px]">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -158,10 +158,10 @@ export default function CaseStudyPreview({
 
             {/* Navigation Arrows */}
             {!isViewingCaseStudy && (
-              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-8 pointer-events-none">
+              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none px-[64px]">
                 <button
                   onClick={onPrevious}
-                  className={`p-2 rounded-full bg-black/20 backdrop-blur-sm text-white hover:bg-black/40 transition-all pointer-events-auto ${
+                  className={`pointer-events-auto text-content-inverse-primary hover:text-amber-400 transition-colors ${
                     isFirst ? 'opacity-0' : 'opacity-100'
                   }`}
                   disabled={isFirst}
@@ -181,7 +181,7 @@ export default function CaseStudyPreview({
                 </button>
                 <button
                   onClick={onNext}
-                  className={`p-2 rounded-full bg-black/20 backdrop-blur-sm text-white hover:bg-black/40 transition-all pointer-events-auto ${
+                  className={`pointer-events-auto text-content-inverse-primary hover:text-amber-400 transition-colors ${
                     isLast ? 'opacity-0' : 'opacity-100'
                   }`}
                   disabled={isLast}
