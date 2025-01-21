@@ -69,42 +69,37 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
       </div>
 
       <div className="hidden md:flex items-center gap-6">
-        <Link 
-          href="https://github.com/DadsDoingDesign" 
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-medium text-content-inverse-primary hover:text-amber-500 transition-colors flex items-center gap-1"
-        >
-          GitHub
-          <ArrowTopRightOnSquareIcon className="w-4 h-4" />
-        </Link>
-        <Link 
-          href="https://www.linkedin.com/in/denisdukhvalov/" 
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-medium text-content-inverse-primary hover:text-amber-500 transition-colors flex items-center gap-1"
-        >
-          LinkedIn
-          <ArrowTopRightOnSquareIcon className="w-4 h-4" />
-        </Link>
-        <Link 
-          href="https://bsky.app/profile/dadsdoingdesign.bsky.social" 
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-medium text-content-inverse-primary hover:text-amber-500 transition-colors flex items-center gap-1"
-        >
-          Bluesky
-          <ArrowTopRightOnSquareIcon className="w-4 h-4" />
-        </Link>
-        <Link 
-          href="https://www.artstation.com/dadsdoingdesign" 
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-medium text-content-inverse-primary hover:text-amber-500 transition-colors flex items-center gap-1"
-        >
-          Art
-          <ArrowTopRightOnSquareIcon className="w-4 h-4" />
-        </Link>
+        {/* Social Links */}
+        <div className="flex items-center gap-4">
+          <Link 
+            href="https://github.com/DadsDoingDesign" 
+            target="_blank"
+            className="text-content-inverse-primary hover:text-amber-400 transition-colors"
+          >
+            <Image src="/github.svg" alt="GitHub" width={24} height={24} />
+          </Link>
+          <Link 
+            href="https://www.linkedin.com/" 
+            target="_blank"
+            className="text-content-inverse-primary hover:text-amber-400 transition-colors"
+          >
+            <Image src="/linkedin.svg" alt="LinkedIn" width={24} height={24} />
+          </Link>
+          <Link 
+            href="https://bsky.app/profile/dendendesign.bsky.social" 
+            target="_blank"
+            className="text-content-inverse-primary hover:text-amber-400 transition-colors"
+          >
+            <Image src="/bluesky.svg" alt="BlueSky" width={24} height={24} />
+          </Link>
+          <Link 
+            href="https://bsky.app/profile/eatmeart.bsky.social" 
+            target="_blank"
+            className="text-content-inverse-primary hover:text-amber-400 transition-colors"
+          >
+            <Image src="/art.svg" alt="Art" width={24} height={24} />
+          </Link>
+        </div>
         <button 
           className="text-sm font-medium px-3 py-1.5 bg-orange-400 text-black rounded-lg hover:bg-orange-500 transition-colors"
         >
@@ -167,7 +162,7 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
                 GitHub
               </Link>
               <Link 
-                href="https://www.linkedin.com/in/denisdukhvalov/" 
+                href="https://www.linkedin.com/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-2xl text-white hover:text-amber-400 transition-colors"
@@ -175,7 +170,7 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
                 LinkedIn
               </Link>
               <Link 
-                href="https://bsky.app/profile/dadsdoingdesign.bsky.social" 
+                href="https://bsky.app/profile/dendendesign.bsky.social" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-2xl text-white hover:text-amber-400 transition-colors"
@@ -183,7 +178,7 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
                 Bluesky
               </Link>
               <Link 
-                href="https://www.artstation.com/dadsdoingdesign" 
+                href="https://bsky.app/profile/eatmeart.bsky.social" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-2xl text-white hover:text-amber-400 transition-colors"
