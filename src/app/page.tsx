@@ -23,6 +23,9 @@ export default function Home() {
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
       
+      // If viewing case study, don't handle scroll here
+      if (isViewingCaseStudy) return;
+      
       const currentTime = Date.now();
       if (currentTime - lastScrollTime < scrollCooldown) {
         return;
@@ -50,7 +53,7 @@ export default function Home() {
 
     container.addEventListener('wheel', handleWheel, { passive: false });
     return () => container.removeEventListener('wheel', handleWheel);
-  }, [showCaseStudies, currentIndex, projects.length]);
+  }, [showCaseStudies, currentIndex, projects.length, isViewingCaseStudy]);
 
   const handleCaseStudiesClick = () => {
     setShowCaseStudies(true);
@@ -85,10 +88,10 @@ export default function Home() {
         }}
       >
         <motion.div 
-          className={`h-full w-full flex flex-col px-20 py-10 gap-10 ${!isViewingCaseStudy ? 'bg-background-inverse-primary' : ''}`}
+          className="h-full w-full flex flex-col px-20 py-10 gap-10 bg-background-inverse-primary"
           animate={{
             borderRadius: isViewingCaseStudy ? '0px' : '16px',  // 16px = rounded-2xl
-            backgroundColor: isViewingCaseStudy ? 'var(--background-primary)' : 'var(--background-inverse-primary)'
+            backgroundColor: isViewingCaseStudy ? '#18181B' : '#18181B'
           }}
           transition={{
             duration: 0.5,

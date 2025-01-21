@@ -215,7 +215,7 @@ export default function CaseStudyPreview({
             <div
               ref={scrollContainerRef}
               onScroll={handleScroll}
-              className="h-full overflow-y-auto px-20 py-20"
+              className="h-full overflow-y-auto px-20 py-20 scroll-smooth"
             >
               <button
                 onClick={() => onViewCaseStudy(false)}
@@ -226,7 +226,12 @@ export default function CaseStudyPreview({
               </button>
 
               {/* Hero Image */}
-              <div className="relative h-[600px] mb-16">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="relative h-[600px] mb-16"
+              >
                 <Image
                   src={project.previewImage}
                   alt={`${project.title} Preview`}
@@ -235,15 +240,26 @@ export default function CaseStudyPreview({
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 75vw"
                   priority
                 />
-              </div>
+              </motion.div>
 
               {project.frames.map((frame, index) => (
-                <div key={index} className="mb-24 min-h-[calc(100vh-200px)] flex flex-col justify-center max-w-7xl mx-auto">
+                <motion.div 
+                  key={index} 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
+                  className="mb-24 min-h-[calc(100vh-200px)] flex flex-col justify-center max-w-7xl mx-auto"
+                >
                   <h2 className="text-3xl font-bold mb-4 text-white">{frame.title}</h2>
                   {frame.subtitle && <h3 className="text-xl text-white/80 mb-4">{frame.subtitle}</h3>}
                   <div className="text-white/80 text-lg">{renderContent(frame.content)}</div>
                   {frame.image && (
-                    <div className="mt-8 relative h-[400px]">
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: 0.5 + (index * 0.1) }}
+                      className="mt-8 relative h-[400px]"
+                    >
                       <Image
                         src={frame.image.src}
                         alt={frame.image.alt}
@@ -254,9 +270,9 @@ export default function CaseStudyPreview({
                       {frame.image.caption && (
                         <p className="text-white/60 text-sm mt-2 text-center">{frame.image.caption}</p>
                       )}
-                    </div>
+                    </motion.div>
                   )}
-                </div>
+                </motion.div>
               ))}
             </div>
 
