@@ -109,7 +109,7 @@ export const projects: Project[] = [
       {
         title: 'The Approach',
         subtitle: 'Data-Driven Strategy',
-        type: 'approach',
+        type: 'solution',
         layout: 'left-image',
         content: {
           mainText: 'We developed a data-driven strategy to understand and influence user behavior.',
