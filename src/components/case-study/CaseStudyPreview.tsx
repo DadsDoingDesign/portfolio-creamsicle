@@ -87,9 +87,9 @@ export default function CaseStudyPreview({
             transition={{ duration: 0.5 }}
             className="w-full h-full flex flex-col"
           >
-            <div className="flex-1 flex flex-col-reverse md:flex-row items-center justify-center px-6 md:px-20 gap-8 md:gap-16">
+            <div className="flex-1 flex flex-col-reverse md:flex-row items-center justify-center px-6 md:px-20 gap-8 md:gap-16 h-full">
               {/* Project Info */}
-              <div className="w-full md:w-[400px] flex flex-col mt-8 md:mt-0">
+              <div className="w-full md:w-[400px] flex flex-col mt-8 md:mt-0 shrink-0">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -137,19 +137,19 @@ export default function CaseStudyPreview({
               </div>
 
               {/* Preview Image */}
-              <div className="w-full md:w-[500px] flex justify-center items-center">
+              <div className="w-full md:flex-1 h-full flex items-center justify-center min-h-[300px] md:min-h-[600px]">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.3 }}
-                  className="relative w-full pt-[56.25%]"
+                  className="relative w-full h-full"
                 >
                   <Image
                     src={project.previewImage}
                     alt={`${project.title} Preview`}
                     fill
-                    className="object-contain absolute top-0 left-0"
-                    sizes="(max-width: 768px) 90vw, 500px"
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 70vw"
                     priority
                   />
                 </motion.div>
