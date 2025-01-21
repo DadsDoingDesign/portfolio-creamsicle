@@ -128,7 +128,7 @@ export const projects: Project[] = [
       {
         title: 'The Results',
         subtitle: 'Measurable Impact',
-        type: 'results',
+        type: 'impact',
         layout: 'full-width',
         content: {
           mainText: 'The implementation led to significant improvements across all key metrics:',
