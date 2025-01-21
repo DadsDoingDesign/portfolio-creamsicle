@@ -39,7 +39,7 @@ export interface CaseStudy {
   id: string;
   title: string;
   description: string;
-  thumbnail: string;
+  previewImage: string;
   categories: string[];
   frames: CaseStudyFrame[];
 }
