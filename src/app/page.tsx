@@ -76,21 +76,24 @@ export default function Home() {
         ref={containerRef} 
         className="relative h-full w-full"
         animate={{
-          padding: showCaseStudies && isViewingCaseStudy ? '0px' : '24px'  // 24px = p-6
+          padding: isViewingCaseStudy ? '0px' : '24px'  // 24px = p-6
         }}
         transition={{
           duration: 0.5,
-          ease: "easeInOut"
+          ease: "easeInOut",
+          delay: isViewingCaseStudy ? 0 : 0.3
         }}
       >
         <motion.div 
           className={`h-full w-full flex flex-col px-20 py-10 gap-10 ${!isViewingCaseStudy ? 'bg-background-inverse-primary' : ''}`}
           animate={{
-            borderRadius: isViewingCaseStudy ? '0px' : '16px'  // 16px = rounded-2xl
+            borderRadius: isViewingCaseStudy ? '0px' : '16px',  // 16px = rounded-2xl
+            backgroundColor: isViewingCaseStudy ? 'var(--background-primary)' : 'var(--background-inverse-primary)'
           }}
           transition={{
             duration: 0.5,
-            ease: "easeInOut"
+            ease: "easeInOut",
+            delay: isViewingCaseStudy ? 0 : 0.3
           }}
         >
           <Navigation 
