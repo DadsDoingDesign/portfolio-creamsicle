@@ -60,7 +60,7 @@ export const projects: Project[] = [
       {
         title: 'The Process',
         subtitle: 'User-Centered Design',
-        type: 'process',
+        type: 'research',
         layout: 'full-width',
         content: {
           mainText: 'Through extensive user research and iterative design, we identified key pain points in the user journey and developed intuitive solutions that drastically reduced the learning curve.',
