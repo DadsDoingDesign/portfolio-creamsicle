@@ -76,7 +76,7 @@ export default function Home() {
         ref={containerRef} 
         className="relative h-full w-full"
         animate={{
-          padding: isViewingCaseStudy ? '0px' : '24px'  // 24px = p-6
+          padding: showCaseStudies && isViewingCaseStudy ? '0px' : '24px'  // 24px = p-6
         }}
         transition={{
           duration: 0.5,

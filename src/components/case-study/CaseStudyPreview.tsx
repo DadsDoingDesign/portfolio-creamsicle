@@ -112,7 +112,10 @@ export default function CaseStudyPreview({
 
                 {/* CTA */}
                 <button
-                  onClick={onViewCaseStudy}
+                  onClick={() => {
+                    onViewCaseStudy();
+                    setIsViewingCaseStudy(true);
+                  }}
                   className="inline-flex items-center px-6 py-3 border border-amber-400 text-amber-400 rounded-lg hover:bg-amber-400 hover:text-black transition-colors"
                 >
                   Read Case Study

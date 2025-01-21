@@ -87,12 +87,12 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
           <ArrowTopRightOnSquareIcon className="w-4 h-4" />
         </Link>
         <button 
-          className="text-sm font-medium px-3 py-1.5 bg-amber-400 text-black rounded-lg hover:bg-amber-500 transition-colors"
+          className="text-sm font-medium px-3 py-1.5 bg-orange-400 text-black rounded-lg hover:bg-orange-500 transition-colors"
         >
           Download Resume
         </button>
         <button 
-          className="text-sm font-medium px-3 py-1.5 border border-amber-400 text-amber-400 rounded-lg hover:bg-amber-500 hover:border-amber-500 hover:text-black transition-colors"
+          className="text-sm font-medium px-3 py-1.5 border border-orange-400 text-orange-400 rounded-lg hover:bg-orange-500 hover:border-orange-500 hover:text-black transition-colors"
         >
           Contact
         </button>
