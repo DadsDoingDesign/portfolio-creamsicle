@@ -12,6 +12,10 @@ export default {
       colors: {
         background: {
           primary: "#18181B",
+          'inverse-primary': "#18181B",
+        },
+        content: {
+          'inverse-primary': "#FFFFFF",
         },
         foreground: "var(--foreground)",
       },

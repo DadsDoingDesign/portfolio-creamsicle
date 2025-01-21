@@ -15,7 +15,7 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="w-full flex items-center justify-between"
+      className="w-full flex items-center justify-between gap-auto"
     >
       <div className="flex items-center gap-8">
         {isViewingCaseStudy ? (
@@ -54,7 +54,7 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
           href="https://github.com/DadsDoingDesign" 
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-medium text-white hover:text-amber-500 transition-colors flex items-center gap-1"
+          className="text-sm font-medium text-content-inverse-primary hover:text-amber-500 transition-colors flex items-center gap-1"
         >
           GitHub
           <ArrowTopRightOnSquareIcon className="w-4 h-4" />
@@ -63,7 +63,7 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
           href="https://www.linkedin.com/in/denisdukhvalov/" 
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-medium text-white hover:text-amber-500 transition-colors flex items-center gap-1"
+          className="text-sm font-medium text-content-inverse-primary hover:text-amber-500 transition-colors flex items-center gap-1"
         >
           LinkedIn
           <ArrowTopRightOnSquareIcon className="w-4 h-4" />
@@ -72,7 +72,7 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
           href="https://bsky.app/profile/dadsdoingdesign.bsky.social" 
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-medium text-white hover:text-amber-500 transition-colors flex items-center gap-1"
+          className="text-sm font-medium text-content-inverse-primary hover:text-amber-500 transition-colors flex items-center gap-1"
         >
           Bluesky
           <ArrowTopRightOnSquareIcon className="w-4 h-4" />
@@ -81,18 +81,18 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
           href="https://www.artstation.com/dadsdoingdesign" 
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-medium text-white hover:text-amber-500 transition-colors flex items-center gap-1"
+          className="text-sm font-medium text-content-inverse-primary hover:text-amber-500 transition-colors flex items-center gap-1"
         >
           Art
           <ArrowTopRightOnSquareIcon className="w-4 h-4" />
         </Link>
         <button 
-          className="text-sm font-medium px-3 py-1.5 bg-orange-400 text-black rounded-lg hover:bg-orange-500 transition-colors"
+          className="text-sm font-medium px-3 py-1.5 bg-amber-400 text-black rounded-lg hover:bg-amber-500 transition-colors"
         >
           Download Resume
         </button>
         <button 
-          className="text-sm font-medium px-3 py-1.5 border border-orange-400 text-orange-400 rounded-lg hover:bg-orange-500 hover:border-orange-500 hover:text-black transition-colors"
+          className="text-sm font-medium px-3 py-1.5 border border-amber-400 text-amber-400 rounded-lg hover:bg-amber-500 hover:border-amber-500 hover:text-black transition-colors"
         >
           Contact
         </button>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Hero } from '@/components/hero/Hero';
 import CaseStudyPreview from '@/components/case-study/CaseStudyPreview';
 import { projects } from '@/lib/data';
@@ -72,11 +72,27 @@ export default function Home() {
 
   return (
     <div className="fixed inset-0">
-      <div 
+      <motion.div 
         ref={containerRef} 
-        className="relative h-full w-full p-6"
+        className="relative h-full w-full"
+        animate={{
+          padding: isViewingCaseStudy ? '0px' : '24px'  // 24px = p-6
+        }}
+        transition={{
+          duration: 0.5,
+          ease: "easeInOut"
+        }}
       >
-        <div className={`h-full w-full flex flex-col px-20 py-10 gap-10 ${!isViewingCaseStudy ? 'primary-bg rounded-2xl border border-orange-500/30' : ''}`}>
+        <motion.div 
+          className={`h-full w-full flex flex-col px-20 py-10 gap-10 ${!isViewingCaseStudy ? 'bg-background-inverse-primary' : ''}`}
+          animate={{
+            borderRadius: isViewingCaseStudy ? '0px' : '16px'  // 16px = rounded-2xl
+          }}
+          transition={{
+            duration: 0.5,
+            ease: "easeInOut"
+          }}
+        >
           <Navigation 
             isViewingCaseStudy={isViewingCaseStudy} 
             onBack={() => setIsViewingCaseStudy(false)} 
@@ -99,8 +115,8 @@ export default function Home() {
               )}
             </AnimatePresence>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
