@@ -64,7 +64,7 @@ export const projects: Project[] = [
         layout: 'full-width',
         content: {
           mainText: 'Through extensive user research and iterative design, we identified key pain points in the user journey and developed intuitive solutions that drastically reduced the learning curve.',
-          numberPoints: [
+          bulletPoints: [
             'User Research',
             'Journey Mapping',
             'Iterative Design',
@@ -113,7 +113,7 @@ export const projects: Project[] = [
         layout: 'left-image',
         content: {
           mainText: 'We developed a data-driven strategy to understand and influence user behavior.',
-          numberPoints: [
+          bulletPoints: [
             'Analytics Implementation',
             'Behavioral Analysis',
             'Incentive Design'
