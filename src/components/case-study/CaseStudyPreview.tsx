@@ -87,15 +87,15 @@ export default function CaseStudyPreview({
             transition={{ duration: 0.5 }}
             className="w-full h-full flex flex-col"
           >
-            <div className="flex-1 flex items-center justify-center px-20">
+            <div className="flex-1 flex flex-col-reverse md:flex-row items-center justify-center px-6 md:px-20">
               {/* Project Info */}
-              <div className="w-[400px] flex flex-col">
+              <div className="w-full md:w-[400px] flex flex-col mt-8 md:mt-0">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <h1 className="text-7xl font-bold mb-6 text-white">{project.title}</h1>
+                  <h1 className="text-4xl md:text-7xl font-bold mb-6 text-white">{project.title}</h1>
                   
                   {/* Categories */}
                   <div className="flex flex-wrap gap-2 mb-8">
@@ -109,7 +109,7 @@ export default function CaseStudyPreview({
                     ))}
                   </div>
 
-                  <p className="text-xl text-white/80 mb-8 leading-relaxed">{project.description}</p>
+                  <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed">{project.description}</p>
 
                   {/* CTA */}
                   <button
@@ -137,12 +137,12 @@ export default function CaseStudyPreview({
               </div>
 
               {/* Preview Image */}
-              <div className="flex-1 flex justify-center items-center h-full">
+              <div className="flex-1 flex justify-center items-center h-full w-full md:w-auto">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.3 }}
-                  className="relative w-full h-full"
+                  className="relative w-full aspect-video md:w-full md:h-full"
                 >
                   <Image
                     src={project.previewImage}
@@ -215,22 +215,14 @@ export default function CaseStudyPreview({
             <div
               ref={scrollContainerRef}
               onScroll={handleScroll}
-              className="h-full overflow-y-auto px-20 py-20 scroll-smooth"
+              className="h-full overflow-y-auto px-6 md:px-20 py-20 scroll-smooth"
             >
-              <button
-                onClick={() => onViewCaseStudy(false)}
-                className="fixed top-10 left-10 text-white hover:text-amber-400 transition-colors"
-              >
-                <ArrowLeftIcon className="w-6 h-6" />
-                Back
-              </button>
-
               {/* Hero Image */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="relative h-[600px] mb-16"
+                className="relative h-[300px] md:h-[600px] mb-16"
               >
                 <Image
                   src={project.previewImage}
