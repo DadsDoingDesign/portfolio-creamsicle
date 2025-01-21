@@ -4,7 +4,7 @@ export const umba: CaseStudy = {
   id: 'umba',
   title: 'Umba',
   description: 'Creating alignment between the users, business, and product',
-  thumbnail: '/case-studies/umba/umba_image_frame_1.png',
+  previewImage: '/case-studies/umba/umba_image_frame_1.png',
   categories: ['Product Strategy', 'Analytics', 'UX Design'],
   frames: [
     {
