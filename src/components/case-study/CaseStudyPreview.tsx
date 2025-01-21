@@ -87,7 +87,7 @@ export default function CaseStudyPreview({
             transition={{ duration: 0.5 }}
             className="w-full h-full flex flex-col"
           >
-            <div className="flex-1 flex flex-col-reverse md:flex-row items-center justify-center px-6 md:px-20 gap-8 md:gap-16 h-full">
+            <div className="flex-1 flex flex-col-reverse md:flex-row items-center justify-center px-6 lg:px-20 md:px-10 gap-8 md:gap-16 h-full">
               {/* Project Info */}
               <div className="w-full md:w-[clamp(300px,30vw,500px)] flex flex-col mt-8 md:mt-0 shrink-0">
                 <motion.div
