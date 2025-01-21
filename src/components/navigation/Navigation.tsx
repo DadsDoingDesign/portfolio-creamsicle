@@ -1,11 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronDownIcon, ArrowTopRightOnSquareIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
 
 interface NavigationProps {
   isViewingCaseStudy?: boolean;
@@ -21,13 +20,19 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
     { label: 'Contact', href: '#contact' },
   ];
 
+  const handleLogoClick = () => {
+    window.location.href = '/';
+  };
+
   return (
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="w-full flex items-center justify-between gap-auto"
+      transition={{ duration: 0.5 }}
+      className="w-full flex justify-between items-center"
     >
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-4">
+        {/* Logo */}
         {isViewingCaseStudy ? (
           <button
             onClick={onBack}
@@ -48,13 +53,17 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
             Back
           </button>
         ) : (
-          <Image
-            src="/dendenlogo.svg"
-            alt="Denden Logo"
-            width={40}
-            height={40}
-            className="w-auto h-8"
-          />
+          <button 
+            onClick={handleLogoClick}
+            className="relative w-10 h-10 cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            <Image
+              src="/dendenlogo.svg"
+              alt="DadsDoingDesign Logo"
+              fill
+              className="object-contain"
+            />
+          </button>
         )}
         {/* Navigation links hidden until content is ready */}
       </div>
@@ -108,6 +117,7 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
         </button>
       </div>
 
+      {/* Mobile Menu Button */}
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         className="md:hidden text-amber-400 hover:text-amber-500 transition-colors"
@@ -119,15 +129,24 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
         )}
       </button>
 
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 bg-background-primary z-50 md:hidden"
           >
+            {/* Close Button */}
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-6 right-6 text-amber-400 hover:text-amber-500 transition-colors"
+            >
+              <XMarkIcon className="h-6 w-6" />
+            </button>
+
             <div className="flex flex-col items-center justify-center h-full gap-8">
               {menuItems.map((item) => (
                 <a
