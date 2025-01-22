@@ -87,8 +87,8 @@ export default function CaseStudyContainer({
   return (
     <div className="w-full h-full flex items-center justify-center">
       {!isReading ? (
-        <div className="w-full h-full flex flex-col md:flex-row gap-12 items-center">
-          <div className="flex-1 max-w-md h-full flex flex-col justify-center">
+        <div className="container mx-auto h-full flex flex-col md:flex-row gap-12 items-center">
+          <div className="flex-1 max-w-md flex flex-col justify-center">
             <h1 className="text-4xl font-bold mb-6 text-white">{project.title}</h1>
             <p className="text-lg text-gray-300 mb-8">{project.description}</p>
             {frames[0]?.content.sections?.[0] && (
@@ -102,13 +102,14 @@ export default function CaseStudyContainer({
             </button>
           </div>
           {frames[0]?.image && (
-            <div className="flex-1 w-full h-full relative">
+            <div className="flex-1 relative" style={{ height: '600px', maxWidth: '600px' }}>
               <Image
                 src={frames[0].image.src}
                 alt={frames[0].image.alt}
                 fill
-                className="object-cover rounded-lg shadow-lg"
+                className="object-contain rounded-lg"
                 sizes="(max-width: 768px) 100vw, 50vw"
+                priority
               />
             </div>
           )}
