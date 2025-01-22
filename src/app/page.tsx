@@ -81,7 +81,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="h-full"
           >
-            <Hero onScrollDown={() => setShowCaseStudies(true)} />
+            <Hero onCaseStudiesClick={() => setShowCaseStudies(true)} />
           </motion.div>
         )}
 

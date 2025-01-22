@@ -153,7 +153,7 @@ export default function CaseStudyContainer({
                   {frames.map((frame, index) => (
                     <div
                       key={index}
-                      ref={el => frameRefs.current[index] = el}
+                      ref={(el) => { frameRefs.current[index] = el; }}
                       className="min-h-[calc(100vh-128px)] flex items-center"
                     >
                       <Frame frame={frame} />
