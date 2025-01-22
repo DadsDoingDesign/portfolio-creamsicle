@@ -97,13 +97,12 @@ export default function Home() {
                   {projects.map((project, index) => (
                     <motion.div
                       key={project.id}
-                      initial={{ opacity: 0, x: '100%' }}
+                      initial={{ opacity: 0 }}
                       animate={{ 
                         opacity: currentIndex === index ? 1 : 0,
-                        x: currentIndex === index ? 0 : '-100%',
                         pointerEvents: currentIndex === index ? 'auto' : 'none'
                       }}
-                      exit={{ opacity: 0, x: '-100%' }}
+                      exit={{ opacity: 0 }}
                       transition={{ duration: 0.5 }}
                       className="w-full h-full flex items-center justify-center"
                     >

@@ -57,18 +57,29 @@ html {
 /* Gradient Animation */
 .gradient-animate {
   background-size: 200% 200%;
-  animation: gradient-y 8s ease infinite;
+  animation: gradientAnimation 8s ease infinite;
   @apply bg-gradient-to-b from-orange-400 to-amber-400;
 }
 
-@keyframes gradient {
+@keyframes gradientAnimation {
   0% {
-    background-position: 50% 0%;
+    background: linear-gradient(180deg, rgb(251 146 60) 0%, rgb(251 191 36) 100%);
+  }
+  25% {
+    background: linear-gradient(180deg, rgb(251 191 36) 0%, rgb(251 146 60) 100%);
   }
   50% {
-    background-position: 50% 100%;
+    background: linear-gradient(180deg, rgb(251 191 36) 100%, rgb(251 146 60) 0%);
+  }
+  75% {
+    background: linear-gradient(180deg, rgb(251 146 60) 0%, rgb(251 191 36) 0%);
   }
   100% {
-    background-position: 50% 0%;
+    background: linear-gradient(180deg, rgb(251 146 60) 0%, rgb(251 191 36) 100%);
   }
+}
+
+.gradient-animate {
+  animation: gradientAnimation 8s ease-in-out infinite;
+  background-size: 100% 100%;
 }
