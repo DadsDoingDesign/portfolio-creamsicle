@@ -118,10 +118,6 @@ export default function Home() {
                   isOpen={true}
                   onClose={() => setIsViewingCaseStudy(false)}
                   onViewCaseStudy={setIsViewingCaseStudy}
-                  onNext={handleNext}
-                  onPrevious={handlePrevious}
-                  isFirst={currentIndex === 0}
-                  isLast={currentIndex === projects.length - 1}
                 />
               )}
             </AnimatePresence>
