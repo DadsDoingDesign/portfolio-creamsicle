@@ -64,7 +64,7 @@ export default function Home() {
   return (
     <div 
       ref={containerRef} 
-      className="h-full w-full text-white relative"
+      className="h-full w-full text-white"
     >
       <AnimatePresence mode="wait">
         {!showCaseStudies && (
@@ -74,9 +74,11 @@ export default function Home() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="h-full container mx-auto px-6 py-20"
+            className="h-full w-full"
           >
-            <Hero onCaseStudiesClick={() => setShowCaseStudies(true)} />
+            <div className="container mx-auto h-full">
+              <Hero onCaseStudiesClick={() => setShowCaseStudies(true)} />
+            </div>
           </motion.div>
         )}
 
@@ -87,9 +89,9 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '-100%' }}
             transition={{ duration: 0.5 }}
-            className="h-full pt-20"
+            className="h-full w-full"
           >
-            <div className="container mx-auto px-6">
+            <div className="container mx-auto">
               <div className="flex items-center justify-center h-full">
                 <AnimatePresence mode="wait">
                   {projects.map((project, index) => (
