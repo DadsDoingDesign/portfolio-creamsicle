@@ -87,7 +87,7 @@ export default function CaseStudyContainer({
   return (
     <div className="w-full h-full flex items-center justify-center">
       {!isReading ? (
-        <div className="flex flex-col md:flex-row gap-12 items-center">
+        <div className="w-full h-full flex flex-col md:flex-row gap-12 items-center">
           <div className="flex-1 max-w-md h-full flex flex-col justify-center">
             <h1 className="text-4xl font-bold mb-6 text-white">{project.title}</h1>
             <p className="text-lg text-gray-300 mb-8">{project.description}</p>
