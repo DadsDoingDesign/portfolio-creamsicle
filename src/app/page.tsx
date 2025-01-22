@@ -4,8 +4,11 @@ import { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Hero } from '@/components/hero/Hero';
 import CaseStudyPreview from '@/components/case-study/CaseStudyPreview';
-import { projects } from '@/lib/data';
+import caseStudies from '@/lib/case-studies';
 import Navigation from '@/components/navigation/Navigation';
+
+// Import case studies from dedicated files
+const projects = caseStudies.map((study) => study.default);
 
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
