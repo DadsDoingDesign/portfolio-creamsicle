@@ -36,7 +36,7 @@ export const umba: CaseStudy = {
       },
       layout: 'right-image',
       image: {
-        src: '/case-studies/umba/frame1.png',
+        src: '/case-studies/umba/preview.png',
         alt: 'Umba mobile app interface showing user balance and transaction details'
       }
     },

@@ -87,7 +87,7 @@ export default function CaseStudyContainer({
   return (
     <div className="w-full h-full flex items-center justify-center">
       {!isReading ? (
-        <div className="container mx-auto h-full flex flex-col md:flex-row gap-12 items-center">
+        <div className="h-full w-full px-4 flex flex-col md:flex-row gap-12 items-center">
           <div className="flex-1 max-w-md flex flex-col justify-center">
             <h1 className="text-4xl font-bold mb-6 text-white">{project.title}</h1>
             <p className="text-lg text-gray-300 mb-8">{project.description}</p>
@@ -117,7 +117,7 @@ export default function CaseStudyContainer({
       ) : (
         <div className="h-full">
           <div className="sticky top-0 z-10 bg-neutral-900/80 backdrop-blur-sm">
-            <div className="container mx-auto px-4 py-4">
+            <div className="w-full px-4 py-4">
               <button
                 onClick={handleBack}
                 className="text-white/80 hover:text-white transition-colors flex items-center gap-2"
@@ -147,7 +147,7 @@ export default function CaseStudyContainer({
 
           {getNextFrameTitle() && (
             <div className="fixed bottom-0 left-0 right-0 bg-neutral-900/80 backdrop-blur-sm">
-              <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+              <div className="w-full px-4 py-4 flex justify-between items-center">
                 <span className="text-white/60">Next</span>
                 <h2 className="text-white font-medium">{getNextFrameTitle()}</h2>
               </div>
