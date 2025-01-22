@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { useState, useRef } from 'react';
 import { Project } from '@/lib/data';
+import { CaseStudyContent } from '@/types/case-study';
 import { CaseStudyFrame } from '@/types/case-study';
 
 interface CaseStudyPreviewProps {
@@ -18,65 +19,83 @@ interface CaseStudyPreviewProps {
   onViewCaseStudy?: (viewing: boolean) => void;
 }
 
-const renderContent = (content: CaseStudyFrame['content']) => {
+interface Props {
+  title: string;
+  content: CaseStudyContent;
+  index: number;
+}
+
+const contentVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+    },
+  }),
+};
+
+const CaseStudyPreviewContent = ({ title, content, index }: Props) => {
   const elements: JSX.Element[] = [];
 
-  if (content.mainText) {
+  if (content.sections && content.sections[0]) {
     elements.push(
-      <p key="main-text" className="text-white/80 text-lg mb-4">{content.mainText}</p>
-    );
-  }
-
-  if (content.bulletPoints) {
-    elements.push(
-      <ul key="bullet-points" className="list-disc list-inside text-white/80 text-lg mb-4">
-        {content.bulletPoints.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
-      </ul>
-    );
-  }
-
-  if (content.metrics) {
-    elements.push(
-      <div key="metrics" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
-        {content.metrics.map((metric, i) => (
-          <div key={i} className="bg-white/5 p-6 rounded-lg">
-            <div className="text-2xl font-bold text-amber-400 mb-2">{metric.value}</div>
-            <div className="text-lg font-medium text-white mb-1">{metric.label}</div>
-            <div className="text-white/60">{metric.description}</div>
-          </div>
-        ))}
-      </div>
+      <p key="main-text" className="text-white/80 text-lg mb-4">
+        {content.sections[0].text}
+      </p>
     );
   }
 
   if (content.team) {
     elements.push(
-      <div key="team" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
-        {content.team.map((member, i) => (
-          <div key={i} className={`p-4 rounded-lg ${member.highlight ? 'bg-amber-400/10 text-amber-400' : 'bg-white/5 text-white/80'}`}>
-            {member.role}
-          </div>
-        ))}
+      <div key="team" className="space-y-2">
+        <h3 className="text-lg font-semibold text-amber-400">Team</h3>
+        <ul className="list-none space-y-1">
+          {content.team.map((member, i) => (
+            <li
+              key={i}
+              className={member.highlight ? 'text-amber-400' : 'text-gray-400'}
+            >
+              {member.role}
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
 
   if (content.timeline) {
     elements.push(
-      <div key="timeline" className="space-y-4 mb-4">
-        {content.timeline.map((item, i) => (
-          <div key={i} className="flex items-start gap-4">
-            <div className="w-24 shrink-0 text-amber-400 font-medium">{item.phase}</div>
-            <div className="text-white/80">{item.duration}</div>
-          </div>
-        ))}
+      <div key="timeline" className="space-y-2">
+        <h3 className="text-lg font-semibold text-amber-400">Timeline</h3>
+        <ul className="list-none space-y-1">
+          {content.timeline.map((phase, i) => (
+            <li key={i} className="text-gray-400">
+              {phase.phase}: {phase.activity}
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
 
-  return elements;
+  return (
+    <motion.div
+      className="space-y-6"
+      initial="hidden"
+      animate="visible"
+      variants={contentVariants}
+      custom={index}
+    >
+      <h2 className="text-3xl font-bold">{title}</h2>
+      {elements}
+    </motion.div>
+  );
+};
+
+const renderContent = (content: CaseStudyContent, index: number) => {
+  return <CaseStudyPreviewContent title={content.title} content={content} index={index} />;
 };
 
 export default function CaseStudyPreview({ 
@@ -255,9 +274,7 @@ export default function CaseStudyPreview({
                   transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
                   className="mb-24 min-h-[calc(100vh-200px)] flex flex-col justify-center max-w-7xl mx-auto"
                 >
-                  <h2 className="text-3xl font-bold mb-4 text-white">{frame.title}</h2>
-                  {frame.subtitle && <h3 className="text-xl text-white/80 mb-4">{frame.subtitle}</h3>}
-                  <div className="text-white/80 text-lg">{renderContent(frame.content)}</div>
+                  {renderContent(frame.content, index)}
                   {frame.image && (
                     <motion.div 
                       initial={{ opacity: 0, scale: 0.95 }}
