@@ -8,8 +8,8 @@ import { IntroFrame, MetricsFrame, ContentFrame } from './frames';
 import { useState } from 'react';
 
 const frameVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0 }
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 }
 };
 
 export const CaseStudy = ({ title, description, frames }: CaseStudyType) => {
@@ -34,15 +34,9 @@ export const CaseStudy = ({ title, description, frames }: CaseStudyType) => {
     }
   };
 
-  const previousFrame = () => {
-    if (currentFrame > 0) {
-      setCurrentFrame(currentFrame - 1);
-    }
-  };
-
   return (
     <article className="min-h-screen bg-neutral-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Navigation */}
         <div className="flex justify-between items-center mb-8">
           <Link 
@@ -57,30 +51,24 @@ export const CaseStudy = ({ title, description, frames }: CaseStudyType) => {
               onClick={nextFrame}
               className="text-orange-400 hover:text-orange-300 transition-colors"
             >
-              {frames[currentFrame + 1]?.title || 'Next'} →
-            </button>
-          )}
-          {currentFrame > 0 && (
-            <button
-              onClick={previousFrame}
-              className="text-orange-400 hover:text-orange-300 transition-colors"
-            >
-              ← {frames[currentFrame - 1]?.title || 'Previous'}
+              {frames[currentFrame + 1]?.title} →
             </button>
           )}
         </div>
 
-        {/* Case Study Frame */}
-        <motion.section
-          key={currentFrame}
-          variants={frameVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.5 }}
-          className="min-h-[calc(100vh-8rem)]"
-        >
-          {renderFrame(frames[currentFrame])}
-        </motion.section>
+        {/* Frame Container */}
+        <div className="relative">
+          <motion.div
+            key={currentFrame}
+            variants={frameVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.3 }}
+            className="min-h-[600px]"
+          >
+            {renderFrame(frames[currentFrame])}
+          </motion.div>
+        </div>
       </div>
     </article>
   );

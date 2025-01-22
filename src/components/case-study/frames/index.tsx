@@ -7,8 +7,8 @@ interface FrameProps {
 
 const MetricCard = ({ metric }: { metric: CaseStudyMetric }) => (
   <div className="bg-neutral-900 p-6 rounded-lg">
-    <h3 className="mb-2">{metric.label}</h3>
-    <p className="text-2xl font-bold mb-2">{metric.value}</p>
+    <h3 className="text-xl font-semibold mb-2">{metric.label}</h3>
+    {metric.value && <p className="text-2xl font-bold text-orange-400 mb-2">{metric.value}</p>}
     <p className="text-gray-400">{metric.description}</p>
   </div>
 );
@@ -23,7 +23,7 @@ const TeamTimeline = ({
   <div className="flex flex-col md:flex-row gap-8">
     {team && (
       <div className="flex-1">
-        <h3 className="mb-4">Team</h3>
+        <h3 className="text-xl font-semibold mb-4">Team</h3>
         <ul className="space-y-2">
           {team.map((member, index) => (
             <li 
@@ -38,7 +38,7 @@ const TeamTimeline = ({
     )}
     {timeline && (
       <div className="flex-1">
-        <h3 className="mb-4">Timeline</h3>
+        <h3 className="text-xl font-semibold mb-4">Timeline</h3>
         <ul className="space-y-2">
           {timeline.map((phase, index) => (
             <li key={index} className="text-gray-400">
@@ -55,9 +55,15 @@ export const IntroFrame = ({ frame }: FrameProps) => (
   <div className="flex flex-col md:flex-row gap-12 p-8">
     <div className="flex-1 space-y-8">
       <h1 className="text-5xl font-bold">{frame.title}</h1>
+      {frame.subtitle && (
+        <h2 className="text-2xl text-orange-400">{frame.subtitle}</h2>
+      )}
       {frame.content.mainText && (
         <p className="text-xl text-gray-400">{frame.content.mainText}</p>
       )}
+      {frame.content.metrics && frame.content.metrics.map((metric, index) => (
+        <MetricCard key={index} metric={metric} />
+      ))}
       <TeamTimeline 
         team={frame.content.team} 
         timeline={frame.content.timeline} 
@@ -80,7 +86,10 @@ export const IntroFrame = ({ frame }: FrameProps) => (
 
 export const MetricsFrame = ({ frame }: FrameProps) => (
   <div className="p-8 space-y-8">
-    <h2 className="text-3xl font-bold text-center">{frame.title}</h2>
+    <h2 className="text-3xl font-bold">{frame.title}</h2>
+    {frame.subtitle && (
+      <h3 className="text-xl text-orange-400">{frame.subtitle}</h3>
+    )}
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {frame.content.metrics?.map((metric, index) => (
         <MetricCard key={index} metric={metric} />
@@ -88,7 +97,7 @@ export const MetricsFrame = ({ frame }: FrameProps) => (
     </div>
     {frame.content.bulletPoints && (
       <div className="mt-12">
-        <h3 className="mb-4">How did we set these metrics?</h3>
+        <h3 className="text-xl font-semibold text-orange-400 mb-4">How did we set these metrics?</h3>
         <ul className="list-disc list-inside space-y-2 text-gray-400">
           {frame.content.bulletPoints.map((point, index) => (
             <li key={index}>{point}</li>
@@ -104,17 +113,23 @@ export const ContentFrame = ({ frame }: FrameProps) => (
     <div className="flex-1 space-y-6">
       <h2 className="text-3xl font-bold">{frame.title}</h2>
       {frame.subtitle && (
-        <h3>{frame.subtitle}</h3>
+        <h3 className="text-xl text-orange-400">{frame.subtitle}</h3>
       )}
       {frame.content.mainText && (
         <p className="text-gray-400">{frame.content.mainText}</p>
       )}
+      {frame.content.metrics && frame.content.metrics.map((metric, index) => (
+        <MetricCard key={index} metric={metric} />
+      ))}
       {frame.content.bulletPoints && (
-        <ul className="list-disc list-inside space-y-2 text-gray-400">
-          {frame.content.bulletPoints.map((point, index) => (
-            <li key={index}>{point}</li>
-          ))}
-        </ul>
+        <div>
+          <h3 className="text-xl font-semibold text-orange-400 mb-4">What did we learn?</h3>
+          <ul className="list-disc list-inside space-y-2 text-gray-400">
+            {frame.content.bulletPoints.map((point, index) => (
+              <li key={index}>{point}</li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
     {frame.image && (
