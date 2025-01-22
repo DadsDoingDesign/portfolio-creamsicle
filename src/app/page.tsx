@@ -4,11 +4,11 @@ import { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Hero } from '@/components/hero/Hero';
 import CaseStudyPreview from '@/components/case-study/CaseStudyPreview';
-import * as caseStudies from '@/lib/case-studies';
+import { umba } from '@/lib/case-studies/umba';
 import Navigation from '@/components/navigation/Navigation';
 
 // Convert case studies object to array for easier iteration
-const projects = Object.values(caseStudies);
+const projects = [umba];
 
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -114,12 +114,14 @@ export default function Home() {
                 <CaseStudyPreview
                   key="case-studies"
                   project={currentProject}
+                  frames={currentProject.frames}
+                  isOpen={true}
+                  onClose={() => setIsViewingCaseStudy(false)}
+                  onViewCaseStudy={setIsViewingCaseStudy}
                   onNext={handleNext}
                   onPrevious={handlePrevious}
                   isFirst={currentIndex === 0}
                   isLast={currentIndex === projects.length - 1}
-                  isViewingCaseStudy={isViewingCaseStudy}
-                  onViewCaseStudy={(viewing: boolean) => setIsViewingCaseStudy(viewing)}
                 />
               )}
             </AnimatePresence>

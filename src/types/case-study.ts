@@ -26,12 +26,12 @@ export interface CaseStudyContent {
 }
 
 export interface CaseStudyFrame {
-  type: 'intro' | 'problem' | 'solution' | 'impact' | 'metrics';
+  type: 'intro' | 'problem' | 'solution' | 'impact' | 'metrics' | 'research';
   title: string;
   subtitle?: string;
   content: CaseStudyContent;
   image?: CaseStudyImage;
-  layout?: 'left-image' | 'right-image' | 'full-width';
+  layout?: 'left-image' | 'right-image' | 'full-width' | 'three-column';
 }
 
 export interface CaseStudy {
