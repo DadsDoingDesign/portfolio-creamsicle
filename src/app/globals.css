@@ -56,8 +56,8 @@ html {
 
 /* Gradient Animation */
 .gradient-animate {
-  background-size: 400% 400%;
-  animation: gradient 4s ease infinite;
+  background-size: 200% 200%;
+  animation: gradient-y 8s ease infinite;
   @apply bg-gradient-to-b from-orange-400 to-amber-400;
 }
 

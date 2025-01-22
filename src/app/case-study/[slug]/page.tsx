@@ -1,5 +1,4 @@
 import { CaseStudy } from '@/components/case-study/CaseStudy';
-import Navigation from '@/components/navigation/Navigation';
 import { notFound } from 'next/navigation';
 import * as caseStudies from '@/lib/case-studies';
 
@@ -25,9 +24,8 @@ export default function CaseStudyPage({ params }: Props) {
   }
 
   return (
-    <main className="min-h-screen">
-      <Navigation />
+    <article className="min-h-screen pt-20">
       <CaseStudy {...project} />
-    </main>
+    </article>
   );
 }

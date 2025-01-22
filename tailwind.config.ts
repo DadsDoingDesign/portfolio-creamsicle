@@ -21,18 +21,22 @@ export default {
       },
       animation: {
         'gradient-x': 'gradient-x 15s ease infinite',
-        'gradient-y': 'gradient-y 15s ease infinite',
+        'gradient-y': 'gradient-y 8s ease infinite',
         'gradient-xy': 'gradient-xy 15s ease infinite',
       },
       keyframes: {
         'gradient-y': {
-          '0%, 100%': {
-            'background-size': '400% 400%',
+          '0%': {
+            'background-size': '200% 200%',
             'background-position': 'center top'
           },
           '50%': {
             'background-size': '200% 200%',
-            'background-position': 'center center'
+            'background-position': 'center bottom'
+          },
+          '100%': {
+            'background-size': '200% 200%',
+            'background-position': 'center top'
           }
         },
         'gradient-x': {
@@ -55,11 +59,6 @@ export default {
             'background-position': 'right center'
           }
         }
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
   },

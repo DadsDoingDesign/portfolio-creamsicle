@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Hero } from '@/components/hero/Hero';
 import CaseStudyPreview from '@/components/case-study/CaseStudyPreview';
 import { umba } from '../lib/case-studies/umba';
-import Navigation from '@/components/navigation/Navigation';
 
 const projects = [umba];
 
@@ -67,10 +66,6 @@ export default function Home() {
       ref={containerRef} 
       className="h-screen overflow-hidden bg-neutral-900 text-white relative"
     >
-      <div className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
-        <Navigation isViewingCaseStudy={isViewingCaseStudy} />
-      </div>
-
       <AnimatePresence mode="wait">
         {!showCaseStudies && (
           <motion.div
