@@ -50,7 +50,8 @@ export default function CaseStudyContainer({
       },
       {
         root: containerRef.current,
-        threshold: 0.5,
+        threshold: 0.6,
+        rootMargin: '-20% 0px'
       }
     );
 
@@ -75,46 +76,49 @@ export default function CaseStudyContainer({
     }
   };
 
-  const scrollToFrame = (index: number) => {
-    frameRefs.current[index]?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
+  const getNextFrameTitle = () => {
+    if (currentFrame < frames.length - 1) {
+      const nextFrame = frames[currentFrame + 1];
+      return nextFrame.content.title;
+    }
+    return null;
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto">
+    <div className="w-full h-full">
       {!isReading ? (
-        <div className="flex flex-col md:flex-row gap-12 items-start">
-          <div className="flex-1">
-            <h2 className="text-4xl font-bold mb-6 text-white">{project.title}</h2>
-            <p className="text-lg text-gray-300 mb-8">{project.description}</p>
-            {frames[0]?.content.sections?.[0] && (
-              <p className="text-gray-300 mb-8">{frames[0].content.sections[0].text}</p>
-            )}
-            <button
-              onClick={handleReadCaseStudy}
-              className="px-6 py-3 bg-orange-400 text-white rounded-lg hover:bg-orange-500 transition-colors"
-            >
-              Read Case Study
-            </button>
-          </div>
-          {frames[0]?.image && (
-            <div className="flex-1">
-              <Image
-                src={frames[0].image.src}
-                alt={frames[0].image.alt}
-                width={600}
-                height={400}
-                className="rounded-lg shadow-lg"
-              />
+        <div className="flex items-center justify-center min-h-screen px-6">
+          <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-center">
+            <div className="flex-1 max-w-md">
+              <h1 className="text-4xl font-bold mb-6 text-white">{project.title}</h1>
+              <p className="text-lg text-gray-300 mb-8">{project.description}</p>
+              {frames[0]?.content.sections?.[0] && (
+                <p className="text-gray-300 mb-8">{frames[0].content.sections[0].text}</p>
+              )}
+              <button
+                onClick={handleReadCaseStudy}
+                className="px-6 py-3 border-2 border-amber-400 text-amber-400 rounded-lg hover:bg-amber-500 hover:border-amber-500 hover:text-white transition-colors"
+              >
+                Read Case Study
+              </button>
             </div>
-          )}
+            {frames[0]?.image && (
+              <div className="flex-1 w-full h-[600px] relative">
+                <Image
+                  src={frames[0].image.src}
+                  alt={frames[0].image.alt}
+                  fill
+                  className="object-cover rounded-lg shadow-lg"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            )}
+          </div>
         </div>
       ) : (
-        <div>
+        <div className="h-full">
           <div className="sticky top-0 z-10 bg-neutral-900/80 backdrop-blur-sm">
-            <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div className="container mx-auto px-4 py-4">
               <button
                 onClick={handleBack}
                 className="text-white/80 hover:text-white transition-colors flex items-center gap-2"
@@ -122,44 +126,34 @@ export default function CaseStudyContainer({
                 <span className="sr-only">Back</span>
                 ←
               </button>
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={() => scrollToFrame(Math.max(0, currentFrame - 1))}
-                  disabled={currentFrame === 0}
-                  className="p-2 rounded-full hover:bg-white/10 disabled:opacity-50 disabled:hover:bg-transparent transition-colors"
-                >
-                  ←
-                </button>
-                <span className="text-white/60 text-sm">
-                  {currentFrame + 1} / {frames.length}
-                </span>
-                <button
-                  onClick={() => scrollToFrame(Math.min(frames.length - 1, currentFrame + 1))}
-                  disabled={currentFrame === frames.length - 1}
-                  className="p-2 rounded-full hover:bg-white/10 disabled:opacity-50 disabled:hover:bg-transparent transition-colors"
-                >
-                  →
-                </button>
-              </div>
             </div>
           </div>
 
           <div
             ref={containerRef}
-            className="h-[calc(100vh-64px)] overflow-y-auto"
+            className="h-[calc(100vh-64px)] overflow-y-auto snap-y snap-mandatory"
           >
             <div className="space-y-32 py-12">
               {frames.map((frame, index) => (
                 <div
                   key={index}
                   ref={(el) => { frameRefs.current[index] = el; }}
-                  className="min-h-[calc(100vh-128px)] flex items-center"
+                  className="min-h-[calc(100vh-128px)] snap-start"
                 >
-                  <Frame frame={frame} />
+                  <Frame frame={frame} isFirstFrame={index === 0} />
                 </div>
               ))}
             </div>
           </div>
+
+          {getNextFrameTitle() && (
+            <div className="fixed bottom-0 left-0 right-0 bg-neutral-900/80 backdrop-blur-sm">
+              <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+                <span className="text-white/60">Next</span>
+                <h2 className="text-white font-medium">{getNextFrameTitle()}</h2>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
