@@ -63,16 +63,16 @@ html {
 
 @keyframes gradientAnimation {
   0% {
-    background: linear-gradient(180deg, rgb(251 146 60) 0%, rgb(251 191 36) 100%);
+    background: linear-gradient(180deg, rgb(251 146 60) 0%, rgb(251 146 60) 100%);
   }
   25% {
-    background: linear-gradient(180deg, rgb(251 191 36) 0%, rgb(251 146 60) 100%);
+    background: linear-gradient(180deg, rgb(251 146 60) 0%, rgb(251 146 60) 100%);
   }
   50% {
-    background: linear-gradient(180deg, rgb(251 191 36) 100%, rgb(251 146 60) 0%);
+    background: linear-gradient(180deg, rgb(251 191 36) 0%, rgb(251 191 36) 100%);
   }
   75% {
-    background: linear-gradient(180deg, rgb(251 146 60) 0%, rgb(251 191 36) 0%);
+    background: linear-gradient(180deg, rgb(251 191 36) 0%, rgb(251 146 60) 100%);
   }
   100% {
     background: linear-gradient(180deg, rgb(251 146 60) 0%, rgb(251 191 36) 100%);
