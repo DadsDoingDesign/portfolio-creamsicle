@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Hero } from '@/components/hero/Hero';
 import CaseStudyPreview from '@/components/case-study/CaseStudyPreview';
-import { umba } from '@/lib/case-studies/umba';
+import { umba } from '../lib/case-studies/umba';
 import Navigation from '@/components/navigation/Navigation';
 
 const projects = [umba];

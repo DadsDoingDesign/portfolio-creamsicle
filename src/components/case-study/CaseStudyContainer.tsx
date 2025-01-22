@@ -79,7 +79,7 @@ export default function CaseStudyContainer({
   const getNextFrameTitle = () => {
     if (currentFrame < frames.length - 1) {
       const nextFrame = frames[currentFrame + 1];
-      return nextFrame.content.title;
+      return nextFrame.title;
     }
     return null;
   };

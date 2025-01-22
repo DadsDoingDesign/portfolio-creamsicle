@@ -20,9 +20,9 @@ export interface CaseStudyImage {
 
 export interface CaseStudyContent {
   sections?: ContentSection[];
+  bulletPoints?: string[];
   team?: TeamMember[];
   timeline?: Timeline[];
-  bulletPoints?: string[];
 }
 
 export interface CaseStudyFrame {
@@ -30,8 +30,8 @@ export interface CaseStudyFrame {
   title: string;
   subtitle?: string;
   content: CaseStudyContent;
-  image?: CaseStudyImage;
   layout?: 'left-image' | 'right-image' | 'full-width' | 'three-column';
+  image?: CaseStudyImage;
 }
 
 export interface CaseStudy {
