@@ -85,35 +85,33 @@ export default function CaseStudyContainer({
   };
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full flex items-center justify-center">
       {!isReading ? (
-        <div className="flex items-center justify-center w-full h-full">
-          <div className="w-full h-full max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-center">
-            <div className="flex-1 max-w-md h-full">
-              <h1 className="text-4xl font-bold mb-6 text-white">{project.title}</h1>
-              <p className="text-lg text-gray-300 mb-8">{project.description}</p>
-              {frames[0]?.content.sections?.[0] && (
-                <p className="text-gray-300 mb-8">{frames[0].content.sections[0].text}</p>
-              )}
-              <button
-                onClick={handleReadCaseStudy}
-                className="px-6 py-3 border-2 border-amber-400 text-amber-400 rounded-lg hover:bg-amber-500 hover:border-amber-500 hover:text-white transition-colors"
-              >
-                Read Case Study
-              </button>
-            </div>
-            {frames[0]?.image && (
-              <div className="flex-1 w-full h-full relative">
-                <Image
-                  src={frames[0].image.src}
-                  alt={frames[0].image.alt}
-                  fill
-                  className="object-cover rounded-lg shadow-lg"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
+        <div className="flex flex-col md:flex-row gap-12 items-center">
+          <div className="flex-1 max-w-md h-full flex flex-col justify-center">
+            <h1 className="text-4xl font-bold mb-6 text-white">{project.title}</h1>
+            <p className="text-lg text-gray-300 mb-8">{project.description}</p>
+            {frames[0]?.content.sections?.[0] && (
+              <p className="text-gray-300 mb-8">{frames[0].content.sections[0].text}</p>
             )}
+            <button
+              onClick={handleReadCaseStudy}
+              className="px-6 py-3 border-2 border-amber-400 text-amber-400 rounded-lg hover:bg-amber-500 hover:border-amber-500 hover:text-white transition-colors"
+            >
+              Read Case Study
+            </button>
           </div>
+          {frames[0]?.image && (
+            <div className="flex-1 w-full h-full relative">
+              <Image
+                src={frames[0].image.src}
+                alt={frames[0].image.alt}
+                fill
+                className="object-cover rounded-lg shadow-lg"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+          )}
         </div>
       ) : (
         <div className="h-full">

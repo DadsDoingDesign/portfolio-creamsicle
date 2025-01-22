@@ -4,7 +4,7 @@ export const umba: CaseStudy = {
   id: 'umba',
   title: 'Umba',
   description: 'Using analytics to incentivize user behavior',
-  previewImage: '/public/case-studies/umba/preview.png',
+  previewImage: '/case-studies/umba/preview.png',
   categories: ['Product Strategy', 'Analytics', 'UX Design'],
   frames: [
     {
@@ -36,7 +36,7 @@ export const umba: CaseStudy = {
       },
       layout: 'right-image',
       image: {
-        src: '/images/umba/frame1.png',
+        src: '/case-studies/umba/frame1.png',
         alt: 'Umba mobile app interface showing user balance and transaction details'
       }
     },
@@ -62,7 +62,7 @@ export const umba: CaseStudy = {
       },
       layout: 'left-image',
       image: {
-        src: '/images/umba/frame2.png',
+        src: '/case-studies/umba/frame2.png',
         alt: 'Umba loan decline screen showing user feedback'
       }
     }
