@@ -126,7 +126,7 @@ export const umba: CaseStudy = {
         metrics: [
           {
             label: "But we were dropping the ball",
-            description: "The current "rewards" tab was nothing more than analytics on most likely empty data. No wonder users deleted the app afterwards."
+            description: 'The current "rewards" tab was nothing more than analytics on most likely empty data. No wonder users deleted the app afterwards.'
           }
         ],
         bulletPoints: [
