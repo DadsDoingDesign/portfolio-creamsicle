@@ -4,7 +4,7 @@ export const umba: CaseStudy = {
   id: 'umba',
   title: 'Umba',
   description: 'Using analytics to incentivize user behavior',
-  previewImage: '/images/umba/frame1.png',
+  previewImage: '/case-studies/umba/preview.png',
   categories: ['Product Strategy', 'Analytics', 'UX Design'],
   frames: [
     {

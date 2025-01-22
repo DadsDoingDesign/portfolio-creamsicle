@@ -17,10 +17,12 @@ export default function RootLayout({
     <html lang="en" className="h-full w-full">
       <body className="font-sans antialiased h-full gradient-animate p-4 md:p-6 lg:p-8">
         <main className="h-full w-full rounded-2xl bg-background-inverse-primary p-4 md:p-6 lg:p-8 overflow-hidden">
-          <div className="h-hug w-full">
+          <div className="w-full flex-none">
             <Navigation />
           </div>
-          {children}
+          <div className="flex-1 h-full w-full">
+            {children}
+          </div>
         </main>
       </body>
     </html>
