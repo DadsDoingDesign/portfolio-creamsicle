@@ -10,7 +10,7 @@ export default function Frame({ frame, isFirstFrame }: FrameProps) {
   const { content, image, title } = frame;
 
   return (
-    <div className="h-full w-full container mx-auto px-6 py-24 flex flex-col md:flex-row gap-24">
+    <div className="h-full w-full px-6 py-24 flex flex-col md:flex-row gap-24">
       <div className="w-[400px] flex flex-col gap-10">
         {isFirstFrame ? (
           <h1 className="text-4xl font-bold text-white">{title}</h1>
