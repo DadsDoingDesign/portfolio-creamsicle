@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full w-full">
-      <body className="font-sans antialiased min-h-screen gradient-animate p-40">
+      <body className="font-sans antialiased min-h-screen gradient-animate p-4 md:p-6 lg:p-40">
         <main className="h-full w-full rounded-2xl bg-background-inverse-primary">
           <div className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
             <Navigation />
