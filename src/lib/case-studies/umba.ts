@@ -3,7 +3,7 @@ import { CaseStudy } from '@/types/case-study';
 export const umba: CaseStudy = {
   id: 'umba',
   title: 'Umba',
-  description: "What's the issue?",
+  description: "Using analytics to incentivize user behavior",
   previewImage: '/case-studies/umba/umba_image_frame_1.png',
   categories: ['Product Strategy', 'Analytics', 'UX Design'],
   frames: [
@@ -11,7 +11,16 @@ export const umba: CaseStudy = {
       type: 'intro',
       title: 'Umba',
       content: {
-        mainText: "With a stricter approval target on the lending algorithim, many new and existing users were getting declined for loan applications. This lead to most new users dropping off shortly after the loan decline. I was tasked with finding a way to reduce this dropoff.",
+        sections: [
+          {
+            heading: "Why not?",
+            text: "With a stricter approval target on the lending algorithim, many new and existing users were getting declined for loan applications. This lead to most new users dropping off shortly after the loan decline. I was tasked with finding a way to reduce this dropoff."
+          },
+          {
+            heading: "What's the impact",
+            text: "40% increase in the # of users retained after loan decline."
+          }
+        ],
         team: [
           { role: 'Product Designer', highlight: true },
           { role: 'Product Manager' },
@@ -20,21 +29,14 @@ export const umba: CaseStudy = {
           { role: 'QA Analyst' }
         ],
         timeline: [
-          { phase: 'Week 1', duration: 'Design' },
-          { phase: 'Week 2', duration: 'Develop' },
-          { phase: 'Week 3', duration: 'QA & Launch' }
-        ],
-        metrics: [
-          {
-            label: "What's the impact?",
-            value: "40%",
-            description: "increase in the # of users retained after loan decline."
-          }
+          { phase: 'Week 1', activity: 'Design' },
+          { phase: 'Week 2', activity: 'Develop' },
+          { phase: 'Week 3', activity: 'QA & Launch' }
         ]
       },
       image: {
         src: '/case-studies/umba/umba_image_frame_1.png',
-        alt: 'Umba app interface'
+        alt: 'Umba app interface showing the main dashboard with balance, transactions, and quick actions'
       },
       layout: 'right-image'
     },
@@ -43,12 +45,14 @@ export const umba: CaseStudy = {
       title: 'I got declined... Now what?',
       subtitle: 'So why should I stay?',
       content: {
-        mainText: "The current loan decline flow forces users out of the app, with little context on what they can do to become qualified for a loan.",
-        metrics: [
+        sections: [
           {
-            label: "What was the negative impact?",
-            value: "70%",
-            description: "of users deleting the app after a loan decline."
+            heading: "The current loan decline flow",
+            text: "The current loan decline flow forces users out of the app, with little context on what they can do to become qualified for a loan."
+          },
+          {
+            heading: "What was the negative impact?",
+            text: "70% of users deleting the app after a loan decline."
           }
         ],
         bulletPoints: [
@@ -67,21 +71,18 @@ export const umba: CaseStudy = {
       type: 'metrics',
       title: 'Creating alignment between the users, business, and product',
       content: {
-        metrics: [
+        sections: [
           {
-            label: "What's important to users",
-            value: "Clear Path",
-            description: "Have a clear path for how to get a loan."
+            heading: "What's important to users",
+            text: "Have a clear path for how to get a loan."
           },
           {
-            label: "What's important to the business",
-            value: "Risk Management",
-            description: "Curbing risky loans through the ML based algorithm."
+            heading: "What's important to the business",
+            text: "Curbing risky loans through the ML based algorithm."
           },
           {
-            label: "What's important for the product",
-            value: "Trust",
-            description: "Build and keep trust with users through reliable service."
+            heading: "What's important for the product",
+            text: "Build and keep trust with users through reliable service."
           }
         ],
         bulletPoints: [
@@ -97,12 +98,14 @@ export const umba: CaseStudy = {
       title: 'Testing user motivations',
       subtitle: 'What are people willing to do?',
       content: {
-        mainText: "With a fake door test we were able to see what users were most inclined to interact with when if came to growing their loan eligibility.",
-        metrics: [
+        sections: [
           {
-            label: "What were the results",
-            value: "20%",
-            description: "of users completed other feature flows such as bill pay & buying airtime."
+            heading: "What were the results",
+            text: "With a fake door test we were able to see what users were most inclined to interact with when if came to growing their loan eligibility."
+          },
+          {
+            heading: "What were the results",
+            text: "20% of users completed other feature flows such as bill pay & buying airtime."
           }
         ],
         bulletPoints: [
@@ -122,12 +125,14 @@ export const umba: CaseStudy = {
       title: 'Looking at the data',
       subtitle: 'Some surprises are good!',
       content: {
-        mainText: "Our data analyst showed the team that more than half the users were clicking into the rewards tab after loan decline.",
-        metrics: [
+        sections: [
           {
-            label: "But we were dropping the ball",
-            value: "50%+",
-            description: 'The current "rewards" tab was nothing more than analytics on most likely empty data. No wonder users deleted the app afterwards.'
+            heading: "But we were dropping the ball",
+            text: "Our data analyst showed the team that more than half the users were clicking into the rewards tab after loan decline."
+          },
+          {
+            heading: "But we were dropping the ball",
+            text: "50%+ The current 'rewards' tab was nothing more than analytics on most likely empty data. No wonder users deleted the app afterwards."
           }
         ],
         bulletPoints: [
@@ -147,12 +152,14 @@ export const umba: CaseStudy = {
       title: 'Leveraging organic movement',
       subtitle: 'Combining our learnings',
       content: {
-        mainText: "We know users are open to trying other features to grow their loan eligibility. We also know users are organically moving to the rewards tab in hopes of some money.",
-        metrics: [
+        sections: [
           {
-            label: "Creating a symbiotic system",
-            value: "100%",
-            description: "Using the incentive of monetary rewards, I developed a First Time User Experience that exposes users to all features within Umba."
+            heading: "Creating a symbiotic system",
+            text: "We know users are open to trying other features to grow their loan eligibility. We also know users are organically moving to the rewards tab in hopes of some money."
+          },
+          {
+            heading: "Creating a symbiotic system",
+            text: "100% Using the incentive of monetary rewards, I developed a First Time User Experience that exposes users to all features within Umba."
           }
         ],
         bulletPoints: [
@@ -171,21 +178,18 @@ export const umba: CaseStudy = {
       type: 'impact',
       title: 'Halved losses for the month and planned for long term growth',
       content: {
-        metrics: [
+        sections: [
           {
-            label: "Users impact",
-            value: "40% of users retained",
-            description: "Features like bill pay & airtime turned out to be sticky features"
+            heading: "Users impact",
+            text: "40% of users retained"
           },
           {
-            label: "Business impact",
-            value: "<5% of loans defaulted",
-            description: "We set key levers that users can pull to affect our algorithm"
+            heading: "Business impact",
+            text: "<5% of loans defaulted"
           },
           {
-            label: "Product impact",
-            value: "2 week ticket backlog cut to 1 day",
-            description: "CE & Product set shared metrics that aligned our teams"
+            heading: "Product impact",
+            text: "2 week ticket backlog cut to 1 day"
           }
         ],
         bulletPoints: [
