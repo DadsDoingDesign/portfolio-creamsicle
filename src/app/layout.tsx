@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full w-full">
-      <body className="font-sans antialiased min-h-screen gradient-animate p-4 md:p-6 lg:p-40">
+      <body className="font-sans antialiased min-h-screen gradient-animate p-4 md:p-6 lg:p-8">
         <main className="h-full w-full rounded-2xl bg-background-inverse-primary p-4 md:p-6 lg:p-8 overflow-hidden">
           <div className="h-hug w-full">
             <Navigation />

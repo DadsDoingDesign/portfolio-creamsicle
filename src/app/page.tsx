@@ -64,7 +64,7 @@ export default function Home() {
   return (
     <div 
       ref={containerRef} 
-      className="h-screen overflow-hidden bg-neutral-900 text-white relative"
+      className="h-full w-full text-white relative"
     >
       <AnimatePresence mode="wait">
         {!showCaseStudies && (
