@@ -1,150 +1,146 @@
-import { CaseStudyFrame } from '@/types/case-study';
+import { CaseStudy } from '@/types/case-study';
 
 export interface Project {
   id: string;
   title: string;
   description: string;
   previewImage: string;
-  frames: CaseStudyFrame[];
   categories: string[];
+  frames: {
+    type: 'intro' | 'problem' | 'solution' | 'impact' | 'metrics' | 'research';
+    title: string;
+    subtitle?: string;
+    content: {
+      sections?: {
+        heading: string;
+        text: string;
+      }[];
+      bulletPoints?: string[];
+      team?: {
+        role: string;
+        highlight?: boolean;
+      }[];
+      timeline?: {
+        phase: string;
+        activity: string;
+      }[];
+    };
+    layout?: 'left-image' | 'right-image' | 'full-width' | 'three-column';
+    image?: {
+      src: string;
+      alt: string;
+    };
+  }[];
 }
 
 export const projects: Project[] = [
   {
-    id: '1',
-    title: 'Apploi',
-    description: 'Healthcare recruitment platform revolutionizing the hiring process',
-    previewImage: '/case-studies/apploi/preview.png',
+    id: 'apploi',
+    title: 'Apploi OnCall',
+    description: 'Redesigning the staffing experience for healthcare facilities',
+    previewImage: '/images/apploi/preview.png',
     categories: ['Product Design', 'UX Research', 'UI Design'],
     frames: [
       {
-        title: 'Why not?',
+        type: 'intro',
+        title: 'Apploi OnCall',
         subtitle: 'Understanding the Challenge',
-        type: 'problem',
-        layout: 'right-image',
         content: {
-          mainText: 'Apploi is building out a new staffing tool they just acquired (OnCall). Their goal is to help care facilities optimize their bottom line. But most users don\'t understand the tool without hand holding and extensive onboarding.',
+          sections: [
+            {
+              heading: 'The Challenge',
+              text: 'Apploi is building out a new staffing tool they just acquired (OnCall). Their goal is to help care facilities optimize their bottom line. But most users don\'t understand the tool without hand holding and extensive onboarding.'
+            }
+          ],
           bulletPoints: [
             'Complex onboarding process',
             'User confusion with core features',
-            'High support ticket volume',
-            'Low user retention'
+            'Low adoption rate',
+            'High support ticket volume'
+          ],
+          team: [
+            { role: 'Product Designer', highlight: true },
+            { role: 'Product Manager' },
+            { role: 'Engineering Lead' },
+            { role: 'Frontend Engineer' }
+          ],
+          timeline: [
+            { phase: 'Research', activity: '2 weeks' },
+            { phase: 'Design', activity: '4 weeks' },
+            { phase: 'Development', activity: '6 weeks' }
           ]
         },
+        layout: 'full-width'
+      },
+      {
+        type: 'research',
+        title: 'Understanding Users',
+        content: {
+          sections: [
+            {
+              heading: 'Research Findings',
+              text: 'Through user interviews and analytics, we identified several key pain points in the current workflow.'
+            }
+          ],
+          bulletPoints: [
+            'Users struggle with the initial setup',
+            'Core features are not intuitive',
+            'Workflow is too complex',
+            'Important information is hard to find'
+          ]
+        },
+        layout: 'right-image',
         image: {
-          src: '/images/apploi/why-not.png',
-          alt: 'Apploi challenge visualization',
-          caption: 'Key pain points in the user journey'
+          src: '/images/apploi/research.png',
+          alt: 'User research findings and insights'
         }
       },
       {
-        title: 'What\'s the impact',
-        subtitle: 'Measurable Results',
-        type: 'impact',
-        layout: 'left-image',
+        type: 'solution',
+        title: 'The Solution',
         content: {
-          mainText: 'Our solutions led to significant improvements across all key metrics:',
+          sections: [
+            {
+              heading: 'Our Approach',
+              text: 'We redesigned the core workflow to be more intuitive and user-friendly, while maintaining all the powerful features that make OnCall valuable.'
+            }
+          ],
           bulletPoints: [
-            '8 new facilities added with existing clients',
-            'Onboarding reduced to 1 day from 1 week',
-            'Users had near perfect task completion',
-            'Support tickets reduced by 60%'
+            'Simplified onboarding flow',
+            'Redesigned navigation',
+            'Clear status indicators',
+            'Contextual help system'
           ]
         },
+        layout: 'left-image',
+        image: {
+          src: '/images/apploi/solution.png',
+          alt: 'New OnCall interface design'
+        }
+      },
+      {
+        type: 'impact',
+        title: 'The Impact',
+        content: {
+          sections: [
+            {
+              heading: 'Results',
+              text: 'The redesigned OnCall platform has significantly improved user adoption and satisfaction.'
+            }
+          ],
+          bulletPoints: [
+            '45% reduction in support tickets',
+            '72% increase in user activation',
+            '89% positive feedback from new users',
+            '3x increase in feature adoption'
+          ]
+        },
+        layout: 'full-width',
         image: {
           src: '/images/apploi/impact.png',
-          alt: 'Apploi impact metrics',
-          caption: 'Key performance improvements after implementation'
-        }
-      },
-      {
-        title: 'The Process',
-        subtitle: 'User-Centered Design',
-        type: 'research',
-        layout: 'full-width',
-        content: {
-          mainText: 'Through extensive user research and iterative design, we identified key pain points in the user journey and developed intuitive solutions that drastically reduced the learning curve.',
-          bulletPoints: [
-            'User Research',
-            'Journey Mapping',
-            'Iterative Design',
-            'Usability Testing'
-          ]
-        },
-        image: {
-          src: '/images/apploi/process.png',
-          alt: 'Apploi design process',
-          caption: 'Our systematic approach to improving the user experience'
-        }
-      }
-    ]
-  },
-  {
-    id: '2',
-    title: 'Umba',
-    description: 'Using analytics to incentivize user behavior with secondary product features to drive business KPIs',
-    previewImage: '/case-studies/umba/preview.png',
-    categories: ['Product Strategy', 'Analytics', 'UX Design'],
-    frames: [
-      {
-        title: 'The Challenge',
-        subtitle: 'Understanding the Problem',
-        type: 'problem',
-        layout: 'right-image',
-        content: {
-          mainText: 'Umba needed to increase user engagement with secondary features that were crucial for business growth.',
-          bulletPoints: [
-            'Low adoption of key features',
-            'Unclear user incentives',
-            'Disconnected user journey',
-            'Limited analytics insights'
-          ]
-        },
-        image: {
-          src: '/images/umba/challenge.png',
-          alt: 'Umba challenge visualization',
-          caption: 'Key challenges identified through research'
-        }
-      },
-      {
-        title: 'The Approach',
-        subtitle: 'Data-Driven Strategy',
-        type: 'solution',
-        layout: 'left-image',
-        content: {
-          mainText: 'We developed a data-driven strategy to understand and influence user behavior.',
-          bulletPoints: [
-            'Analytics Implementation',
-            'Behavioral Analysis',
-            'Incentive Design'
-          ]
-        },
-        image: {
-          src: '/images/umba/approach.png',
-          alt: 'Umba approach diagram',
-          caption: 'Our systematic approach to solving the engagement challenge'
-        }
-      },
-      {
-        title: 'The Results',
-        subtitle: 'Measurable Impact',
-        type: 'impact',
-        layout: 'full-width',
-        content: {
-          mainText: 'The implementation led to significant improvements across all key metrics:',
-          bulletPoints: [
-            '65% increase in feature adoption',
-            '40% higher user engagement',
-            '35% improvement in retention',
-            '50% increase in key business KPIs'
-          ]
-        },
-        image: {
-          src: '/images/umba/results.png',
-          alt: 'Umba results visualization',
-          caption: 'Key results and long-term impact'
+          alt: 'Impact metrics and results'
         }
       }
     ]
   }
-] as const;
+];
