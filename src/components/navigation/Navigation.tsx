@@ -29,7 +29,7 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="w-full flex justify-between items-center"
+      className="w-full flex justify-between items-center pb-4 md:pb-6 lg:pb-10"
     >
       <div className="flex items-center gap-4">
         {/* Logo */}

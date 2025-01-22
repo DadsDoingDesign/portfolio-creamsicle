@@ -91,7 +91,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="h-full w-full"
           >
-            <div className="h-full w-full px-4">
+            <div className="h-full w-full">
               <div className="flex items-center justify-center h-full">
                 <AnimatePresence mode="wait">
                   {projects.map((project, index) => (
