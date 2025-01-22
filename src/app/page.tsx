@@ -76,7 +76,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="h-full w-full"
           >
-            <div className="container mx-auto h-full">
+            <div className="h-full w-full px-4">
               <Hero onCaseStudiesClick={() => setShowCaseStudies(true)} />
             </div>
           </motion.div>
@@ -91,7 +91,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="h-full w-full"
           >
-            <div className="container mx-auto">
+            <div className="h-full w-full px-4">
               <div className="flex items-center justify-center h-full">
                 <AnimatePresence mode="wait">
                   {projects.map((project, index) => (
