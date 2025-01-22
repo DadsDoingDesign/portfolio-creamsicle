@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
-import { useState, useRef } from 'react';
+import { useState, useRef, KeyboardEvent } from 'react';
 import { Project } from '@/lib/data';
 import { CaseStudyContent, CaseStudyFrame } from '@/types/case-study';
 
@@ -117,7 +117,7 @@ export default function CaseStudyPreview({
     }
   };
 
-  const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'ArrowRight') {
       handleNext();
     } else if (e.key === 'ArrowLeft') {
@@ -217,8 +217,8 @@ export default function CaseStudyPreview({
                     className="mt-8"
                   >
                     <Image
-                      src={frame.image}
-                      alt={frame.title}
+                      src={frame.image.src}
+                      alt={frame.image.alt}
                       width={1200}
                       height={675}
                       className="rounded-lg shadow-lg"
