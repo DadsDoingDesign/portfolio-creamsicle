@@ -126,6 +126,7 @@ export const umba: CaseStudy = {
         metrics: [
           {
             label: "But we were dropping the ball",
+            value: "50%+",
             description: 'The current "rewards" tab was nothing more than analytics on most likely empty data. No wonder users deleted the app afterwards.'
           }
         ],
@@ -150,6 +151,7 @@ export const umba: CaseStudy = {
         metrics: [
           {
             label: "Creating a symbiotic system",
+            value: "100%",
             description: "Using the incentive of monetary rewards, I developed a First Time User Experience that exposes users to all features within Umba."
           }
         ],
