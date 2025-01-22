@@ -1,0 +1,12 @@
+# Stage changes
+Start-Process -FilePath "C:\Program Files\Git\cmd\git.exe" -ArgumentList "add ." -NoNewWindow -Wait
+
+# Commit changes (replace message in quotes)
+Start-Process -FilePath "C:\Program Files\Git\cmd\git.exe" -ArgumentList 'commit -m "Your commit message here"' -NoNewWindow -Wait
+
+# Push changes
+Start-Process -FilePath "C:\Program Files\Git\cmd\git.exe" -ArgumentList "push" -NoNewWindow -Wait
+
+
+Always provide a git comment to be used with every update
+

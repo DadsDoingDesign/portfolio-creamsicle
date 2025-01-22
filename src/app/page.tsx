@@ -79,7 +79,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="h-full"
+            className="h-full container mx-auto px-6 py-20"
           >
             <Hero onCaseStudiesClick={() => setShowCaseStudies(true)} />
           </motion.div>
@@ -94,7 +94,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="h-full pt-20"
           >
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-6">
               <div className="flex items-center justify-center h-full">
                 <AnimatePresence mode="wait">
                   {projects.map((project, index) => (
@@ -108,12 +108,12 @@ export default function Home() {
                       }}
                       exit={{ opacity: 0, x: '-100%' }}
                       transition={{ duration: 0.5 }}
-                      className="absolute inset-0 flex items-center justify-center"
+                      className="w-full h-full flex items-center justify-center"
                     >
                       <CaseStudyPreview
                         project={project}
                         frames={project.frames}
-                        isOpen={selectedProject === index}
+                        isOpen={true}
                         onClose={() => setSelectedProject(null)}
                         onViewCaseStudy={handleViewCaseStudy}
                       />
