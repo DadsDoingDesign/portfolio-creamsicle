@@ -135,15 +135,17 @@ export default function CaseStudyContainer({
             className="h-[calc(100vh-64px)] overflow-y-auto snap-y snap-mandatory"
           >
             <div className="space-y-32 py-12">
-              {frames.map((frame, index) => (
-                <div
-                  key={index}
-                  ref={(el) => { frameRefs.current[index] = el; }}
-                  className="snap-start"
-                >
-                  <Frame frame={frame} isFirstFrame={index === 0} />
-                </div>
-              ))}
+              <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,400px)_1fr] gap-8 w-full">
+                {frames.map((frame, index) => (
+                  <div
+                    key={index}
+                    ref={(el) => { frameRefs.current[index] = el; }}
+                    className="snap-start"
+                  >
+                    <Frame frame={frame} isFirstFrame={index === 0} />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
