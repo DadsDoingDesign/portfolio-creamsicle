@@ -115,17 +115,15 @@ export default function CaseStudyContainer({
           )}
         </div>
       ) : (
-        <div className="h-full">
-          <div className="sticky top-0 z-10 bg-neutral-900/80 backdrop-blur-sm">
-            <div className="w-full px-4 py-4">
-              <button
-                onClick={handleBack}
-                className="text-white/80 hover:text-white transition-colors flex items-center gap-2"
-              >
-                <span className="sr-only">Back</span>
-                ←
-              </button>
-            </div>
+        <div className="w-full h-full">
+          <div className="w-full px-4 py-4">
+            <button
+              onClick={handleBack}
+              className="text-white/80 hover:text-white transition-colors flex items-center gap-2"
+            >
+              <span className="sr-only">Back</span>
+              ←
+            </button>
           </div>
 
           <div
