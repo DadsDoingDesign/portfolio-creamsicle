@@ -87,7 +87,7 @@ export default function CaseStudyContainer({
   return (
     <>
       {!isReading ? (
-        <div className="grid grid-cols-1 md:grid-cols-[400px_auto] gap-20 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] gap-20 items-center">
           <div className="w-full space-y-8">
             <h1 className="text-4xl font-bold text-white">{project.title}</h1>
             <p className="text-lg text-gray-300">{project.description}</p>
@@ -133,17 +133,29 @@ export default function CaseStudyContainer({
             className="h-[calc(100vh-64px)] overflow-y-auto snap-y snap-mandatory"
           >
             <div className="space-y-32 py-12">
-              <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,400px)_1fr] gap-8 w-full">
-                {frames.map((frame, index) => (
-                  <div
-                    key={index}
-                    ref={(el) => { frameRefs.current[index] = el; }}
-                    className="snap-start"
-                  >
+              {frames.map((frame, index) => (
+                <div
+                  key={index}
+                  ref={(el) => { frameRefs.current[index] = el; }}
+                  className="snap-start grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_1fr_1fr] gap-8 w-full"
+                >
+                  <div className="space-y-6">
                     <Frame frame={frame} isFirstFrame={index === 0} />
                   </div>
-                ))}
-              </div>
+                  {frame.image && (
+                    <div className="col-span-1 xl:col-span-2 flex items-center justify-center">
+                      <Image
+                        src={frame.image.src}
+                        alt={frame.image.alt}
+                        width={1920}
+                        height={1080}
+                        className="max-h-[800px] w-auto h-auto object-contain"
+                        priority={index === 0}
+                      />
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
 
