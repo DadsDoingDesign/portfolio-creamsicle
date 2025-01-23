@@ -85,14 +85,14 @@ export default function CaseStudyContainer({
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-center">
+    <main className="h-full w-full">
       {!isReading ? (
-        <div className="h-full w-full px-4 flex flex-col md:flex-row gap-12 items-center">
-          <div className="flex-1 max-w-md flex flex-col justify-center">
-            <h1 className="text-4xl font-bold mb-6 text-white">{project.title}</h1>
-            <p className="text-lg text-gray-300 mb-8">{project.description}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center h-full">
+          <div className="max-w-md space-y-8">
+            <h1 className="text-4xl font-bold text-white">{project.title}</h1>
+            <p className="text-lg text-gray-300">{project.description}</p>
             {frames[0]?.content.sections?.[0] && (
-              <p className="text-gray-300 mb-8">{frames[0].content.sections[0].text}</p>
+              <p className="text-gray-300">{frames[0].content.sections[0].text}</p>
             )}
             <button
               onClick={handleReadCaseStudy}
@@ -102,17 +102,15 @@ export default function CaseStudyContainer({
             </button>
           </div>
           {frames[0]?.image && (
-            <div className="relative w-full h-full flex items-center">
-              <div className="relative w-full aspect-[4/3]">
-                <Image
-                  src={frames[0].image.src}
-                  alt={frames[0].image.alt}
-                  fill
-                  className="object-contain rounded-lg"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
-                />
-              </div>
+            <div className="aspect-[4/3] relative">
+              <Image
+                src={frames[0].image.src}
+                alt={frames[0].image.alt}
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
             </div>
           )}
         </div>
@@ -159,6 +157,6 @@ export default function CaseStudyContainer({
           )}
         </div>
       )}
-    </div>
+    </main>
   );
 }
