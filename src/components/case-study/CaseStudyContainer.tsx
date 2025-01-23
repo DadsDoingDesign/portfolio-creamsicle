@@ -102,13 +102,13 @@ export default function CaseStudyContainer({
             </button>
           </div>
           {frames[0]?.image && (
-            <div className="aspect-[4/3] relative">
+            <div className="relative max-h-[1000px] w-full flex items-center">
               <Image
                 src={frames[0].image.src}
                 alt={frames[0].image.alt}
-                fill
-                className="object-contain"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                className="w-full h-auto object-contain"
+                width={1920}
+                height={1080}
                 priority
               />
             </div>
