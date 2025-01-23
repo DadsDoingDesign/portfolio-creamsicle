@@ -72,21 +72,6 @@ export default function Frame({ frame, isFirstFrame }: FrameProps) {
           )}
         </div>
       </div>
-
-      {image && (
-        <div className="w-full flex items-center">
-          <div className="w-full">
-            <Image
-              src={image.src}
-              alt={image.alt}
-              className="w-full h-auto object-contain"
-              width={1920}
-              height={1080}
-              priority
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 }
