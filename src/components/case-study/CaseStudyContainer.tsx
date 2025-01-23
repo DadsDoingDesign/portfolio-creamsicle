@@ -102,7 +102,7 @@ export default function CaseStudyContainer({
             </button>
           </div>
           {frames[0]?.image && (
-            <div className="relative max-h-[1000px] w-full flex items-center">
+            <div className="relative max-h-[600px] w-full flex items-center">
               <Image
                 src={frames[0].image.src}
                 alt={frames[0].image.alt}
