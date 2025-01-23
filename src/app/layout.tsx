@@ -19,7 +19,7 @@ export default function RootLayout({
           <div className="w-full flex-none">
             <Navigation />
           </div>
-          <div className="w-full">
+          <div className="w-full h-full">
             {children}
           </div>
         </main>
