@@ -1,15 +1,12 @@
 'use client';
 
-import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Navigation from '@/components/navigation/Navigation';
 import { motion } from 'framer-motion';
+import { metadata } from './metadata';
 
-export const metadata: Metadata = {
-  title: "Denis Dukhvalov - Portfolio",
-  description: "Early Stage Product Designer with previous experience in Ecommerce Category Management & Business Operations. My process takes time to really understand how you business operates, and where design thinking can make impacts to get the business to the next stage.",
-};
+export { metadata };
 
 export default function RootLayout({
   children,
