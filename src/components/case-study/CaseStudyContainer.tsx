@@ -139,7 +139,7 @@ export default function CaseStudyContainer({
                 <div
                   key={index}
                   ref={(el) => { frameRefs.current[index] = el; }}
-                  className="min-h-[calc(100vh-128px)] snap-start"
+                  className="snap-start"
                 >
                   <Frame frame={frame} isFirstFrame={index === 0} />
                 </div>

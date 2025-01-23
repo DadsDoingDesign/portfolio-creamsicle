@@ -10,7 +10,7 @@ export default function Frame({ frame, isFirstFrame }: FrameProps) {
   const { content, image, title } = frame;
 
   return (
-    <div className="w-full px-6 py-24">
+    <div className="min-h-screen w-full px-6 py-24">
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,400px)_1fr] gap-8 w-full">
         <div className="w-full space-y-10">
           {isFirstFrame ? (
@@ -75,15 +75,17 @@ export default function Frame({ frame, isFirstFrame }: FrameProps) {
         </div>
 
         {image && (
-          <div className="relative w-full h-auto flex items-center justify-center">
-            <Image
-              src={image.src}
-              alt={image.alt}
-              className="w-full h-auto object-contain"
-              width={1920}
-              height={1080}
-              priority
-            />
+          <div className="w-full flex items-center">
+            <div className="w-full">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-auto object-contain"
+                width={1920}
+                height={1080}
+                priority
+              />
+            </div>
           </div>
         )}
       </div>
