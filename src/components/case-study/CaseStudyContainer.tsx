@@ -97,7 +97,7 @@ export default function CaseStudyContainer({
   };
 
   return (
-    <>
+    <div>
       {!isReading ? (
         <div className="grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] gap-20 items-center">
           <div className="w-full space-y-8">
@@ -186,6 +186,6 @@ export default function CaseStudyContainer({
           )}
         </div>
       )}
-    </>
+    </div>
   );
 }
