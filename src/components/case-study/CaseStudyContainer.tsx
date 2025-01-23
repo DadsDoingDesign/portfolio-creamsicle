@@ -76,6 +76,18 @@ export default function CaseStudyContainer({
     }
   };
 
+  const handlePrevFrame = () => {
+    if (currentFrame > 0) {
+      setCurrentFrame(currentFrame - 1);
+    }
+  };
+
+  const handleNextFrame = () => {
+    if (currentFrame < frames.length - 1) {
+      setCurrentFrame(currentFrame + 1);
+    }
+  };
+
   const getNextFrameTitle = () => {
     if (currentFrame < frames.length - 1) {
       const nextFrame = frames[currentFrame + 1];
@@ -116,16 +128,6 @@ export default function CaseStudyContainer({
         </div>
       ) : (
         <div className="w-full h-full">
-          <div className="w-full px-4 py-4">
-            <button
-              onClick={handleBack}
-              className="text-white/80 hover:text-white transition-colors flex items-center gap-2"
-            >
-              <span className="sr-only">Back</span>
-              ←
-            </button>
-          </div>
-
           <div
             ref={containerRef}
             className="h-[calc(100vh-64px)] overflow-y-auto snap-y snap-mandatory"
@@ -157,11 +159,28 @@ export default function CaseStudyContainer({
             </div>
           </div>
 
-          {getNextFrameTitle() && (
-            <div className="fixed bottom-0 left-0 right-0 bg-neutral-900/80 backdrop-blur-sm">
+          {(currentFrame > 0 || getNextFrameTitle()) && (
+            <div className="bg-neutral-900/80 backdrop-blur-sm">
               <div className="w-full px-4 py-4 flex justify-between items-center">
-                <span className="text-white/60">Next</span>
-                <h2 className="text-white font-medium">{getNextFrameTitle()}</h2>
+                {currentFrame > 0 ? (
+                  <button 
+                    onClick={handlePrevFrame}
+                    className="text-white/80 hover:text-white transition-colors"
+                  >
+                    Previous section
+                  </button>
+                ) : (
+                  <div /> {/* Empty div for spacing */}
+                )}
+                {getNextFrameTitle() && (
+                  <button
+                    onClick={handleNextFrame}
+                    className="flex flex-col items-end text-white/80 hover:text-white transition-colors"
+                  >
+                    <span className="text-sm">Next</span>
+                    <h2 className="font-medium">{getNextFrameTitle()}</h2>
+                  </button>
+                )}
               </div>
             </div>
           )}
