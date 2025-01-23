@@ -103,7 +103,7 @@ export default function CaseStudyContainer({
           <div className="w-full space-y-8">
             <h1 className="text-4xl font-bold text-white">{project.title}</h1>
             <p className="text-lg text-gray-300">{project.description}</p>
-            {frames[0]?.content.sections?.[0] && (
+            {frames[0]?.content?.sections?.[0] && (
               <p className="text-gray-300">{frames[0].content.sections[0].text}</p>
             )}
             <button
