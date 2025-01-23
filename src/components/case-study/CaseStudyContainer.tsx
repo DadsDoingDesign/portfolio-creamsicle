@@ -87,7 +87,7 @@ export default function CaseStudyContainer({
   return (
     <main className="h-full w-full">
       {!isReading ? (
-        <div className="grid grid-cols-1 md:grid-cols-[400px_1fr] gap-12 items-center h-full px-20">
+        <div className="grid grid-cols-1 md:grid-cols-[400px_auto] gap-12 items-center h-full px-20">
           <div className="w-full space-y-8">
             <h1 className="text-4xl font-bold text-white">{project.title}</h1>
             <p className="text-lg text-gray-300">{project.description}</p>
