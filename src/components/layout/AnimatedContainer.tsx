@@ -11,15 +11,14 @@ export default function AnimatedContainer({ children }: AnimatedContainerProps) 
   return (
     <motion.main 
       className="h-full w-full bg-background-inverse-primary overflow-hidden flex flex-col"
-      initial={{ borderRadius: 0, padding: 16 }}
+      initial={{ borderRadius: 0, padding: 0 }}
       animate={{ 
         borderRadius: 16,
-        padding: ['0px', '32px'],
-        transition: { 
-          duration: .4,
-          ease: "linear",
-          delay: 1
-        }
+        padding: 32
+      }}
+      transition={{
+        padding: { duration: 0.4, ease: "linear", delay: 1 },
+        borderRadius: { duration: 0.4, ease: "linear", delay: 1 }
       }}
     >
       {children}
