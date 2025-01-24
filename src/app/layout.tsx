@@ -3,14 +3,11 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { AnimatedGradient } from '@/components/background/AnimatedGradient';
-import { metadata } from './metadata';
 import AnimatedBody from '@/components/layout/AnimatedBody';
 import LoadingLogo from '@/components/layout/LoadingLogo';
 import AnimatedContainer from '@/components/layout/AnimatedContainer';
 import Navigation from '@/components/navigation/Navigation';
 import { usePathname, useRouter } from 'next/navigation';
-
-export { metadata };
 
 export default function RootLayout({
   children,
