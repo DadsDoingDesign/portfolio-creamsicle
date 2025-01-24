@@ -97,7 +97,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
   };
 
   const renderPreview = () => (
-    <div className="grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] gap-20 items-center">
+    <div className="grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] gap-20 items-center min-h-0">
       <div className="w-full space-y-8">
         <h1 className="text-4xl font-bold text-white">{project.title}</h1>
         <p className="text-lg text-gray-300">{project.description}</p>
@@ -112,13 +112,13 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
         </button>
       </div>
       {frames[0]?.image && (
-        <div className="flex items-center justify-center max-h-[1000px] w-full">
+        <div className="flex items-center justify-center w-full">
           <Image
             src={frames[0].image.src}
             alt={frames[0].image.alt}
             width={1920}
             height={1080}
-            className="max-h-[1000px] w-auto h-auto object-contain"
+            className="max-h-[400px] sm:max-h-[600px] md:max-h-[700px] lg:max-h-[800px] w-auto h-auto object-contain"
             priority
           />
         </div>
