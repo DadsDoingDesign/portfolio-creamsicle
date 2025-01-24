@@ -106,9 +106,13 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="flex-1 min-h-0 w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8">
+                    <div className={`flex-1 min-h-0 w-full ${
+                        frames[currentFrame].layout === 'three-column' 
+                          ? 'grid grid-cols-1 md:grid-cols-3 gap-8' 
+                          : 'grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8'
+                      }`}>
                       <Frame frame={frames[currentFrame]} isFirstFrame={currentFrame === 0} />
-                      {frames[currentFrame].image && (
+                      {frames[currentFrame].image && frames[currentFrame].layout !== 'three-column' && (
                         <div className="col-span-1 md:col-span-1 xl:col-start-2 xl:col-span-2 flex items-center justify-center">
                           <Image
                             src={frames[currentFrame].image.src}
