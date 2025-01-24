@@ -122,18 +122,22 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                       )}
                     </div>
                     <div className="w-full flex-none flex justify-between items-center mt-8">
-                      <button 
-                        onClick={() => setCurrentFrame(prev => prev - 1)}
-                        className="text-white/80 hover:text-white transition-colors"
-                      >
-                        Previous section
-                      </button>
-                      <button
-                        onClick={() => setCurrentFrame(prev => prev + 1)}
-                        className="flex flex-col items-end text-white/80 hover:text-white transition-colors"
-                      >
-                        <h2 className="font-medium">{frames[currentFrame + 1].title}</h2>
-                      </button>
+                      {currentFrame > 0 && (
+                        <button 
+                          onClick={() => setCurrentFrame(prev => prev - 1)}
+                          className="text-white/80 hover:text-white transition-colors"
+                        >
+                          Previous section
+                        </button>
+                      )}
+                      {currentFrame < frames.length - 1 && (
+                        <button
+                          onClick={() => setCurrentFrame(prev => prev + 1)}
+                          className="flex flex-col items-end text-white/80 hover:text-white transition-colors ml-auto"
+                        >
+                          <h2 className="font-medium">{frames[currentFrame + 1]?.title}</h2>
+                        </button>
+                      )}
                     </div>
                   </motion.div>
                 </AnimatePresence>
