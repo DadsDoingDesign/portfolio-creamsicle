@@ -100,45 +100,45 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentFrame}
-                    className="w-full h-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8"
+                    className="h-full w-full flex flex-col"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="flex flex-col h-full">
+                    <div className="w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8">
                       <Frame frame={frames[currentFrame]} isFirstFrame={currentFrame === 0} />
-                      {(currentFrame > 0 || currentFrame < frames.length - 1) && (
-                        <div className="w-full flex-none flex justify-between items-center mt-8">
-                          {currentFrame > 0 && (
-                            <button 
-                              onClick={() => setCurrentFrame(prev => prev - 1)}
-                              className="text-white/80 hover:text-white transition-colors"
-                            >
-                              Previous section
-                            </button>
-                          )}
-                          {currentFrame < frames.length - 1 && (
-                            <button
-                              onClick={() => setCurrentFrame(prev => prev + 1)}
-                              className="flex flex-col items-end text-white/80 hover:text-white transition-colors"
-                            >
-                              <h2 className="font-medium">{frames[currentFrame + 1].title}</h2>
-                            </button>
-                          )}
+                      {frames[currentFrame].image && (
+                        <div className="col-span-1 md:col-span-1 xl:col-start-2 xl:col-span-2 flex items-center justify-center">
+                          <Image
+                            src={frames[currentFrame].image.src}
+                            alt={frames[currentFrame].image.alt}
+                            width={1920}
+                            height={1080}
+                            className="max-h-[80vh] w-auto h-auto object-contain"
+                            priority={currentFrame === 0}
+                          />
                         </div>
                       )}
                     </div>
-                    {frames[currentFrame].image && (
-                      <div className="col-span-1 md:col-span-1 xl:col-start-2 xl:col-span-2 flex items-center justify-center">
-                        <Image
-                          src={frames[currentFrame].image.src}
-                          alt={frames[currentFrame].image.alt}
-                          width={1920}
-                          height={1080}
-                          className="max-h-[80vh] w-auto h-auto object-contain"
-                          priority={currentFrame === 0}
-                        />
+                    {(currentFrame > 0 || currentFrame < frames.length - 1) && (
+                      <div className="w-full flex-none flex justify-between items-center mt-8">
+                        {currentFrame > 0 && (
+                          <button 
+                            onClick={() => setCurrentFrame(prev => prev - 1)}
+                            className="text-white/80 hover:text-white transition-colors"
+                          >
+                            Previous section
+                          </button>
+                        )}
+                        {currentFrame < frames.length - 1 && (
+                          <button
+                            onClick={() => setCurrentFrame(prev => prev + 1)}
+                            className="flex flex-col items-end text-white/80 hover:text-white transition-colors"
+                          >
+                            <h2 className="font-medium">{frames[currentFrame + 1].title}</h2>
+                          </button>
+                        )}
                       </div>
                     )}
                   </motion.div>
