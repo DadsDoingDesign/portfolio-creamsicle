@@ -83,9 +83,13 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
   return (
     <motion.div 
       className={`fixed inset-0 z-50 w-full h-full bg-neutral-900 overflow-hidden ${isReading ? 'cursor-ns-resize' : ''}`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
     >
       <div className="relative w-full h-full">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        <div className="max-w-7xl mx-auto h-full">
           <div ref={containerRef} className="relative w-full h-full flex flex-col">
             <AnimatePresence mode="wait">
               <motion.div 

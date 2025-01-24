@@ -33,7 +33,7 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4, delay: 1, ease: "linear" }}
-      className="w-full flex justify-between items-center pb-4 md:pb-6 lg:pb-10"
+      className={`w-full flex justify-between items-center pb-4 md:pb-6 lg:pb-10 ${isViewingCaseStudy ? 'px-4 sm:px-6 lg:px-8 pt-4 md:pt-6 lg:pt-8' : ''}`}
     >
       <div className="flex items-center gap-4">
         {/* Logo */}
