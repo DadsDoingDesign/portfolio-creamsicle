@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Project } from '@/lib/data';
 import { CaseStudyFrame } from '@/types/case-study';
 import Frame from './frames';
-import Navigation from './Navigation';
+import Navigation from '@/components/navigation/Navigation';
 
 interface CaseStudyContainerProps {
   project: Project;
@@ -105,9 +105,9 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                   <motion.div
                     key={currentFrame}
                     className="h-full w-full flex flex-col"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
                     <div className={frames[currentFrame].layout === 'three-column' 
