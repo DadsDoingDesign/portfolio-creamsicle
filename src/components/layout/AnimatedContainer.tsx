@@ -16,10 +16,7 @@ export default function AnimatedContainer({ children }: AnimatedContainerProps) 
         borderRadius: 16,
         padding: 32
       }}
-      transition={{
-        padding: { duration: 0.4, ease: "linear", delay: 1 },
-        borderRadius: { duration: 0.4, ease: "linear", delay: 1 }
-      }}
+      transition={{ duration: 0.4, ease: "linear", delay: 1 }}
     >
       {children}
     </motion.main>

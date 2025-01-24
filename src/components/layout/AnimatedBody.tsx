@@ -9,13 +9,11 @@ interface AnimatedBodyProps {
 
 export default function AnimatedBody({ children }: AnimatedBodyProps) {
   return (
-    <motion.div 
-      className="font-sans antialiased h-full overflow-hidden"
-      initial={{ padding: 0 }}
-      animate={{ 
-        padding: ['0px', '16px', '24px', '32px'],
-        transition: { duration: 0.8, ease: 'easeOut', delay: 0.4 }
-      }}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4, ease: "linear", delay: 1 }}
+      className="flex-1 overflow-y-auto"
     >
       {children}
     </motion.div>
