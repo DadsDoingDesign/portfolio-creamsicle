@@ -127,10 +127,10 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
   );
 
   const renderContent = () => (
-    <div>
+    <div className="relative w-full h-full">
       <div
         ref={containerRef}
-        className="h-[calc(100vh-64px)] overflow-y-auto snap-y snap-mandatory"
+        className="absolute inset-0 overflow-y-auto snap-y snap-mandatory"
       >
         <div className="space-y-32 py-12">
           {frames.map((frame, index) => (
