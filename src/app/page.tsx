@@ -92,33 +92,29 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="h-full w-full"
           >
-            <div className="h-full w-full">
-              <div className="flex items-center justify-center h-full">
-                <AnimatePresence mode="wait">
-                  {projects.map((project, index) => (
-                    <motion.div
-                      key={project.id}
-                      initial={{ opacity: 0 }}
-                      animate={{ 
-                        opacity: currentIndex === index ? 1 : 0,
-                        pointerEvents: currentIndex === index ? 'auto' : 'none'
-                      }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="w-full h-full flex items-center justify-center"
-                    >
-                      <CaseStudyPreview
-                        project={project}
-                        frames={project.frames}
-                        isOpen={true}
-                        onClose={() => setSelectedProject(null)}
-                        onViewCaseStudy={handleViewCaseStudy}
-                      />
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
-              </div>
-            </div>
+            <AnimatePresence mode="wait">
+              {projects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ 
+                    opacity: currentIndex === index ? 1 : 0,
+                    pointerEvents: currentIndex === index ? 'auto' : 'none'
+                  }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="h-full w-full"
+                >
+                  <CaseStudyPreview
+                    project={project}
+                    frames={project.frames}
+                    isOpen={true}
+                    onClose={() => setSelectedProject(null)}
+                    onViewCaseStudy={handleViewCaseStudy}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </motion.div>
         )}
       </AnimatePresence>
