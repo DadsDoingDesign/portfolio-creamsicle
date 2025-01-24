@@ -138,7 +138,7 @@ export const umba: CaseStudy = {
           },
           {
             heading: "But we were dropping the ball",
-            text: "The current "rewards" tab was nothing more than analytics on most likely empty data. No wonder users deleted the app afterwards."
+            text: "The current 'rewards' tab was nothing more than analytics on most likely empty data. No wonder users deleted the app afterwards."
           },
           {
             heading: "What's the opportunity?",
