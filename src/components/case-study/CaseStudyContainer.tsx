@@ -130,18 +130,18 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
     <div className="relative w-full h-full">
       <div
         ref={containerRef}
-        className="absolute inset-0 overflow-y-auto snap-y snap-mandatory"
+        className="absolute w-full h-full snap-y snap-mandatory overflow-y-scroll"
       >
         <div className="space-y-32 py-12">
           {frames.map((frame, index) => (
             <div
               key={index}
               ref={(el) => { frameRefs.current[index] = el; }}
-              className="snap-start grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_1fr_1fr] gap-8"
+              className="snap-start grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8"
             >
               <Frame frame={frame} isFirstFrame={index === 0} />
               {frame.image && (
-                <div className="col-span-1 xl:col-span-2">
+                <div className="col-span-1 md:col-span-1 xl:col-start-2 xl:col-span-2">
                   <Image
                     src={frame.image.src}
                     alt={frame.image.alt}
