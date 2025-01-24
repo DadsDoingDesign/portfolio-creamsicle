@@ -16,7 +16,7 @@ export default function AnimatedContainer({ children }: AnimatedContainerProps) 
         borderRadius: 16,
         padding: ['0px', '32px'],
         transition: { 
-          duration: 2,
+          duration: 1,
           ease: "linear",
           delay: 1
         }
