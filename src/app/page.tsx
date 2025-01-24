@@ -5,8 +5,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Hero } from '@/components/hero/Hero';
 import CaseStudyPreview from '@/components/case-study/CaseStudyPreview';
 import { umba } from '../lib/case-studies/umba';
+import { apploi } from '../lib/case-studies/apploi';
 
-const projects = [umba];
+const projects = [umba, apploi];
 
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
