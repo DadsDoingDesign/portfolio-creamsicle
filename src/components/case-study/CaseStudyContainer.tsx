@@ -100,7 +100,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentFrame}
-                    className="w-full h-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8 p-12"
+                    className="w-full h-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
@@ -123,7 +123,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                 </AnimatePresence>
               </div>
               {(currentFrame > 0 || currentFrame < frames.length - 1) && (
-                <div className="w-full px-4 py-4 flex-none flex justify-between items-center bg-black/50 backdrop-blur-sm">
+                <div className="w-full flex-none flex justify-between items-center">
                   {currentFrame > 0 && (
                     <button 
                       onClick={() => setCurrentFrame(prev => prev - 1)}
@@ -137,7 +137,6 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                       onClick={() => setCurrentFrame(prev => prev + 1)}
                       className="flex flex-col items-end text-white/80 hover:text-white transition-colors"
                     >
-                      <span className="text-sm">Next</span>
                       <h2 className="font-medium">{frames[currentFrame + 1].title}</h2>
                     </button>
                   )}
