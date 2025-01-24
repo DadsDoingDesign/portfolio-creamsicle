@@ -95,18 +95,18 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
             <div className="relative w-full h-full flex flex-col">
               <div
                 ref={containerRef}
-                className="w-full h-full flex-1 overflow-hidden"
+                className="w-full h-full flex-1 overflow-hidden flex flex-col"
               >
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentFrame}
-                    className="h-full w-full flex flex-col"
+                    className="h-full w-full flex flex-col flex-1"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8">
+                    <div className="w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8 flex-1">
                       <Frame frame={frames[currentFrame]} isFirstFrame={currentFrame === 0} />
                       {frames[currentFrame].image && (
                         <div className="col-span-1 md:col-span-1 xl:col-start-2 xl:col-span-2 flex items-center justify-center">
@@ -141,6 +141,20 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                         )}
                       </div>
                     )}
+                    <div className="w-full flex-none flex justify-between items-center mt-8">
+                      <button 
+                        onClick={() => setCurrentFrame(prev => prev - 1)}
+                        className="text-white/80 hover:text-white transition-colors"
+                      >
+                        Previous section
+                      </button>
+                      <button
+                        onClick={() => setCurrentFrame(prev => prev + 1)}
+                        className="flex flex-col items-end text-white/80 hover:text-white transition-colors"
+                      >
+                        <h2 className="font-medium">{frames[currentFrame + 1].title}</h2>
+                      </button>
+                    </div>
                   </motion.div>
                 </AnimatePresence>
               </div>
