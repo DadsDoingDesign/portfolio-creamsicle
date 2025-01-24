@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Project } from '@/lib/data';
 import { CaseStudyFrame } from '@/types/case-study';
 import Frame from './frames';
+import Navigation from './Navigation';
 
 interface CaseStudyContainerProps {
   project: Project;
@@ -82,6 +83,9 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
 
   return (
     <motion.div className="h-full w-full">
+      <div className="w-full flex-none">
+        <Navigation isViewingCaseStudy={isReading} onBack={handleBack} />
+      </div>
       <AnimatePresence mode="wait">
         <motion.div 
           key={isReading ? 'content' : 'preview'}
@@ -132,7 +136,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                       {currentFrame > 0 && (
                         <button 
                           onClick={() => setCurrentFrame(prev => prev - 1)}
-                          className="text-white/80 hover:text-white transition-colors"
+                          className="text-amber-400 hover:text-amber-500 transition-colors"
                         >
                           Previous section
                         </button>
@@ -140,7 +144,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                       {currentFrame < frames.length - 1 && (
                         <button
                           onClick={() => setCurrentFrame(prev => prev + 1)}
-                          className="flex flex-col items-end text-white/80 hover:text-white transition-colors ml-auto"
+                          className="flex flex-col items-end text-amber-400 hover:text-amber-500 transition-colors ml-auto"
                         >
                           <h2 className="font-medium">{frames[currentFrame + 1]?.title}</h2>
                         </button>

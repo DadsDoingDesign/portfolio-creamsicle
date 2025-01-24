@@ -85,9 +85,9 @@ export default function Frame({ frame, isFirstFrame, className = '' }: FrameProp
 
   if (layout === 'three-column' && content.sections) {
     return (
-      <div className={`h-full w-full grid grid-cols-1 md:grid-cols-3 gap-8 ${className}`}>
+      <div className={`w-full grid grid-cols-1 md:grid-cols-3 gap-8 ${className}`}>
         {content.sections.map((section, index) => (
-          <div key={index} className="space-y-4 bg-gray-900/50 p-6 rounded-lg">
+          <div key={index} className="space-y-4 bg-gray-900/50 p-6 rounded-lg h-fit">
             {section.heading && (
               <h3 className="text-xl font-semibold text-orange-400">
                 {section.heading}
