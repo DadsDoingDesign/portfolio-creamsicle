@@ -82,7 +82,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
 
   return (
     <motion.div 
-      className={`fixed inset-0 z-50 w-full h-full bg-neutral-900 overflow-hidden ${isReading ? 'cursor-ns-resize' : ''}`}
+      className={`fixed inset-0 z-50 w-full h-full bg-neutral-900 overflow-hidden ${isReading ? 'cursor-ns-resize p-0' : 'p-8'}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

@@ -5,7 +5,6 @@ import './globals.css';
 import { AnimatedGradient } from '@/components/background/AnimatedGradient';
 import AnimatedBody from '@/components/layout/AnimatedBody';
 import LoadingLogo from '@/components/layout/LoadingLogo';
-import AnimatedContainer from '@/components/layout/AnimatedContainer';
 import Navigation from '@/components/navigation/Navigation';
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -24,15 +23,13 @@ export default function RootLayout({
         <LoadingLogo />
         <AnimatedBody>
           <AnimatedGradient />
-          <AnimatedContainer>
-            <div className="w-full h-full min-h-0">
-              <Navigation 
-                isViewingCaseStudy={isViewingCaseStudy} 
-                onBack={() => router.back()} 
-              />
-              {children}
-            </div>
-          </AnimatedContainer>
+          <div className="w-full h-full min-h-0 bg-background-inverse-primary overflow-hidden flex flex-col p-8">
+            <Navigation 
+              isViewingCaseStudy={isViewingCaseStudy} 
+              onBack={() => router.back()} 
+            />
+            {children}
+          </div>
         </AnimatedBody>
       </body>
     </html>

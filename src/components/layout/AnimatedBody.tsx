@@ -11,9 +11,10 @@ export default function AnimatedBody({ children }: AnimatedBodyProps) {
   return (
     <motion.div 
       className="font-sans antialiased h-full overflow-hidden flex-1 overflow-y-auto"
-      initial={{ padding: 0 }}
+      initial={{ padding: 0, borderRadius: 0 }}
       animate={{ 
-        padding: 32
+        padding: 32,
+        borderRadius: 16
       }}
       transition={{ 
         duration: 0.4,
