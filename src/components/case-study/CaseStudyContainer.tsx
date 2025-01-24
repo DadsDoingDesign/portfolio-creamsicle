@@ -24,8 +24,8 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
 }) => {
   const [currentFrame, setCurrentFrame] = useState(0);
   const [isReading, setIsReading] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const frameRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -37,30 +37,34 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
   useEffect(() => {
     if (!isReading) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = frameRefs.current.findIndex(ref => ref === entry.target);
-            if (index !== -1) {
-              setCurrentFrame(index);
-            }
-          }
-        });
-      },
-      {
-        root: containerRef.current,
-        threshold: 0.6,
-        rootMargin: '-20% 0px'
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      if (isScrolling) return;
+
+      const scrollDown = e.deltaY > 0;
+      
+      if (scrollDown && currentFrame < frames.length - 1) {
+        setIsScrolling(true);
+        setCurrentFrame(prev => prev + 1);
+        setTimeout(() => setIsScrolling(false), 500); // Debounce scroll
+      } else if (!scrollDown && currentFrame > 0) {
+        setIsScrolling(true);
+        setCurrentFrame(prev => prev - 1);
+        setTimeout(() => setIsScrolling(false), 500); // Debounce scroll
       }
-    );
+    };
 
-    frameRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('wheel', handleWheel, { passive: false });
+    }
 
-    return () => observer.disconnect();
-  }, [isReading]);
+    return () => {
+      if (container) {
+        container.removeEventListener('wheel', handleWheel);
+      }
+    };
+  }, [isReading, currentFrame, frames.length, isScrolling]);
 
   const handleReadCaseStudy = () => {
     setIsReading(true);
@@ -74,26 +78,6 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
     } else {
       onClose();
     }
-  };
-
-  const handlePrevFrame = () => {
-    if (currentFrame > 0) {
-      setCurrentFrame(currentFrame - 1);
-    }
-  };
-
-  const handleNextFrame = () => {
-    if (currentFrame < frames.length - 1) {
-      setCurrentFrame(currentFrame + 1);
-    }
-  };
-
-  const getNextFrameTitle = () => {
-    if (currentFrame < frames.length - 1) {
-      const nextFrame = frames[currentFrame + 1];
-      return nextFrame.title;
-    }
-    return null;
   };
 
   return (
@@ -111,49 +95,50 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
             <div className="relative w-full h-full flex flex-col">
               <div
                 ref={containerRef}
-                className="w-full h-full min-h-0 flex-1 snap-y snap-mandatory overflow-y-scroll"
+                className="w-full h-full flex-1 overflow-hidden"
               >
-                <div className="space-y-32 py-12">
-                  {frames.map((frame, index) => (
-                    <div
-                      key={index}
-                      ref={(el) => { frameRefs.current[index] = el; }}
-                      className="snap-start min-h-[100vh] grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8"
-                    >
-                      <Frame frame={frame} isFirstFrame={index === 0} />
-                      {frame.image && (
-                        <div className="col-span-1 md:col-span-1 xl:col-start-2 xl:col-span-2 flex items-center justify-center">
-                          <Image
-                            src={frame.image.src}
-                            alt={frame.image.alt}
-                            width={1920}
-                            height={1080}
-                            className="max-h-[800px] w-auto h-auto object-contain"
-                            priority={index === 0}
-                          />
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentFrame}
+                    className="w-full h-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8 p-12"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Frame frame={frames[currentFrame]} isFirstFrame={currentFrame === 0} />
+                    {frames[currentFrame].image && (
+                      <div className="col-span-1 md:col-span-1 xl:col-start-2 xl:col-span-2 flex items-center justify-center">
+                        <Image
+                          src={frames[currentFrame].image.src}
+                          alt={frames[currentFrame].image.alt}
+                          width={1920}
+                          height={1080}
+                          className="max-h-[80vh] w-auto h-auto object-contain"
+                          priority={currentFrame === 0}
+                        />
+                      </div>
+                    )}
+                  </motion.div>
+                </AnimatePresence>
               </div>
-              {(currentFrame > 0 || getNextFrameTitle()) && (
+              {(currentFrame > 0 || currentFrame < frames.length - 1) && (
                 <div className="w-full px-4 py-4 flex-none flex justify-between items-center bg-black/50 backdrop-blur-sm">
                   {currentFrame > 0 && (
                     <button 
-                      onClick={handlePrevFrame}
+                      onClick={() => setCurrentFrame(prev => prev - 1)}
                       className="text-white/80 hover:text-white transition-colors"
                     >
                       Previous section
                     </button>
                   )}
-                  {getNextFrameTitle() && (
+                  {currentFrame < frames.length - 1 && (
                     <button
-                      onClick={handleNextFrame}
+                      onClick={() => setCurrentFrame(prev => prev + 1)}
                       className="flex flex-col items-end text-white/80 hover:text-white transition-colors"
                     >
                       <span className="text-sm">Next</span>
-                      <h2 className="font-medium">{getNextFrameTitle()}</h2>
+                      <h2 className="font-medium">{frames[currentFrame + 1].title}</h2>
                     </button>
                   )}
                 </div>
