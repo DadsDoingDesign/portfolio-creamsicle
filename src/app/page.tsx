@@ -64,7 +64,7 @@ export default function Home() {
   return (
     <div 
       ref={containerRef} 
-      className="h-full w-full text-white"
+      className={`w-full ${!showCaseStudies ? 'h-full' : 'h-auto'} text-white`}
     >
       <AnimatePresence mode="wait">
         {!showCaseStudies && (
@@ -89,7 +89,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0}}
             transition={{ duration: 0.5 }}
-            className="h-full w-full"
+            className="h-auto w-full"
           >
             <div className="h-full w-full">
               <div className="flex items-center justify-center h-full">
