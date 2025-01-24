@@ -4,13 +4,14 @@ import { CaseStudyFrame } from '@/types/case-study';
 interface FrameProps {
   frame: CaseStudyFrame;
   isFirstFrame?: boolean;
+  className?: string;
 }
 
-export default function Frame({ frame, isFirstFrame }: FrameProps) {
+export default function Frame({ frame, isFirstFrame, className = '' }: FrameProps) {
   const { content, image, title, layout = 'full-width' } = frame;
 
   const renderContent = () => (
-    <div className="w-full flex-1 space-y-10">
+    <div className={`w-full flex-1 space-y-10 ${className}`}>
       {isFirstFrame ? (
         <h1 className="text-4xl font-bold text-white">{title}</h1>
       ) : (
@@ -84,7 +85,7 @@ export default function Frame({ frame, isFirstFrame }: FrameProps) {
 
   if (layout === 'three-column' && content.sections) {
     return (
-      <div className="h-full w-full grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className={`h-full w-full grid grid-cols-1 md:grid-cols-3 gap-8 ${className}`}>
         {content.sections.map((section, index) => (
           <div key={index} className="space-y-4 bg-gray-900/50 p-6 rounded-lg">
             {section.heading && (
@@ -107,7 +108,7 @@ export default function Frame({ frame, isFirstFrame }: FrameProps) {
   }
 
   return (
-    <div className="h-full w-full flex flex-col">
+    <div className={`h-full w-full flex flex-col ${className}`}>
       {renderContent()}
     </div>
   );
