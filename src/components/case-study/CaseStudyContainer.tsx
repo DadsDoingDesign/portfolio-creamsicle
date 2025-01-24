@@ -108,7 +108,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                   >
                     <div className={`flex-1 min-h-0 w-full ${
                         frames[currentFrame].layout === 'three-column' 
-                          ? 'grid grid-cols-1 md:grid-cols-3 gap-8' 
+                          ? 'grid grid-cols-1 md:grid-cols-3 gap-8 col-span-full' 
                           : 'grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8'
                       }`}>
                       <Frame frame={frames[currentFrame]} isFirstFrame={currentFrame === 0} />
