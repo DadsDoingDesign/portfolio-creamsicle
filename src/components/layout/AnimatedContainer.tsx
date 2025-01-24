@@ -14,7 +14,7 @@ export default function AnimatedContainer({ children }: AnimatedContainerProps) 
       initial={{ borderRadius: 0, padding: 16 }}
       animate={{ 
         borderRadius: 16,
-        padding: ['16px', '24px', '32px'],
+        padding: ['0px', '32px'],
         transition: { 
           duration: 2,
           ease: "linear",
