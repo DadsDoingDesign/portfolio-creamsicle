@@ -1,17 +1,16 @@
 'use client'
 
-import { motion, cubicBezier, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
 export default function LoadingLogo() {
   const [isVisible, setIsVisible] = useState(true)
-  const customEase = cubicBezier(0.6, 0.01, 0.05, 0.95)
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false)
-    }, 1600) // Set to 1600ms to ensure animation completes
+    }, 1000) // Total animation time
     return () => clearTimeout(timer)
   }, [])
 
@@ -25,22 +24,20 @@ export default function LoadingLogo() {
           exit={{ opacity: 0 }}
           transition={{ 
             duration: 0.8,
-            ease: customEase
+            ease: "linear",
+            delay: 0.2
           }}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ scale: 1, opacity: 1 }}
             animate={{ 
-              opacity: [0, 1, 0],
-              scale: [0.8, 1, 0.5]
+              scale: 0.5,
+              opacity: 0
             }}
             transition={{ 
               duration: 0.8,
-              times: [0, 0.5, 1],
-              ease: [
-                [0.6, 0.01, 0.05, 0.95],
-                [0.6, 0.01, 0.05, 0.95]
-              ]
+              ease: "linear",
+              delay: 0.2
             }}
           >
             <Image

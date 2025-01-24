@@ -28,7 +28,7 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
     <motion.nav
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.4, delay: 0.8 }}
+      transition={{ duration: 0.4, delay: 0.8, ease: "linear" }}
       className="w-full flex justify-between items-center pb-4 md:pb-6 lg:pb-10"
     >
       <div className="flex items-center gap-4">
@@ -131,7 +131,7 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.2, ease: "linear" }}
             className="fixed inset-0 bg-background-primary z-50 md:hidden"
           >
             {/* Close Button */}
