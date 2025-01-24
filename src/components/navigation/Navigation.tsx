@@ -26,9 +26,9 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
 
   return (
     <motion.nav
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4, delay: 0.4 }}
       className="w-full flex justify-between items-center pb-4 md:pb-6 lg:pb-10"
     >
       <div className="flex items-center gap-4">

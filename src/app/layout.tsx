@@ -4,6 +4,8 @@ import Navigation from '@/components/navigation/Navigation';
 import { AnimatedGradient } from '@/components/background/AnimatedGradient';
 import { metadata } from './metadata';
 import AnimatedBody from '@/components/layout/AnimatedBody';
+import LoadingLogo from '@/components/layout/LoadingLogo';
+import AnimatedContainer from '@/components/layout/AnimatedContainer';
 
 export { metadata };
 
@@ -15,16 +17,17 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full w-full">
       <body className="h-full">
+        <LoadingLogo />
         <AnimatedBody>
           <AnimatedGradient />
-          <main className="h-full w-full rounded-2xl bg-background-inverse-primary p-4 md:p-6 lg:p-8 overflow-hidden flex flex-col">
+          <AnimatedContainer>
             <div className="w-full flex-none">
               <Navigation />
             </div>
             <div className="w-full h-full min-h-0">
               {children}
             </div>
-          </main>
+          </AnimatedContainer>
         </AnimatedBody>
       </body>
     </html>
