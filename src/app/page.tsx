@@ -64,7 +64,7 @@ export default function Home() {
   return (
     <div 
       ref={containerRef} 
-      className={`w-full ${!showCaseStudies || isViewingCaseStudy ? 'h-full' : 'h-auto'} text-white`}
+      className="w-full text-white"
     >
       <AnimatePresence mode="wait">
         {!showCaseStudies && (
