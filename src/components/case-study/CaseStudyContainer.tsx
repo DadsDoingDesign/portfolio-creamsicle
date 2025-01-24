@@ -106,7 +106,29 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <Frame frame={frames[currentFrame]} isFirstFrame={currentFrame === 0} />
+                    <div className="flex flex-col h-full">
+                      <Frame frame={frames[currentFrame]} isFirstFrame={currentFrame === 0} />
+                      {(currentFrame > 0 || currentFrame < frames.length - 1) && (
+                        <div className="w-full flex-none flex justify-between items-center mt-8">
+                          {currentFrame > 0 && (
+                            <button 
+                              onClick={() => setCurrentFrame(prev => prev - 1)}
+                              className="text-white/80 hover:text-white transition-colors"
+                            >
+                              Previous section
+                            </button>
+                          )}
+                          {currentFrame < frames.length - 1 && (
+                            <button
+                              onClick={() => setCurrentFrame(prev => prev + 1)}
+                              className="flex flex-col items-end text-white/80 hover:text-white transition-colors"
+                            >
+                              <h2 className="font-medium">{frames[currentFrame + 1].title}</h2>
+                            </button>
+                          )}
+                        </div>
+                      )}
+                    </div>
                     {frames[currentFrame].image && (
                       <div className="col-span-1 md:col-span-1 xl:col-start-2 xl:col-span-2 flex items-center justify-center">
                         <Image
@@ -122,26 +144,6 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                   </motion.div>
                 </AnimatePresence>
               </div>
-              {(currentFrame > 0 || currentFrame < frames.length - 1) && (
-                <div className="w-full flex-none flex justify-between items-center">
-                  {currentFrame > 0 && (
-                    <button 
-                      onClick={() => setCurrentFrame(prev => prev - 1)}
-                      className="text-white/80 hover:text-white transition-colors"
-                    >
-                      Previous section
-                    </button>
-                  )}
-                  {currentFrame < frames.length - 1 && (
-                    <button
-                      onClick={() => setCurrentFrame(prev => prev + 1)}
-                      className="flex flex-col items-end text-white/80 hover:text-white transition-colors"
-                    >
-                      <h2 className="font-medium">{frames[currentFrame + 1].title}</h2>
-                    </button>
-                  )}
-                </div>
-              )}
             </div>
           ) : (
             <div className="h-full w-full flex items-center">
