@@ -18,7 +18,7 @@ export default function AnimatedContainer({ children }: AnimatedContainerProps) 
         transition: { 
           duration: 2,
           ease: 'easeOut',
-          delay: 0.004
+          delay: 0.008
         }
       }}
     >
