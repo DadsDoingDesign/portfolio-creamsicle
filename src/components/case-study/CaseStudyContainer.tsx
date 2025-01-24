@@ -127,41 +127,36 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
   );
 
   const renderContent = () => (
-    <div
-      ref={containerRef}
-      className="h-[calc(100vh-64px)] overflow-y-auto snap-y snap-mandatory"
-    >
-      <div className="space-y-32 py-12">
-        {frames.map((frame, index) => (
-          <div
-            key={index}
-            ref={(el) => { frameRefs.current[index] = el; }}
-            className="snap-start grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_1fr_1fr] gap-8"
-          >
-            <Frame frame={frame} isFirstFrame={index === 0} />
-            {frame.image && (
-              <div className="col-span-1 xl:col-span-2">
-                <Image
-                  src={frame.image.src}
-                  alt={frame.image.alt}
-                  width={1920}
-                  height={1080}
-                  className="max-h-[800px] w-auto h-auto object-contain"
-                  priority={index === 0}
-                />
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-
-  return (
     <div>
-      {isReading ? renderContent() : renderPreview()}
+      <div
+        ref={containerRef}
+        className="h-[calc(100vh-64px)] overflow-y-auto snap-y snap-mandatory"
+      >
+        <div className="space-y-32 py-12">
+          {frames.map((frame, index) => (
+            <div
+              key={index}
+              ref={(el) => { frameRefs.current[index] = el; }}
+              className="snap-start grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_1fr_1fr] gap-8"
+            >
+              <Frame frame={frame} isFirstFrame={index === 0} />
+              {frame.image && (
+                <div className="col-span-1 xl:col-span-2">
+                  <Image
+                    src={frame.image.src}
+                    alt={frame.image.alt}
+                    width={1920}
+                    height={1080}
+                    className="max-h-[800px] w-auto h-auto object-contain"
+                    priority={index === 0}
+                  />
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
       {(currentFrame > 0 || getNextFrameTitle()) && (
-        <div className="bg-neutral-900/80 backdrop-blur-sm">
           <div className="w-full px-4 py-4 flex justify-between items-center">
             {currentFrame > 0 && (
               <button 
@@ -181,8 +176,13 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
               </button>
             )}
           </div>
-        </div>
       )}
+    </div>
+  );
+
+  return (
+    <div>
+      {isReading ? renderContent() : renderPreview()}
     </div>
   );
 };
