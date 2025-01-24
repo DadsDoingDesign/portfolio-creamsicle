@@ -10,7 +10,7 @@ interface HeroProps {
 export const Hero = ({ onCaseStudiesClick }: HeroProps) => {
   return (
     <motion.div 
-      className="h-full flex flex-col justify-center"
+      className="h-full w-full flex flex-col justify-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
