@@ -10,8 +10,8 @@ export default function Frame({ frame, isFirstFrame }: FrameProps) {
   const { content, image, title } = frame;
 
   return (
-    <div className="min-h-screen w-full px-6 py-24">
-      <div className="w-full space-y-10">
+    <div className="h-full w-full flex flex-col">
+      <div className="w-full flex-1 space-y-10">
         {isFirstFrame ? (
           <h1 className="text-4xl font-bold text-white">{title}</h1>
         ) : (
