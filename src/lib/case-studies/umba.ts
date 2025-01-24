@@ -195,23 +195,17 @@ export const umba: CaseStudy = {
           {
             heading: "Users impact",
             text: "Features like bill pay & airtime turned out to be sticky features",
-            subtitle: {
-              text: "40% of users retained"
-            }
+            subtitle: "40% of users retained"
           },
           {
             heading: "Business impact",
             text: "We set key levers that users can pull to affect our algorithm",
-            subtitle: {
-              text: "<5% of loans defaulted"
-            }
+            subtitle: "<5% of loans defaulted"
           },
           {
             heading: "Product impact",
             text: "CE & Product set shared metrics that aligned our teams",
-            subtitle: {
-              text: "2 week ticket backlog cut to 1 day"
-            }
+            subtitle: "2 week ticket backlog cut to 1 day"
           }
         ],
         bulletPoints: [
