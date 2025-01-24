@@ -25,6 +25,11 @@ export default function Frame({ frame, isFirstFrame }: FrameProps) {
                 {section.heading}
               </h3>
             )}
+            {section.subtitle && (
+              <h4 className="text-lg font-semibold text-amber-400">
+                {section.subtitle}
+              </h4>
+            )}
             {section.text && (
               <p className="text-gray-300">{section.text}</p>
             )}
@@ -86,6 +91,11 @@ export default function Frame({ frame, isFirstFrame }: FrameProps) {
               <h3 className="text-xl font-semibold text-orange-400">
                 {section.heading}
               </h3>
+            )}
+            {section.subtitle && (
+              <h4 className="text-lg font-semibold text-amber-400">
+                {section.subtitle}
+              </h4>
             )}
             {section.text && (
               <p className="text-gray-300">{section.text}</p>

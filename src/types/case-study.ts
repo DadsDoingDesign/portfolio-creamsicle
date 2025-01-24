@@ -11,6 +11,7 @@ export interface Timeline {
 export interface ContentSection {
   heading: string;
   text: string;
+  subtitle?: string;
 }
 
 export interface CaseStudyImage {
