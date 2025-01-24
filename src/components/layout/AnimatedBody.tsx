@@ -14,7 +14,7 @@ export default function AnimatedBody({ children }: AnimatedBodyProps) {
       initial={{ padding: 0 }}
       animate={{ 
         padding: ['0px', '16px', '24px', '32px'],
-        transition: { duration: 2, ease: 'easeOut' }
+        transition: { duration: 0.8, ease: 'easeOut', delay: 0.4 }
       }}
     >
       {children}

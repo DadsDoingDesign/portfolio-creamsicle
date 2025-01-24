@@ -4,7 +4,7 @@ export const apploi: CaseStudy = {
   id: 'apploi',
   title: 'Apploi OnCall',
   description: 'Redesigning the staffing experience for healthcare facilities',
-  previewImage: '/case-studies/apploi/preview.png',
+  previewImage: '/images/apploi/preview.png',
   categories: ['Product Design', 'UX Research', 'UI Design'],
   frames: [
     {
@@ -57,7 +57,7 @@ export const apploi: CaseStudy = {
       },
       layout: 'right-image',
       image: {
-        src: '/case-studies/apploi/research.png',
+        src: '/images/apploi/research.png',
         alt: 'Research findings and user insights'
       }
     },
@@ -80,7 +80,7 @@ export const apploi: CaseStudy = {
       },
       layout: 'left-image',
       image: {
-        src: '/case-studies/apploi/solution.png',
+        src: '/images/apploi/solution.png',
         alt: 'Solution mockups and design iterations'
       }
     },
@@ -103,7 +103,7 @@ export const apploi: CaseStudy = {
       },
       layout: 'full-width',
       image: {
-        src: '/case-studies/apploi/impact.png',
+        src: '/images/apploi/impact.png',
         alt: 'Impact metrics and results'
       }
     }
