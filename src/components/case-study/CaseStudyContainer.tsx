@@ -106,7 +106,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentFrame}
-                    className="h-full w-full flex flex-col"
+                    className="flex-1 min-h-0 w-full flex flex-col"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -134,7 +134,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                         </div>
                       )}
                     </div>
-                    <div className="w-full flex-none flex justify-between items-center mt-8">
+                    <div className="w-full flex-none flex justify-between items-center mt-8 pb-4">
                       {currentFrame > 0 && (
                         <button 
                           onClick={() => setCurrentFrame(prev => prev - 1)}
