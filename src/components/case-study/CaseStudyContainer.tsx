@@ -101,7 +101,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
             <div className="relative w-full h-full flex flex-col">
               <div
                 ref={containerRef}
-                className="w-full h-full flex-1 overflow-hidden flex flex-col"
+                className="w-full flex-1 min-h-0 overflow-hidden flex flex-col"
               >
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -113,8 +113,8 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                     transition={{ duration: 0.3 }}
                   >
                     <div className={frames[currentFrame].layout === 'three-column' 
-                      ? 'flex-1 min-h-0 w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8'
-                      : 'flex-1 min-h-0 w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8'
+                      ? 'flex-1 min-h-0 w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8 overflow-auto'
+                      : 'flex-1 min-h-0 w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8 overflow-auto'
                     }>
                       <Frame 
                         frame={frames[currentFrame]} 
