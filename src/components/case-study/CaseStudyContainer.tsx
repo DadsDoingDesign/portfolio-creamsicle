@@ -91,14 +91,14 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
       <AnimatePresence mode="wait">
         <motion.div 
           key={isReading ? 'content' : 'preview'}
-          className="h-full w-full"
+          className="flex-1 min-h-0 w-full flex flex-col"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
           {isReading ? (
-            <div className="relative w-full h-full flex flex-col">
+            <div className="w-full h-full flex flex-col">
               <div
                 ref={containerRef}
                 className="w-full flex-1 min-h-0 overflow-hidden flex flex-col"
@@ -106,15 +106,15 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentFrame}
-                    className="flex-1 min-h-0 w-full flex flex-col"
+                    className="w-full flex-1 min-h-0 flex flex-col"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
                     <div className={frames[currentFrame].layout === 'three-column' 
-                      ? 'flex-1 min-h-0 w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8 overflow-auto'
-                      : 'flex-1 min-h-0 w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8 overflow-auto'
+                      ? 'w-full flex-1 min-h-0 grid grid-cols-1 md:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8 overflow-auto'
+                      : 'w-full flex-1 min-h-0 grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8 overflow-auto'
                     }>
                       <Frame 
                         frame={frames[currentFrame]} 

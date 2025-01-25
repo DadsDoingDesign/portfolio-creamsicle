@@ -11,7 +11,7 @@ export default function Frame({ frame, isFirstFrame, className = '' }: FrameProp
   const { content, image, title, layout = 'full-width' } = frame;
 
   const renderContent = () => (
-    <div className={`w-full flex-1 space-y-10 ${className}`}>
+    <div className={`w-full space-y-10 ${className}`}>
       {isFirstFrame ? (
         <h1 className="text-4xl font-bold text-white">{title}</h1>
       ) : (
