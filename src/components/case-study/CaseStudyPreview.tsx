@@ -1,6 +1,6 @@
 'use client';
 
-import { Project } from '@/lib/data';
+import { Project, projects } from '@/lib/data';
 import { CaseStudyFrame } from '@/types/case-study';
 import CaseStudyContainer from './CaseStudyContainer';
 
@@ -13,5 +13,5 @@ interface CaseStudyPreviewProps {
 }
 
 export default function CaseStudyPreview(props: CaseStudyPreviewProps) {
-  return <CaseStudyContainer {...props} />;
+  return <CaseStudyContainer {...props} caseStudies={projects} />;
 }
