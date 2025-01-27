@@ -78,13 +78,13 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
   return (
     <motion.div className="h-full w-full">
       {isOpen && (
-        <div className="w-full h-full grid grid-rows-[auto_1fr_auto]">
-          <Navigation isViewingCaseStudy={isReading} onBack={handleBack} />
+        <div className="w-full h-full grid grid-rows-[auto_minmax(0,1fr)_auto]">
+          <Navigation className="row-start-1" isViewingCaseStudy={isReading} onBack={handleBack} />
           
           <AnimatePresence mode="wait">
             <motion.div 
               key={isReading ? 'content' : 'preview'}
-              className="w-full h-full"
+              className="row-start-2 relative overflow-hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -94,7 +94,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentFrame}
-                    className="w-full h-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8 overflow-auto"
+                    className="absolute inset-0 grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -103,24 +103,26 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                     <Frame 
                       frame={frames[currentFrame]} 
                       isFirstFrame={currentFrame === 0}
-                      className={frames[currentFrame].layout === 'three-column' ? 'col-span-full' : ''}
+                      className={frames[currentFrame].layout === 'three-column' ? 'col-span-full overflow-auto' : 'overflow-auto'}
                     />
                     {frames[currentFrame].image && frames[currentFrame].layout !== 'three-column' && (
-                      <div className="col-span-1 md:col-span-1 xl:col-start-2 xl:col-span-2">
-                        <Image
-                          src={frames[currentFrame].image.src}
-                          alt={frames[currentFrame].image.alt}
-                          width={1920}
-                          height={1080}
-                          className="w-auto h-auto max-h-[80%] object-contain"
-                          priority={currentFrame === 0}
-                        />
+                      <div className="col-span-1 md:col-span-1 xl:col-start-2 xl:col-span-2 flex items-center justify-center">
+                        <div className="max-h-[600px] w-full flex items-center justify-center">
+                          <Image
+                            src={frames[currentFrame].image.src}
+                            alt={frames[currentFrame].image.alt}
+                            width={1920}
+                            height={1080}
+                            className="max-w-full max-h-full w-auto h-auto object-contain"
+                            priority={currentFrame === 0}
+                          />
+                        </div>
                       </div>
                     )}
                   </motion.div>
                 </AnimatePresence>
               ) : (
-                <div className="h-full w-full flex items-center">
+                <div className="absolute inset-0 flex items-center">
                   <div className="w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] gap-20 items-center">
                     <div className="w-full space-y-8">
                       <h1 className="text-4xl font-bold text-white">{project.title}</h1>
@@ -137,14 +139,16 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                     </div>
                     {frames[0]?.image && (
                       <div className="flex items-center justify-center w-full">
-                        <Image
-                          src={frames[0].image.src}
-                          alt={frames[0].image.alt}
-                          width={1920}
-                          height={1080}
-                          className="max-h-[400px] sm:max-h-[600px] md:max-h-[700px] lg:max-h-[800px] w-auto h-auto object-contain"
-                          priority
-                        />
+                        <div className="max-h-[600px] w-full flex items-center justify-center">
+                          <Image
+                            src={frames[0].image.src}
+                            alt={frames[0].image.alt}
+                            width={1920}
+                            height={1080}
+                            className="max-w-full max-h-full w-auto h-auto object-contain"
+                            priority
+                          />
+                        </div>
                       </div>
                     )}
                   </div>
@@ -153,7 +157,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
             </motion.div>
           </AnimatePresence>
 
-          <div className="w-full py-4 flex justify-between items-center">
+          <div className="row-start-3 py-4 flex justify-between items-center">
             {isReading && (
               <>
                 {currentFrame > 0 && (
