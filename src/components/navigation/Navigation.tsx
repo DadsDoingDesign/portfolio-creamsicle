@@ -35,7 +35,7 @@ export default function Navigation({ isViewingCaseStudy, onBack, className }: Na
       <div className="flex items-center gap-4">
         {/* Logo */}
         {isViewingCaseStudy ? (
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 w-full">
             <button
               onClick={onBack}
               className="flex items-center gap-2 text-amber-400 hover:text-amber-500 transition-colors"
@@ -54,8 +54,6 @@ export default function Navigation({ isViewingCaseStudy, onBack, className }: Na
               </svg>
               Previous
             </button>
-            <div className="flex-1 border-t border-amber-400" />
-            <h2 className="text-2xl font-semibold text-white">Preview</h2>
             <div className="flex-1 border-t border-amber-400" />
           </div>
         ) : (

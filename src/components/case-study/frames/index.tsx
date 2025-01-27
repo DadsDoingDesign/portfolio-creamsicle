@@ -85,25 +85,34 @@ export default function Frame({ frame, isFirstFrame, className = '' }: FrameProp
 
   if (layout === 'three-column' && content.sections) {
     return (
-      <div className={`w-full grid grid-cols-1 md:grid-cols-3 gap-8 ${className}`}>
-        {content.sections.map((section, index) => (
-          <div key={index} className="space-y-4 bg-background-secondary p-6 rounded-lg h-fit">
-            {section.heading && (
+      <div className="space-y-8">
+        <h2 className="text-4xl font-bold text-white">{title}</h2>
+        
+        <div className={`w-full grid grid-cols-1 md:grid-cols-3 gap-8 ${className}`}>
+          {content.sections.map((section, index) => (
+            <div key={index} className="space-y-4 bg-background-secondary p-6 rounded-lg h-fit">
               <h3 className="text-xl font-semibold text-orange-400">
                 {section.heading}
               </h3>
-            )}
-            {section.text && (
-              <p className="text-gray-300">{section.text}</p>
-            )}
-            <div className="border-t border-amber-400 my-4" />
-            <p className="text-base font-medium text-amber-400">
-              {index === 0 && "% of users retained"}
-              {index === 1 && "% of loans defaulted"}
-              {index === 2 && "# of loan decline support tickets"}
-            </p>
-          </div>
-        ))}
+              <p className="text-lg text-gray-300">{section.text}</p>
+              <div className="border-t border-amber-400 my-4" />
+              <h3 className="text-base font-medium text-amber-400">
+                {index === 0 && "% of users retained"}
+                {index === 1 && "% of loans defaulted"}
+                {index === 2 && "# of loan decline support tickets"}
+              </h3>
+            </div>
+          ))}
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-base font-medium text-amber-400">How did we set these metrics?</h3>
+          <ul className="list-disc list-inside space-y-2">
+            <li className="text-lg text-gray-300">Users voice there concerns in reviews, to customer support, and during interviews</li>
+            <li className="text-lg text-gray-300">The business metrics are set during leadership meetings to align with investors</li>
+            <li className="text-lg text-gray-300">Product works cross team to determine what is indicative of a good experience</li>
+          </ul>
+        </div>
       </div>
     );
   }

@@ -94,7 +94,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentFrame}
-                    className="absolute inset-0 grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8 px-20"
+                    className="absolute inset-0 grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] xl:grid-cols-[minmax(0,400px)_repeat(2,1fr)] gap-8 px-40"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -123,7 +123,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                   </motion.div>
                 </AnimatePresence>
               ) : (
-                <div className="absolute inset-0 flex items-center">
+                <div className="absolute inset-0 flex items-center px-40">
                   <div className="w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] gap-20 items-center">
                     <div className="w-full space-y-8">
                       <h1 className="text-4xl font-bold text-white">{project.title}</h1>
@@ -160,26 +160,9 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
           </AnimatePresence>
 
           <div className="row-start-3 py-4 flex justify-between items-center">
-            {isReading && (
-              <>
-                {currentFrame > 0 && (
-                  <button 
-                    onClick={() => setCurrentFrame(prev => prev - 1)}
-                    className="text-amber-400 hover:text-amber-500 transition-colors"
-                  >
-                    Previous section
-                  </button>
-                )}
-                {currentFrame < frames.length - 1 && (
-                  <button
-                    onClick={() => setCurrentFrame(prev => prev + 1)}
-                    className="flex flex-col items-end text-amber-400 hover:text-amber-500 transition-colors ml-auto"
-                  >
-                    <h2 className="font-medium">{frames[currentFrame + 1]?.title}</h2>
-                  </button>
-                )}
-              </>
-            )}
+            <span className="text-amber-400">Previous section</span>
+            <div className="flex-1 mx-8 border-t border-amber-400" />
+            <span className="text-amber-400">Testing user motivations</span>
           </div>
         </div>
       )}
