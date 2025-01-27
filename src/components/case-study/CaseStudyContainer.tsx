@@ -26,6 +26,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
   const [currentFrame, setCurrentFrame] = useState(0);
   const [isReading, setIsReading] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [bottomNavAnimated, setBottomNavAnimated] = useState(false);
 
   useEffect(() => {
     if (!isOpen) {
@@ -88,7 +89,10 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ 
+                duration: 0.3,
+                delay: isReading && !bottomNavAnimated ? 0.3 : 0 
+              }}
             >
               {isReading ? (
                 <AnimatePresence mode="wait">
@@ -159,9 +163,18 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
             </motion.div>
           </AnimatePresence>
 
-          <div className="row-start-3 py-4 flex justify-between items-center">
+          <AnimatePresence mode="wait">
             {isReading && (
-              <>
+              <motion.div 
+                className="row-start-3 py-4 px-20 flex justify-between items-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                onAnimationComplete={() => {
+                  setBottomNavAnimated(true);
+                }}
+              >
                 {currentFrame > 0 && (
                   <button 
                     onClick={() => setCurrentFrame(prev => prev - 1)}
@@ -179,9 +192,9 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                     <h2 className="font-medium">{frames[currentFrame + 1]?.title}</h2>
                   </button>
                 )}
-              </>
+              </motion.div>
             )}
-          </div>
+          </AnimatePresence>
         </div>
       )}
     </motion.div>

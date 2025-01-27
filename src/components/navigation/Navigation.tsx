@@ -28,9 +28,8 @@ export default function Navigation({ isViewingCaseStudy, onBack, className }: Na
   return (
     <motion.nav
       className={`w-full flex justify-between items-center pb-4 md:pb-6 lg:pb-10 ${className || ''}`}
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.4, delay: 1, ease: "linear" }}
     >
       <div className="flex items-center gap-4">
         {/* Logo */}
@@ -52,7 +51,7 @@ export default function Navigation({ isViewingCaseStudy, onBack, className }: Na
               >
                 <polyline points="15 18 9 12 15 6" />
               </svg>
-              Previous
+              Back
             </button>
             <div className="flex-1 border-t border-amber-400" />
           </div>
