@@ -14,6 +14,7 @@ interface CaseStudyContainerProps {
   isOpen: boolean;
   onClose: () => void;
   onViewCaseStudy?: (viewing: boolean) => void;
+  caseStudies: Project[];
 }
 
 const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
@@ -21,7 +22,8 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
   frames,
   isOpen,
   onClose,
-  onViewCaseStudy
+  onViewCaseStudy,
+  caseStudies
 }) => {
   const [currentFrame, setCurrentFrame] = useState(0);
   const [isReading, setIsReading] = useState(false);
@@ -75,6 +77,9 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
       onClose();
     }
   };
+
+  const isLastFrame = currentFrame === frames.length - 1;
+  const nextCaseStudy = isLastFrame ? caseStudies.find(cs => cs.id === 'apploi') : null;
 
   return (
     <motion.div className="h-full w-full">
@@ -178,18 +183,63 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                 {currentFrame > 0 && (
                   <button 
                     onClick={() => setCurrentFrame(prev => prev - 1)}
-                    className="text-amber-400 hover:text-amber-500 transition-colors"
+                    className="flex items-center gap-2 text-amber-400 hover:text-amber-500 transition-colors"
                   >
+                    <svg
+                      className="w-5 h-5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M12 19V5M5 12l7-7 7 7"/>
+                    </svg>
                     Previous section
                   </button>
                 )}
                 <div className="flex-1 mx-8 border-t border-amber-400" />
-                {currentFrame < frames.length - 1 && (
+                {!isLastFrame && currentFrame < frames.length - 1 && (
                   <button
                     onClick={() => setCurrentFrame(prev => prev + 1)}
-                    className="text-amber-400 hover:text-amber-500 transition-colors"
+                    className="flex items-center gap-2 text-amber-400 hover:text-amber-500 transition-colors"
                   >
                     <h2 className="font-medium">{frames[currentFrame + 1]?.title}</h2>
+                    <svg
+                      className="w-5 h-5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                  </button>
+                )}
+                {isLastFrame && nextCaseStudy && (
+                  <button
+                    onClick={() => {
+                      // Handle next case study navigation
+                      onClose();
+                      // Add logic to navigate to next case study
+                    }}
+                    className="flex items-center gap-2 text-orange-400 hover:text-orange-500 transition-colors"
+                  >
+                    <span>Next Case Study: {nextCaseStudy.title}</span>
+                    <svg
+                      className="w-5 h-5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
                   </button>
                 )}
               </motion.div>

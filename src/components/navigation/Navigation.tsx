@@ -12,7 +12,7 @@ interface NavigationProps {
   className?: string;
 }
 
-export default function Navigation({ isViewingCaseStudy, onBack, className }: NavigationProps) {
+const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: NavigationProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
@@ -26,51 +26,49 @@ export default function Navigation({ isViewingCaseStudy, onBack, className }: Na
   };
 
   return (
-    <motion.nav
-      className={`w-full flex justify-between items-center pb-4 md:pb-6 lg:pb-10 ${className || ''}`}
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 1 }}
+    <motion.div 
+      className={`w-full flex justify-between items-center px-8 py-4 ${className}`}
     >
-      <div className="flex items-center gap-4">
-        {/* Logo */}
-        {isViewingCaseStudy ? (
-          <div className="flex items-center gap-4 w-full">
-            <button
-              onClick={onBack}
-              className="flex items-center gap-2 text-amber-400 hover:text-amber-500 transition-colors"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <polyline points="15 18 9 12 15 6" />
-              </svg>
-              Back
-            </button>
-            <div className="flex-1 border-t border-amber-400" />
-          </div>
-        ) : (
-          <button 
-            onClick={handleLogoClick}
-            className="relative w-10 h-10 cursor-pointer hover:opacity-80 transition-opacity"
+      {isViewingCaseStudy ? (
+        <button
+          onClick={onBack}
+          className="flex items-center gap-2 text-amber-400 hover:text-amber-500 transition-colors"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <Image
-              src="/dendenlogo.svg"
-              alt="DadsDoingDesign Logo"
-              fill
-              className="object-contain"
-            />
-          </button>
-        )}
-        {/* Navigation links hidden until content is ready */}
-      </div>
-
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+          Back
+        </button>
+      ) : (
+        <button 
+          onClick={handleLogoClick}
+          className="relative w-10 h-10 cursor-pointer hover:opacity-80 transition-opacity"
+        >
+          <Image
+            src="/dendenlogo.svg"
+            alt="DadsDoingDesign Logo"
+            fill
+            className="object-contain"
+          />
+        </button>
+      )}
+      {onBack && (
+        <button 
+          onClick={onBack}
+          className="text-amber-400 hover:text-amber-500 transition-colors"
+        >
+          Previous
+        </button>
+      )}
       <div className="hidden md:flex items-center gap-6">
         {/* Social Links */}
         <div className="flex items-center gap-4">
@@ -202,6 +200,8 @@ export default function Navigation({ isViewingCaseStudy, onBack, className }: Na
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </motion.div>
   );
-}
+};
+
+export default Navigation;
