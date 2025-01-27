@@ -9,9 +9,10 @@ import { useState } from 'react';
 interface NavigationProps {
   isViewingCaseStudy?: boolean;
   onBack?: () => void;
+  className?: string;
 }
 
-export default function Navigation({ isViewingCaseStudy, onBack }: NavigationProps) {
+export default function Navigation({ isViewingCaseStudy, onBack, className }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
@@ -26,6 +27,7 @@ export default function Navigation({ isViewingCaseStudy, onBack }: NavigationPro
 
   return (
     <motion.nav
+      className={className}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4, delay: 1, ease: "linear" }}
