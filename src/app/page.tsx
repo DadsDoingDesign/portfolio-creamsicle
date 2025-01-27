@@ -4,10 +4,11 @@ import { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Hero } from '@/components/hero/Hero';
 import CaseStudyPreview from '@/components/case-study/CaseStudyPreview';
-import { umba } from '../lib/case-studies/umba';
-import { apploi } from '../lib/case-studies/apploi';
+import { umba, toProject } from '@/lib/case-studies/umba';
+import { apploi } from '@/lib/case-studies/apploi';
 
-const projects = [umba, apploi];
+const caseStudies = [umba, apploi];
+const projects = caseStudies.map(toProject);
 
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -106,11 +107,12 @@ export default function Home() {
                   className="h-full w-full"
                 >
                   <CaseStudyPreview
-                    project={project}
-                    frames={project.frames}
+                    project={toProject(project)}
+                    frames={toProject(project).frames}
                     isOpen={true}
                     onClose={() => setSelectedProject(null)}
                     onViewCaseStudy={handleViewCaseStudy}
+                    caseStudies={projects}
                   />
                 </motion.div>
               ))}

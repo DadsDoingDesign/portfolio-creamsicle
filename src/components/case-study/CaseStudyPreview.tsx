@@ -1,6 +1,6 @@
 'use client';
 
-import { Project, projects } from '@/lib/data';
+import { Project } from '@/lib/data';
 import { CaseStudyFrame } from '@/types/case-study';
 import CaseStudyContainer from './CaseStudyContainer';
 
@@ -10,8 +10,9 @@ interface CaseStudyPreviewProps {
   isOpen: boolean;
   onClose: () => void;
   onViewCaseStudy?: (viewing: boolean) => void;
+  caseStudies: Project[];
 }
 
 export default function CaseStudyPreview(props: CaseStudyPreviewProps) {
-  return <CaseStudyContainer {...props} caseStudies={projects} />;
+  return <CaseStudyContainer {...props} />;
 }
