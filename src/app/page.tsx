@@ -4,11 +4,17 @@ import { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Hero } from '@/components/hero/Hero';
 import CaseStudyPreview from '@/components/case-study/CaseStudyPreview';
-import * as caseStudies from '@/lib/case-studies';
+import { umba } from '@/lib/case-studies/umba';
+import { apploi } from '@/lib/case-studies/apploi';
 import { toProject } from '@/lib/utils/case-study';
 
-const studies = Object.values(caseStudies);
+// Debug logging
+console.log('Case Studies Module:', { umba, apploi });
+// Define case studies in specific order
+const studies = [umba, apploi];
+console.log('Studies Array:', studies);
 const projects = studies.map(toProject);
+console.log('Converted Projects:', projects);
 
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -107,8 +113,8 @@ export default function Home() {
                   className="h-full w-full"
                 >
                   <CaseStudyPreview
-                    project={toProject(project)}
-                    frames={toProject(project).frames}
+                    project={project}
+                    frames={project.frames}
                     isOpen={true}
                     onClose={() => setSelectedProject(null)}
                     onViewCaseStudy={handleViewCaseStudy}

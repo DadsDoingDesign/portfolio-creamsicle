@@ -9,7 +9,18 @@ export function toProject(caseStudy: CaseStudy): Project {
       ...frame,
       content: {
         ...frame.content,
-        sections: frame.content.sections?.filter((section): section is ContentSection => 'heading' in section)
+        sections: frame.content.sections?.map(section => {
+          if ('heading' in section) {
+            // Preserve ContentSection as is
+            return section;
+          }
+          // Convert BulletPointHeader to ContentSection format
+          return {
+            heading: '',  // Empty heading for bullet point headers
+            text: '',    // Empty text for bullet point headers
+            subtitle: section.subtitle // Preserve the subtitle
+          };
+        })
       }
     }))
   };
