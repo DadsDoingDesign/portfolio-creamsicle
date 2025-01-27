@@ -9,8 +9,8 @@ export interface Timeline {
 }
 
 export interface ContentSection {
-  heading: string;
-  text: string;
+  heading?: string;
+  text?: string;
   subtitle?: string;
 }
 

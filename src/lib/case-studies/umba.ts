@@ -186,6 +186,35 @@ export const umba: CaseStudy = {
       }
     },
     {
+      type: 'impact',
+      title: "The results",
+      layout: 'three-column',
+      content: {
+        sections: [
+          {
+            heading: "Retention",
+            text: "We see a 40% increase in users who keep the app after loan decline."
+          },
+          {
+            heading: "Feature adoption",
+            text: "Users who complete the rewards program are 3x more likely to use other features."
+          },
+          {
+            heading: "Loan eligibility",
+            text: "20% of users who complete the rewards program become eligible for a loan."
+          },
+          {
+            subtitle: "How did we launch & validate?"
+          }
+        ],
+        bulletPoints: [
+          "Released in stages of users by 10%, 30%, 100%",
+          "Monitored user feedback and support tickets",
+          "Tracked key metrics: retention, feature adoption, loan eligibility"
+        ]
+      }
+    },
+    {
       type: 'metrics',
       title: "Halved losses for the month and planned for long term growth",
       layout: 'three-column',
@@ -205,12 +234,11 @@ export const umba: CaseStudy = {
             heading: "Product impact",
             text: "CE & Product set shared metrics that aligned our teams",
             subtitle: "2 week ticket backlog cut to 1 day"
+          },
+          {
+            subtitle: "How did we launch & validate?"
           }
         ],
-        h3Style: {  
-          color: 'amber-400',
-          heading: "How did we launch & validate?"
-        },
         bulletPoints: [
           "Released in stages of users by 10%, 30%, 100%",
           "Worked with finance to set reward amounts relative to average acquisition & retention costs",
@@ -219,4 +247,6 @@ export const umba: CaseStudy = {
       }
     }
   ]
-}
+};
+
+export default umba;

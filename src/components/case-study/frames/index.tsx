@@ -88,7 +88,7 @@ export default function Frame({ frame, isFirstFrame, className = '' }: FrameProp
         <h2 className="text-4xl font-bold text-white">{title}</h2>
         <div className="min-h-0 flex flex-col">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-8">
-            {content.sections.map((section, index) => (
+            {content.sections.filter(section => section.heading).map((section, index) => (
               <div key={index} className="flex flex-col space-y-4">
                 {section.heading && (
                   <h3 className="text-xl font-semibold text-orange-400">
@@ -104,12 +104,10 @@ export default function Frame({ frame, isFirstFrame, className = '' }: FrameProp
 
           {content.bulletPoints && (
             <div className="mt-8">
-              {content.h3Style && (
-                <span className={`text-${content.h3Style.color}`}>
-                  <h3 className="text-base font-medium mb-4">
-                    {content.h3Style.heading}
-                  </h3>
-                </span>
+              {content.sections?.find(s => s.subtitle) && (
+                <h3 className="text-base font-medium text-amber-400 mb-4">
+                  {content.sections.find(s => s.subtitle)?.subtitle}
+                </h3>
               )}
               <ul className="list-disc list-inside space-y-2">
                 {content.bulletPoints.map((point, index) => (
