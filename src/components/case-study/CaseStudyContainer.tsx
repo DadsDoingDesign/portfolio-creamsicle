@@ -141,8 +141,8 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                         <p className="text-gray-300">{frames[0].content.sections[0].text}</p>
                       )}
                       <button
-                        onClick={handleReadCaseStudy}
-                        className="w-fit px-6 py-3 border-2 border-amber-400 text-amber-400 rounded-lg hover:bg-amber-500 hover:border-amber-500 hover:text-white transition-colors"
+                        onClick={() => setIsReading(true)}
+                        className="text-amber-400 hover:text-background-primary transition-colors duration-200"
                       >
                         Read Case Study
                       </button>

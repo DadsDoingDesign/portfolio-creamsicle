@@ -86,19 +86,40 @@ export default function Frame({ frame, isFirstFrame, className = '' }: FrameProp
     return (
       <div className="w-full h-full space-y-8 col-span-full">
         <h2 className="text-4xl font-bold text-white">{title}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 h-full">
-          {content.sections.map((section, index) => (
-            <div key={index} className="flex flex-col justify-between h-full space-y-4">
-              {section.heading && (
-                <h3 className="text-xl font-semibold text-orange-400">
-                  {section.heading}
-                </h3>
+        <div className="min-h-0 flex flex-col">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-8">
+            {content.sections.map((section, index) => (
+              <div key={index} className="flex flex-col space-y-4">
+                {section.heading && (
+                  <h3 className="text-xl font-semibold text-orange-400">
+                    {section.heading}
+                  </h3>
+                )}
+                {section.text && (
+                  <p className="text-lg text-gray-300">{section.text}</p>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {content.bulletPoints && (
+            <div className="mt-8">
+              {content.h3Style && (
+                <span className={`text-${content.h3Style.color}`}>
+                  <h3 className="text-base font-medium mb-4">
+                    {content.h3Style.heading}
+                  </h3>
+                </span>
               )}
-              {section.text && (
-                <p className="text-lg text-gray-300">{section.text}</p>
-              )}
+              <ul className="list-disc list-inside space-y-2">
+                {content.bulletPoints.map((point, index) => (
+                  <li key={index} className="text-lg text-gray-300">
+                    {point}
+                  </li>
+                ))}
+              </ul>
             </div>
-          ))}
+          )}
         </div>
       </div>
     );

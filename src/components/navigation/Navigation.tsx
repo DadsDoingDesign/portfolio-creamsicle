@@ -35,8 +35,7 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
           className="flex items-center gap-2 text-amber-400 hover:text-amber-500 transition-colors"
         >
           <svg
-            width="20"
-            height="20"
+            className="w-5 h-5"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -44,7 +43,7 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
             strokeLinecap="round"
             strokeLinejoin="round"
           >
-            <polyline points="15 18 9 12 15 6" />
+            <path d="M20 12H4M4 12l8-8M4 12l8 8" />
           </svg>
           Back
         </button>
@@ -59,14 +58,6 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
             fill
             className="object-contain"
           />
-        </button>
-      )}
-      {onBack && (
-        <button 
-          onClick={onBack}
-          className="text-amber-400 hover:text-amber-500 transition-colors"
-        >
-          Previous
         </button>
       )}
       <div className="hidden md:flex items-center gap-6">

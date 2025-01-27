@@ -52,17 +52,17 @@ export const umba: CaseStudy = {
           {
             heading: "What was the negative impact?",
             text: "We see 70% of users deleting the app after a loan decline."
-          },
-          {
-            heading: "What could be happening?",
-            text: ""
           }
         ],
+        h3Style: {  
+          color: 'amber-400',
+          heading: "What could be happening?"
+        },
         bulletPoints: [
           "Graphic is frustrating to users",
           "Users rarely have a second account",
           "Unclear what to do to qualify"
-        ]
+        ]     
       },
       layout: 'left-image',
       image: {
@@ -89,6 +89,10 @@ export const umba: CaseStudy = {
             text: "Build and keep trust with users through reliable service."
           }
         ],
+        h3Style: {  
+          color: 'amber-400',
+          heading: "How did we set these metrics?"
+        },
         bulletPoints: [
           "Users voice there concerns in reviews, to customer support, and during interviews",
           "The business metrics are set during leadership meetings to align with investors",
@@ -110,11 +114,11 @@ export const umba: CaseStudy = {
             heading: "What were the results",
             text: "We see 20% of users completed other feature flows such as bill pay & buying airtime."
           },
-          {
-            heading: "What did we learn?",
-            text: ""
-          }
         ],
+        h3Style: {  
+          color: 'amber-400',
+          heading: "What did we learn?"
+        },
         bulletPoints: [
           "Users are interested in becoming eligible",
           "Not all users engage with the same features",
@@ -140,11 +144,11 @@ export const umba: CaseStudy = {
             heading: "But we were dropping the ball",
             text: "The current 'rewards' tab was nothing more than analytics on most likely empty data. No wonder users deleted the app afterwards."
           },
-          {
-            heading: "What's the opportunity?",
-            text: ""
-          }
         ],
+        h3Style: {  
+          color: 'amber-400',
+          heading: "What's the opportunity?"
+        },
         bulletPoints: [
           "We have a clear user incentive",
           "We can utilize organic movement",
@@ -170,11 +174,11 @@ export const umba: CaseStudy = {
             heading: "Creating a symbiotic system",
             text: "Using the incentive of monetary rewards, I developed a First Time User Experience that exposes users to all features within Umba."
           },
-          {
-            heading: "What do we hope this accomplishes?",
-            text: ""
-          }
         ],
+        h3Style: {  
+          color: 'amber-400',
+          heading: "What do we hope this accomplishes?"
+        },
         bulletPoints: [
           "Creates user habits around banking features",
           "Leaves the users with a positive experience",
@@ -208,6 +212,10 @@ export const umba: CaseStudy = {
             subtitle: "2 week ticket backlog cut to 1 day"
           }
         ],
+        h3Style: {  
+          color: 'amber-400',
+          heading: "How did we launch & validate?"
+        },
         bulletPoints: [
           "Released in stages of users by 10%, 30%, 100%",
           "Worked with finance to set reward amounts relative to average acquisition & retention costs",
