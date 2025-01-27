@@ -87,20 +87,21 @@ export default function Frame({ frame, isFirstFrame, className = '' }: FrameProp
     return (
       <div className={`w-full grid grid-cols-1 md:grid-cols-3 gap-8 ${className}`}>
         {content.sections.map((section, index) => (
-          <div key={index} className="space-y-4 bg-gray-900/50 p-6 rounded-lg h-fit">
+          <div key={index} className="space-y-4 bg-background-secondary p-6 rounded-lg h-fit">
             {section.heading && (
               <h3 className="text-xl font-semibold text-orange-400">
                 {section.heading}
               </h3>
             )}
-            {section.subtitle && (
-              <h4 className="text-lg font-semibold text-amber-400">
-                {section.subtitle}
-              </h4>
-            )}
             {section.text && (
               <p className="text-gray-300">{section.text}</p>
             )}
+            <div className="border-t border-amber-400 my-4" />
+            <p className="text-base font-medium text-amber-400">
+              {index === 0 && "% of users retained"}
+              {index === 1 && "% of loans defaulted"}
+              {index === 2 && "# of loan decline support tickets"}
+            </p>
           </div>
         ))}
       </div>

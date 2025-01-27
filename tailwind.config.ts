@@ -13,6 +13,7 @@ export default {
         background: {
           primary: "#18181B",
           'inverse-primary': "#18181B",
+          secondary: "#27272A",
         },
         content: {
           'inverse-primary': "#FFFFFF",

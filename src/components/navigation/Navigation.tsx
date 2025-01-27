@@ -35,24 +35,29 @@ export default function Navigation({ isViewingCaseStudy, onBack, className }: Na
       <div className="flex items-center gap-4">
         {/* Logo */}
         {isViewingCaseStudy ? (
-          <button
-            onClick={onBack}
-            className="flex items-center gap-2 text-amber-400 hover:text-amber-500 transition-colors"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+          <div className="flex items-center gap-4">
+            <button
+              onClick={onBack}
+              className="flex items-center gap-2 text-amber-400 hover:text-amber-500 transition-colors"
             >
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-            Back
-          </button>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+              Previous
+            </button>
+            <div className="flex-1 border-t border-amber-400" />
+            <h2 className="text-2xl font-semibold text-white">Preview</h2>
+            <div className="flex-1 border-t border-amber-400" />
+          </div>
         ) : (
           <button 
             onClick={handleLogoClick}
