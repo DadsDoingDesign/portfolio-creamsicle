@@ -1,13 +1,24 @@
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { CaseStudyFrame } from '@/types/case-study';
+import { CaseStudyFrame, ContentSection, BulletPointHeader } from '@/types/case-study';
+
+// Type guard functions
+function isContentSection(section: ContentSection | BulletPointHeader): section is ContentSection {
+  return 'heading' in section;
+}
+
+function isBulletPointHeader(section: ContentSection | BulletPointHeader): section is BulletPointHeader {
+  return !('heading' in section);
+}
 
 interface FrameProps {
   frame: CaseStudyFrame;
   isFirstFrame?: boolean;
+  isVisible?: boolean;
   className?: string;
 }
 
-export default function Frame({ frame, isFirstFrame, className = '' }: FrameProps) {
+export default function Frame({ frame, isFirstFrame, isVisible = true, className = '' }: FrameProps) {
   const { content, image, title, layout = 'full-width' } = frame;
 
   const renderContent = () => (
@@ -19,24 +30,20 @@ export default function Frame({ frame, isFirstFrame, className = '' }: FrameProp
       )}
       
       <div className="space-y-16">
-        {content.sections?.map((section, index) => (
+        {content.sections?.filter(isContentSection).map((section, index) => (
           <div key={index} className="space-y-4">
-            {section.heading && (
-              <h3 className="text-xl font-semibold text-orange-400">
-                {section.heading}
-              </h3>
-            )}
-            {section.text && (
-              <p className="text-lg text-gray-300">{section.text}</p>
-            )}
+            <h3 className="text-xl font-semibold text-orange-400">
+              {section.heading}
+            </h3>
+            <p className="text-lg text-gray-300">{section.text}</p>
           </div>
         ))}
 
         {content.bulletPoints && (
           <div className="space-y-4">
-            {content.sections?.find(s => s.subtitle) && (
+            {content.sections?.find(isBulletPointHeader) && (
               <h3 className="text-base font-medium text-amber-400">
-                {content.sections.find(s => s.subtitle)?.subtitle}
+                {(content.sections.find(isBulletPointHeader) as BulletPointHeader).subtitle}
               </h3>
             )}
             <ul className="list-disc list-inside space-y-2">
@@ -88,25 +95,21 @@ export default function Frame({ frame, isFirstFrame, className = '' }: FrameProp
         <h2 className="text-4xl font-bold text-white">{title}</h2>
         <div className="min-h-0 flex flex-col">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-8">
-            {content.sections.filter(section => section.heading).map((section, index) => (
+            {content.sections.filter(isContentSection).map((section, index) => (
               <div key={index} className="flex flex-col space-y-4">
-                {section.heading && (
-                  <h3 className="text-xl font-semibold text-orange-400">
-                    {section.heading}
-                  </h3>
-                )}
-                {section.text && (
-                  <p className="text-lg text-gray-300">{section.text}</p>
-                )}
+                <h3 className="text-xl font-semibold text-orange-400">
+                  {section.heading}
+                </h3>
+                <p className="text-lg text-gray-300">{section.text}</p>
               </div>
             ))}
           </div>
 
           {content.bulletPoints && (
             <div className="mt-8">
-              {content.sections?.find(s => s.subtitle) && (
+              {content.sections?.find(isBulletPointHeader) && (
                 <h3 className="text-base font-medium text-amber-400 mb-4">
-                  {content.sections.find(s => s.subtitle)?.subtitle}
+                  {(content.sections.find(isBulletPointHeader) as BulletPointHeader).subtitle}
                 </h3>
               )}
               <ul className="list-disc list-inside space-y-2">

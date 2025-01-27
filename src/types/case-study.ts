@@ -9,9 +9,13 @@ export interface Timeline {
 }
 
 export interface ContentSection {
-  heading?: string;
-  text?: string;
+  heading: string;
+  text: string;
   subtitle?: string;
+}
+
+export interface BulletPointHeader {
+  subtitle: string;
 }
 
 export interface CaseStudyImage {
@@ -20,7 +24,7 @@ export interface CaseStudyImage {
 }
 
 export interface CaseStudyContent {
-  sections?: ContentSection[];
+  sections?: (ContentSection | BulletPointHeader)[];
   bulletPoints?: string[];
   team?: TeamMember[];
   timeline?: Timeline[];

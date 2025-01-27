@@ -1,12 +1,17 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
 import { Project } from '@/lib/data';
-import { CaseStudyFrame } from '@/types/case-study';
+import { CaseStudyFrame, ContentSection, BulletPointHeader } from '@/types/case-study';
 import Frame from './frames';
 import Navigation from '@/components/navigation/Navigation';
+
+// Type guard functions
+function isContentSection(section: ContentSection | BulletPointHeader): section is ContentSection {
+  return 'heading' in section;
+}
 
 interface CaseStudyContainerProps {
   project: Project;
@@ -64,19 +69,19 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
     };
   }, [isReading, currentFrame, frames.length, isScrolling]);
 
-  const handleReadCaseStudy = () => {
+  const handleReadCaseStudy = useCallback(() => {
     setIsReading(true);
     onViewCaseStudy?.(true);
-  };
+  }, [onViewCaseStudy]);
 
-  const handleBack = () => {
+  const handleBack = useCallback(() => {
     if (isReading) {
       setIsReading(false);
       onViewCaseStudy?.(false);
     } else {
       onClose();
     }
-  };
+  }, [isReading, onViewCaseStudy, onClose]);
 
   const isLastFrame = currentFrame === frames.length - 1;
   const nextCaseStudy = isLastFrame ? caseStudies.find(cs => cs.id === 'apploi') : null;
@@ -134,14 +139,13 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
               ) : (
                 <div className="absolute inset-0 flex items-center px-40">
                   <div className="w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] gap-20 items-center">
-                    <div className="w-full space-y-8">
-                      <h1 className="text-4xl font-bold text-white">{project.title}</h1>
-                      <p className="text-lg text-gray-300">{project.description}</p>
-                      {frames[0]?.content?.sections?.[0] && (
-                        <p className="text-gray-300">{frames[0].content.sections[0].text}</p>
+                    <div className="flex flex-col gap-4">
+                      <h1 className="text-4xl font-bold text-white">{frames[0].title}</h1>
+                      {frames[0].content.sections?.find(isContentSection)?.text && (
+                        <p className="text-gray-300">{frames[0].content.sections.find(isContentSection)?.text}</p>
                       )}
                       <button
-                        onClick={() => setIsReading(true)}
+                        onClick={handleReadCaseStudy}
                         className="text-amber-400 hover:text-background-primary transition-colors duration-200"
                       >
                         Read Case Study
