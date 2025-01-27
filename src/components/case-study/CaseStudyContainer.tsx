@@ -104,7 +104,40 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                 delay: isReading && !bottomNavAnimated ? 0.3 : 0 
               }}
             >
-              {isReading ? (
+              {!isReading ? (
+                <motion.div
+                  key="preview"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 flex items-center"
+                >
+                  <div className="w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] gap-20 items-center px-40">
+                    <div className="flex flex-col gap-4">
+                      <h1 className="text-4xl font-bold text-white">{frames[0].title}</h1>
+                      {frames[0].content.sections?.find(isContentSection)?.text && (
+                        <p className="text-gray-300">{frames[0].content.sections.find(isContentSection)?.text}</p>
+                      )}
+                      <div className="flex">
+                        <button
+                          onClick={() => setIsReading(true)}
+                          className="inline-flex px-4 py-2 border border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-background-primary transition-colors duration-200"
+                        >
+                          Read Case Study
+                        </button>
+                      </div>
+                    </div>
+                    <div className="relative aspect-video">
+                      <Image
+                        src={project.previewImage}
+                        alt={project.title}
+                        fill
+                        className="object-cover rounded-lg"
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+              ) : (
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentFrame}
@@ -136,38 +169,6 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                     )}
                   </motion.div>
                 </AnimatePresence>
-              ) : (
-                <div className="absolute inset-0 flex items-center px-40">
-                  <div className="w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] gap-20 items-center">
-                    <div className="flex flex-col gap-4">
-                      <h1 className="text-4xl font-bold text-white">{frames[0].title}</h1>
-                      {frames[0].content.sections?.find(isContentSection)?.text && (
-                        <p className="text-gray-300">{frames[0].content.sections.find(isContentSection)?.text}</p>
-                      )}
-                      <button
-                        onClick={handleReadCaseStudy}
-                        className="text-amber-400 hover:text-background-primary transition-colors duration-200"
-                      >
-                        Read Case Study
-                      </button>
-                    </div>
-                    {frames[0]?.image && (
-                      <div className="flex items-center justify-center w-full">
-                        <div className="relative max-h-[600px] w-full flex items-center justify-center">
-                          <Image
-                            src={frames[0].image.src}
-                            alt={frames[0].image.alt}
-                            width={1920}
-                            height={1080}
-                            className="w-auto h-auto max-w-full max-h-[600px] object-contain"
-                            style={{ objectFit: 'contain' }}
-                            priority
-                          />
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
               )}
             </motion.div>
           </AnimatePresence>

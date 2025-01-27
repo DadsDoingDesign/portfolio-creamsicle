@@ -22,7 +22,7 @@ export default function Frame({ frame, isFirstFrame, isVisible = true, className
   const { content, image, title, layout = 'full-width' } = frame;
 
   const renderContent = () => (
-    <div className={`w-full space-y-10 ${className}`}>
+    <div className={`w-full space-y-10 relative min-h-[600px] ${className}`}>
       {isFirstFrame ? (
         <h1 className="text-4xl font-bold text-white">{title}</h1>
       ) : (
@@ -40,15 +40,16 @@ export default function Frame({ frame, isFirstFrame, isVisible = true, className
         ))}
 
         {content.bulletPoints && (
-          <div className="space-y-4">
+          <div className="absolute bottom-0 left-0 right-0 space-y-4">
             {content.sections?.find(isBulletPointHeader) && (
               <h3 className="text-base font-medium text-amber-400">
                 {(content.sections.find(isBulletPointHeader) as BulletPointHeader).subtitle}
               </h3>
             )}
-            <ul className="list-disc list-inside space-y-2">
+            <ul className="list-none space-y-2">
               {content.bulletPoints.map((point, index) => (
-                <li key={index} className="text-lg text-gray-300">
+                <li key={index} className="text-lg text-gray-300 flex items-start">
+                  <span className="text-amber-400 mr-2">•</span>
                   {point}
                 </li>
               ))}
