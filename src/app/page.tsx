@@ -4,11 +4,11 @@ import { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Hero } from '@/components/hero/Hero';
 import CaseStudyPreview from '@/components/case-study/CaseStudyPreview';
-import { umba, toProject } from '@/lib/case-studies/umba';
-import { apploi } from '@/lib/case-studies/apploi';
+import * as caseStudies from '@/lib/case-studies';
+import { toProject } from '@/lib/utils/case-study';
 
-const caseStudies = [umba, apploi];
-const projects = caseStudies.map(toProject);
+const studies = Object.values(caseStudies);
+const projects = studies.map(toProject);
 
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
