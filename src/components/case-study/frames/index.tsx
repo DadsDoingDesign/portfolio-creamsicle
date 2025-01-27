@@ -26,23 +26,18 @@ export default function Frame({ frame, isFirstFrame, className = '' }: FrameProp
                 {section.heading}
               </h3>
             )}
-            {section.subtitle && (
-              <h4 className="text-lg font-semibold text-amber-400">
-                {section.subtitle}
-              </h4>
-            )}
             {section.text && (
-              <p className="text-gray-300">{section.text}</p>
+              <p className="text-lg text-gray-300">{section.text}</p>
             )}
           </div>
         ))}
 
         {content.bulletPoints && (
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-orange-400">Key Points</h3>
-            <ul className="space-y-2">
+            <h3 className="text-base font-medium text-amber-400">Key Points</h3>
+            <ul className="list-disc list-inside space-y-2">
               {content.bulletPoints.map((point, index) => (
-                <li key={index} className="text-gray-300">
+                <li key={index} className="text-lg text-gray-300">
                   {point}
                 </li>
               ))}
@@ -85,7 +80,7 @@ export default function Frame({ frame, isFirstFrame, className = '' }: FrameProp
 
   if (layout === 'three-column' && content.sections) {
     return (
-      <div className="space-y-8">
+      <div className="space-y-8 col-span-full">
         <h2 className="text-4xl font-bold text-white">{title}</h2>
         
         <div className={`w-full grid grid-cols-1 md:grid-cols-3 gap-8 ${className}`}>

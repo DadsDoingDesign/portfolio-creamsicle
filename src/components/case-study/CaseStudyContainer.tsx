@@ -103,7 +103,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                     <Frame 
                       frame={frames[currentFrame]} 
                       isFirstFrame={currentFrame === 0}
-                      className={frames[currentFrame].layout === 'three-column' ? 'col-span-full overflow-auto' : 'overflow-auto'}
+                      className={frames[currentFrame].layout === 'three-column' ? 'col-span-full' : 'overflow-auto'}
                     />
                     {frames[currentFrame].image && frames[currentFrame].layout !== 'three-column' && (
                       <div className="col-span-1 md:col-span-1 xl:col-start-2 xl:col-span-2 flex items-center justify-center">
@@ -160,9 +160,27 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
           </AnimatePresence>
 
           <div className="row-start-3 py-4 flex justify-between items-center">
-            <span className="text-amber-400">Previous section</span>
-            <div className="flex-1 mx-8 border-t border-amber-400" />
-            <span className="text-amber-400">Testing user motivations</span>
+            {isReading && (
+              <>
+                {currentFrame > 0 && (
+                  <button 
+                    onClick={() => setCurrentFrame(prev => prev - 1)}
+                    className="text-amber-400 hover:text-amber-500 transition-colors"
+                  >
+                    Previous section
+                  </button>
+                )}
+                <div className="flex-1 mx-8 border-t border-amber-400" />
+                {currentFrame < frames.length - 1 && (
+                  <button
+                    onClick={() => setCurrentFrame(prev => prev + 1)}
+                    className="text-amber-400 hover:text-amber-500 transition-colors"
+                  >
+                    <h2 className="font-medium">{frames[currentFrame + 1]?.title}</h2>
+                  </button>
+                )}
+              </>
+            )}
           </div>
         </div>
       )}
