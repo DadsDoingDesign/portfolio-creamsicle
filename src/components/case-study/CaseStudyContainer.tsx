@@ -107,13 +107,14 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                     />
                     {frames[currentFrame].image && frames[currentFrame].layout !== 'three-column' && (
                       <div className="col-span-1 md:col-span-1 xl:col-start-2 xl:col-span-2 flex items-center justify-center">
-                        <div className="max-h-[600px] w-full flex items-center justify-center">
+                        <div className="relative max-h-[600px] w-full flex items-center justify-center">
                           <Image
                             src={frames[currentFrame].image.src}
                             alt={frames[currentFrame].image.alt}
                             width={1920}
                             height={1080}
-                            className="max-w-full max-h-full w-auto h-auto object-contain"
+                            className="w-auto h-auto max-w-full max-h-[600px] object-contain"
+                            style={{ objectFit: 'contain' }}
                             priority={currentFrame === 0}
                           />
                         </div>
@@ -139,13 +140,14 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                     </div>
                     {frames[0]?.image && (
                       <div className="flex items-center justify-center w-full">
-                        <div className="max-h-[600px] w-full flex items-center justify-center">
+                        <div className="relative max-h-[600px] w-full flex items-center justify-center">
                           <Image
                             src={frames[0].image.src}
                             alt={frames[0].image.alt}
                             width={1920}
                             height={1080}
-                            className="max-w-full max-h-full w-auto h-auto object-contain"
+                            className="w-auto h-auto max-w-full max-h-[600px] object-contain"
+                            style={{ objectFit: 'contain' }}
                             priority
                           />
                         </div>
