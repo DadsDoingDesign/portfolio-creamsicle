@@ -34,11 +34,11 @@ export default function Frame({ frame, isFirstFrame, className = '' }: FrameProp
 
         {content.bulletPoints && (
           <div className="space-y-4">
-            <span className="text-amber-400">
-              <h3 className="text-base font-medium">
-                {content.sections?.find(s => s.subtitle)?.subtitle}
+            {content.sections?.find(s => s.subtitle) && (
+              <h3 className="text-base font-medium text-amber-400">
+                {content.sections.find(s => s.subtitle)?.subtitle}
               </h3>
-            </span>
+            )}
             <ul className="list-disc list-inside space-y-2">
               {content.bulletPoints.map((point, index) => (
                 <li key={index} className="text-lg text-gray-300">
