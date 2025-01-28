@@ -16,15 +16,15 @@ export const Hero = ({ onCaseStudiesClick }: HeroProps) => {
         <Navigation isViewingCaseStudy={false} />
       </NavigationContainer>
       
-      <ContentContainer className="flex-1 flex flex-col justify-center">
+      <ContentContainer className="layout-content--centered">
         <motion.h1 
-          className="display-large mb-12"
+          className="typography-title"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <motion.span 
-            className="accent-primary block mb-4"
+            className="typography-tagline typography-tagline--primary"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -32,7 +32,7 @@ export const Hero = ({ onCaseStudiesClick }: HeroProps) => {
             Create better products
           </motion.span>
           <motion.span 
-            className="accent-secondary block"
+            className="typography-tagline typography-tagline--secondary"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -43,7 +43,7 @@ export const Hero = ({ onCaseStudiesClick }: HeroProps) => {
         
         <motion.button
           onClick={onCaseStudiesClick}
-          className="w-fit label-large px-6 py-3 border accent-secondary-border accent-secondary accent-secondary-hover rounded-lg transition-all flex items-center gap-2"
+          className="button button--primary"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}

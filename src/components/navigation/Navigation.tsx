@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { ChevronDownIcon, ArrowTopRightOnSquareIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import { NavigationContainer } from '@/components/layout/containers';
+import clsx from 'clsx';
 
 interface NavigationProps {
   isViewingCaseStudy?: boolean;
@@ -31,12 +32,15 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
       <motion.div 
         layout
         initial={{ opacity: 1 }}
-        className={`w-full flex justify-between items-center px-8 py-4 ${className}`}
+        className={clsx(
+          'layout-navigation',
+          className
+        )}
       >
         {isViewingCaseStudy ? (
           <button
             onClick={onBack}
-            className="flex items-center gap-2 accent-secondary hover:text-amber-500 transition-colors"
+            className="button--nav-back"
           >
             <svg
               className="w-5 h-5"
@@ -52,13 +56,13 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
             Back
           </button>
         ) : (
-          <button onClick={handleLogoClick}>
+          <button onClick={handleLogoClick} className="button--nav-menu">
             <Image
-              src="/logo.png"
+              src="/logo.svg"
               alt="Logo"
-              width={48}
-              height={48}
-              className="w-12 h-12"
+              width={32}
+              height={32}
+              className="w-8 h-8"
             />
           </button>
         )}
@@ -69,7 +73,7 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
             <Link
               key={item.label}
               href={item.href}
-              className="label-large accent-secondary hover:text-amber-500 transition-colors"
+              className="button--nav-menu"
             >
               {item.label}
             </Link>
@@ -87,14 +91,13 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
 
         {/* Mobile Navigation */}
         <button
-          className="md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
+          className="button--nav-menu md:hidden"
         >
           {isMenuOpen ? (
-            <XMarkIcon className="w-6 h-6 accent-secondary" />
+            <XMarkIcon className="w-6 h-6" />
           ) : (
-            <Bars3Icon className="w-6 h-6 accent-secondary" />
+            <Bars3Icon className="w-6 h-6" />
           )}
         </button>
 
@@ -105,28 +108,30 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="absolute top-full left-0 w-full bg-background-secondary py-4 px-8 flex flex-col gap-4 md:hidden"
+              className="md:hidden"
             >
-              {menuItems.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="label-large accent-secondary hover:text-amber-500 transition-colors"
+              <div className="flex flex-col items-center gap-4 py-4">
+                {menuItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="button--nav-menu"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                <a
+                  href="https://github.com/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="label-large accent-secondary hover:text-amber-500 transition-colors flex items-center gap-1"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {item.label}
-                </Link>
-              ))}
-              <a
-                href="https://github.com/yourusername"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="label-large accent-secondary hover:text-amber-500 transition-colors flex items-center gap-1"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                GitHub
-                <ArrowTopRightOnSquareIcon className="w-4 h-4" />
-              </a>
+                  GitHub
+                  <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+                </a>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

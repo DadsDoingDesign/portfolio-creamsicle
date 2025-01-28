@@ -25,33 +25,31 @@ export default function Frame({ frame, isFirstFrame, isVisible = true, className
   const renderContent = () => (
     <FrameContainer className={`w-full space-y-10 ${className}`}>
       {isFirstFrame ? (
-        <h1 className="text-4xl font-bold">{title}</h1>
+        <h1 className="typography-title">{title}</h1>
       ) : (
-        <h2 className="text-4xl font-bold">{title}</h2>
+        <h2 className="typography-title">{title}</h2>
       )}
       
       <ContentContainer className="space-y-16">
         {content.sections?.filter(isContentSection).map((section, index) => (
           <div key={index} className="space-y-4">
-            <h3 className="accent-primary text-xl font-semibold">
+            <h3 className="typography-section-title typography-section-title--primary">
               {section.heading}
             </h3>
-            <p className="text-lg text-gray-300">{section.text}</p>
+            <p className="typography-body">{section.text}</p>
           </div>
         ))}
 
         {content.bulletPoints && (
           <div className="space-y-4">
             {content.sections?.find(isBulletPointHeader) && (
-              <h3 className="accent-secondary text-base font-medium">
+              <h3 className="typography-section-title typography-section-title--secondary">
                 {(content.sections.find(isBulletPointHeader) as BulletPointHeader).subtitle}
               </h3>
             )}
             <ul className="list-disc list-inside space-y-2">
               {content.bulletPoints.map((point, index) => (
-                <li key={index} className="text-lg text-gray-300">
-                  {point}
-                </li>
+                <li key={index} className="typography-body">{point}</li>
               ))}
             </ul>
           </div>
