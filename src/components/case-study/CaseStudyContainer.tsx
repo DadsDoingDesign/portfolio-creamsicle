@@ -96,16 +96,10 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
             <motion.div 
               key={isReading ? "reading" : "preview"}
               initial={{ opacity: 0 }}
-              animate={{ 
-                opacity: 1,
-                y: 0
-              }}
+              animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ 
-                duration: 0.5,
-                delay: isReading && !bottomNavAnimated ? 0.3 : 0 
-              }}
-              className="relative w-full h-full flex items-center"
+              transition={{ duration: 0.3 }}
+              className="w-full h-full flex items-center justify-center"
             >
               {!isReading ? (
                 <div className="w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] gap-20 items-center px-40">
