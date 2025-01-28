@@ -3,12 +3,15 @@
 import { motion } from 'framer-motion';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Navigation from '@/components/navigation/Navigation';
+import { Project } from '@/lib/data';
 
 interface HeroProps {
+  projects: Project[];
+  onSelectProject: (project: Project) => void;
   onCaseStudiesClick: () => void;
 }
 
-export const Hero = ({ onCaseStudiesClick }: HeroProps) => {
+export const Hero = ({ projects, onSelectProject, onCaseStudiesClick }: HeroProps) => {
   return (
     <>
       <div className="w-full flex-none">
@@ -50,6 +53,29 @@ export const Hero = ({ onCaseStudiesClick }: HeroProps) => {
           See Case Studies
           <ArrowRightIcon className="w-5 h-5" />
         </motion.button>
+        
+        <div className="max-w-4xl mx-auto px-4">
+          <h1 className="text-5xl font-bold mb-8">
+            Hi, I'm Deniz.
+            <br />
+            I design digital products
+            <br />
+            that solve real problems.
+          </h1>
+          <div className="space-y-6">
+            {projects.map((project) => (
+              <motion.button
+                key={project.id}
+                onClick={() => onSelectProject(project)}
+                className="group flex items-center gap-4 text-2xl text-gray-400 hover:text-white transition-colors"
+                whileHover={{ x: 20 }}
+              >
+                <ArrowRightIcon className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity" />
+                {project.title}
+              </motion.button>
+            ))}
+          </div>
+        </div>
       </motion.div>
     </>
   );
