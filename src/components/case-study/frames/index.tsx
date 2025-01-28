@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { CaseStudyFrame, ContentSection, BulletPointHeader } from '@/types/case-study';
+import { Project } from '@/lib/data';
 
 // Type guard functions
 function isContentSection(section: ContentSection | BulletPointHeader): section is ContentSection {
@@ -13,17 +14,28 @@ function isBulletPointHeader(section: ContentSection | BulletPointHeader): secti
 
 interface FrameProps {
   frame: CaseStudyFrame;
-  isFirstFrame?: boolean;
-  isVisible?: boolean;
+  onNext?: () => void;
+  onPrev?: () => void;
+  isFirst?: boolean;
+  isLast?: boolean;
+  nextCaseStudy?: Project | null;
   className?: string;
 }
 
-export default function Frame({ frame, isFirstFrame, isVisible = true, className = '' }: FrameProps) {
+export default function Frame({ 
+  frame, 
+  onNext, 
+  onPrev, 
+  isFirst = false, 
+  isLast = false,
+  nextCaseStudy,
+  className = '' 
+}: FrameProps) {
   const { content, image, title, layout = 'full-width' } = frame;
 
   const renderContent = () => (
     <div className={`w-full space-y-10 relative min-h-[600px] ${className}`}>
-      {isFirstFrame ? (
+      {isFirst ? (
         <h1 className="text-4xl font-bold text-white">{title}</h1>
       ) : (
         <h2 className="text-4xl font-bold text-white">{title}</h2>
@@ -130,6 +142,67 @@ export default function Frame({ frame, isFirstFrame, isVisible = true, className
   return (
     <div className={`h-full w-full flex flex-col ${className}`}>
       {renderContent()}
+      <div className="mt-12 flex justify-between items-center">
+        {!isFirst && onPrev && (
+          <button
+            onClick={onPrev}
+            className="flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors"
+          >
+            <svg
+              className="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Previous
+          </button>
+        )}
+
+        {!isLast && onNext && (
+          <button
+            onClick={onNext}
+            className="flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors ml-auto"
+          >
+            Next
+            <svg
+              className="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        )}
+
+        {isLast && nextCaseStudy && (
+          <button
+            onClick={onNext}
+            className="flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors ml-auto"
+          >
+            Next Case Study: {nextCaseStudy.title}
+            <svg
+              className="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        )}
+      </div>
     </div>
   );
 }

@@ -2,10 +2,10 @@
 
 import { useState, useCallback } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Hero } from '@/components/hero/Hero';
+import Hero from '@/components/hero/Hero';
 import { Project } from '@/lib/data';
 import { projects } from '@/lib/case-studies';
-import { CaseStudyPreview } from '@/components/case-study/CaseStudyPreview';
+import CaseStudyPreview from '@/components/case-study/CaseStudyPreview';
 import MainLayout from '@/components/layout/MainLayout';
 
 export default function Home() {
