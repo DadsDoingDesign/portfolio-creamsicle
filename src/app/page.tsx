@@ -105,22 +105,18 @@ export default function Home() {
                 <motion.div
                   key={project.id}
                   initial={{ opacity: 0 }}
-                  animate={{ 
+                  animate={{
                     opacity: currentIndex === index ? 1 : 0,
-                    pointerEvents: currentIndex === index ? 'auto' : 'none'
+                    transition: {
+                      duration: 0.5,
+                      delay: index * 0.1,
+                    },
                   }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
                   className="h-full w-full"
                 >
-                  <CaseStudyPreview
-                    project={project}
-                    frames={project.frames}
-                    isOpen={true}
-                    onClose={() => setSelectedProject(null)}
-                    onViewCaseStudy={handleViewCaseStudy}
-                    caseStudies={projects}
-                  />
+                  <CaseStudyPreview project={project} />
                 </motion.div>
               ))}
             </AnimatePresence>
