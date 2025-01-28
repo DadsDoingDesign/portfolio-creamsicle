@@ -146,7 +146,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                       )}
                       <button
                         onClick={handleReadCaseStudy}
-                        className="text-amber-400 hover:text-background-primary transition-colors duration-200"
+                        className="text-sm font-medium px-3 py-1.5 border border-amber-400 text-amber-400 rounded-lg hover:bg-amber-500 hover:border-amber-500 hover:text-black transition-colors"
                       >
                         Read Case Study
                       </button>
