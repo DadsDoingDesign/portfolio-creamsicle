@@ -1,144 +1,91 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Hero } from '@/components/hero/Hero';
-import CaseStudyPreview from '@/components/case-study/CaseStudyPreview';
-import { umba } from '@/lib/case-studies/umba';
-import { apploi } from '@/lib/case-studies/apploi';
-import { toProject } from '@/lib/utils/case-study';
 import { Project } from '@/lib/data';
-
-// Debug logging
-console.log('Case Studies Module:', { umba, apploi });
-// Define case studies in specific order
-const studies = [umba, apploi];
-console.log('Studies Array:', studies);
-const projects = studies.map(toProject);
-console.log('Converted Projects:', projects);
+import { projects } from '@/lib/case-studies';
+import { CaseStudyPreview } from '@/components/case-study/CaseStudyPreview';
+import MainLayout from '@/components/layout/MainLayout';
 
 export default function Home() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [showCaseStudies, setShowCaseStudies] = useState(false);
-  const [isViewingCaseStudy, setIsViewingCaseStudy] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isViewingCaseStudy, setIsViewingCaseStudy] = useState(false);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    let lastScrollTime = Date.now();
-    const scrollCooldown = 500; // ms between scroll actions
-
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      
-      // If viewing case study content, don't handle horizontal scroll
-      if (isViewingCaseStudy) return;
-      
-      const currentTime = Date.now();
-      if (currentTime - lastScrollTime < scrollCooldown) {
-        return;
-      }
-      lastScrollTime = currentTime;
-
-      if (e.deltaY > 0) {
-        // Scrolling down
-        if (!showCaseStudies) {
-          setShowCaseStudies(true);
-        } else if (currentIndex < projects.length - 1) {
-          setCurrentIndex(prev => prev + 1);
-        }
-      } else if (e.deltaY < 0) {
-        // Scrolling up
-        if (showCaseStudies) {
-          if (currentIndex > 0) {
-            setCurrentIndex(prev => prev - 1);
-          } else {
-            setShowCaseStudies(false);
-          }
-        }
-      }
-    };
-
-    container.addEventListener('wheel', handleWheel, { passive: false });
-    return () => container.removeEventListener('wheel', handleWheel);
-  }, [currentIndex, showCaseStudies, isViewingCaseStudy]);
-
-  const handleViewCaseStudy = (viewing: boolean) => {
+  const handleViewCaseStudy = useCallback((viewing: boolean) => {
     setIsViewingCaseStudy(viewing);
-  };
+  }, []);
+
+  const handleBack = useCallback(() => {
+    if (isViewingCaseStudy) {
+      setIsViewingCaseStudy(false);
+    }
+    setSelectedProject(null);
+  }, [isViewingCaseStudy]);
 
   return (
-    <div 
-      ref={containerRef} 
-      className="w-full h-full text-white"
+    <MainLayout 
+      isViewingCaseStudy={isViewingCaseStudy} 
+      onBack={handleBack}
     >
-      <AnimatePresence mode="wait">
-        {!showCaseStudies && (
-          <motion.div
-            key="hero"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="h-full w-full"
-          >
-            <div className="h-full w-full px-4">
-              <Hero onCaseStudiesClick={() => setShowCaseStudies(true)} />
-            </div>
-          </motion.div>
-        )}
+      <div className="relative min-h-screen">
+        {/* Hero Section */}
+        <AnimatePresence mode="wait">
+          {!selectedProject && (
+            <motion.div
+              key="hero"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="relative z-10"
+            >
+              <Hero projects={projects} onSelectProject={setSelectedProject} />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-        {showCaseStudies && (
-          <motion.div
-            key="case-studies"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0}}
-            transition={{ duration: 0.5 }}
-            className="h-full w-full"
-          >
-            <AnimatePresence mode="wait">
-              {projects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0 }}
-                  animate={{
-                    opacity: currentIndex === index ? 1 : 0,
-                    transition: {
-                      duration: 0.5,
-                      delay: index * 0.1,
-                    },
-                  }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="h-full w-full"
-                >
-                  <CaseStudyPreview project={project} />
-                </motion.div>
-              ))}
-            </AnimatePresence>
-            <main className="relative flex-1">
-              <AnimatePresence mode="wait">
-                {selectedProject && (
-                  <motion.div
-                    key={selectedProject.id}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute inset-0"
-                  >
-                    <CaseStudyPreview project={selectedProject} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </main>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+        {/* Case Study Previews */}
+        <div className="relative">
+          <AnimatePresence>
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: currentIndex === index ? 1 : 0,
+                  transition: {
+                    duration: 0.5,
+                    delay: index * 0.1,
+                  },
+                }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0"
+                style={{ pointerEvents: currentIndex === index ? 'auto' : 'none' }}
+              >
+                <CaseStudyPreview project={project} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {/* Selected Case Study */}
+        <AnimatePresence mode="wait">
+          {selectedProject && (
+            <motion.div
+              key={selectedProject.id}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-20 bg-neutral-900"
+            >
+              <CaseStudyPreview project={selectedProject} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </MainLayout>
   );
 }
