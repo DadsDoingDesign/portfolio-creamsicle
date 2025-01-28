@@ -1,7 +1,6 @@
 import { CaseStudy } from '@/components/case-study/CaseStudy';
 import { notFound } from 'next/navigation';
-import { umba, apploi } from '@/lib/case-studies';
-import { Project } from '@/lib/data';
+import * as caseStudies from '@/lib/case-studies';
 
 interface Props {
   params: {
@@ -9,20 +8,16 @@ interface Props {
   };
 }
 
-// Map of case studies for easy lookup
-const caseStudyMap = {
-  umba,
-  apploi,
-} as const;
-
 export async function generateStaticParams() {
-  return Object.keys(caseStudyMap).map((slug) => ({
-    slug,
+  const studies = Object.values(caseStudies);
+  return studies.map((study) => ({
+    slug: study.id,
   }));
 }
 
 export default function CaseStudyPage({ params }: Props) {
-  const project = caseStudyMap[params.slug as keyof typeof caseStudyMap];
+  const studies = Object.values(caseStudies);
+  const project = studies.find((study) => study.id === params.slug);
 
   if (!project) {
     notFound();

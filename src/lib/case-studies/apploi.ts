@@ -4,7 +4,7 @@ export const apploi: CaseStudy = {
   id: 'apploi',
   title: 'Apploi OnCall',
   description: 'Redesigning the staffing experience for healthcare facilities',
-  previewImage: '/case-studies/apploi/preview.png',
+  previewImage: '/images/apploi/preview.png',
   categories: ['Product Design', 'UX Research', 'UI Design'],
   frames: [
     {
