@@ -7,6 +7,7 @@ import CaseStudyPreview from '@/components/case-study/CaseStudyPreview';
 import { umba } from '@/lib/case-studies/umba';
 import { apploi } from '@/lib/case-studies/apploi';
 import { toProject } from '@/lib/utils/case-study';
+import { Project } from '@/lib/data';
 
 // Debug logging
 console.log('Case Studies Module:', { umba, apploi });
@@ -20,7 +21,7 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showCaseStudies, setShowCaseStudies] = useState(false);
   const [isViewingCaseStudy, setIsViewingCaseStudy] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
