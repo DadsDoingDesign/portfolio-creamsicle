@@ -3,7 +3,6 @@ import './globals.css';
 import { AnimatedGradient } from '@/components/background/AnimatedGradient';
 import { metadata } from './metadata';
 import AnimatedBody from '@/components/layout/AnimatedBody';
-import LoadingLogo from '@/components/layout/LoadingLogo';
 import AnimatedContainer from '@/components/layout/AnimatedContainer';
 
 export { metadata };
@@ -16,7 +15,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full w-full">
       <body className="h-full">
-        <LoadingLogo />
         <AnimatedBody>
           <AnimatedGradient />
           <AnimatedContainer>

@@ -19,7 +19,7 @@ export default function AnimatedBody({ children }: AnimatedBodyProps) {
       transition={{ 
         duration: 0.4,
         ease: "linear",
-        delay: 1
+        delay: .2
       }}
     >
       {children}
