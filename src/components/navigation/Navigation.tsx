@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronDownIcon, ArrowTopRightOnSquareIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
+import { NavigationContainer } from '@/components/layout/containers';
 
 interface NavigationProps {
   isViewingCaseStudy?: boolean;
@@ -26,174 +27,111 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
   };
 
   return (
-    <motion.div 
-      layout
-      initial={{ opacity: 1 }}
-      className={`w-full flex justify-between items-center px-8 py-4 ${className}`}
-    >
-      {isViewingCaseStudy ? (
-        <button
-          onClick={onBack}
-          className="flex items-center gap-2 text-amber-400 hover:text-amber-500 transition-colors"
-        >
-          <svg
-            className="w-5 h-5"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M20 12H4M4 12l8-8M4 12l8 8" />
-          </svg>
-          Back
-        </button>
-      ) : (
-        <button 
-          onClick={handleLogoClick}
-          className="relative w-10 h-10 cursor-pointer hover:opacity-80 transition-opacity"
-        >
-          <Image
-            src="/dendenlogo.svg"
-            alt="DadsDoingDesign Logo"
-            fill
-            className="object-contain"
-          />
-        </button>
-      )}
-      <div className="hidden md:flex items-center gap-6">
-        {/* Social Links */}
-        <div className="flex items-center gap-4">
-          <Link 
-            href="https://github.com/DadsDoingDesign" 
-            target="_blank"
-            className="text-content-inverse-primary hover:text-amber-400 transition-colors"
-          >
-            <Image src="/github.svg" alt="GitHub" width={24} height={24} />
-          </Link>
-          <Link 
-            href="https://www.linkedin.com/" 
-            target="_blank"
-            className="text-content-inverse-primary hover:text-amber-400 transition-colors"
-          >
-            <Image src="/linkedin.svg" alt="LinkedIn" width={24} height={24} />
-          </Link>
-          <Link 
-            href="https://bsky.app/profile/dendendesign.bsky.social" 
-            target="_blank"
-            className="text-content-inverse-primary hover:text-amber-400 transition-colors"
-          >
-            <Image src="/bluesky.svg" alt="BlueSky" width={24} height={24} />
-          </Link>
-          <Link 
-            href="https://bsky.app/profile/eatmeart.bsky.social" 
-            target="_blank"
-            className="text-content-inverse-primary hover:text-amber-400 transition-colors"
-          >
-            <Image src="/art.svg" alt="Art" width={24} height={24} />
-          </Link>
-        </div>
-        <button 
-          className="text-sm font-medium px-3 py-1.5 bg-orange-400 text-black rounded-lg hover:bg-orange-500 transition-colors"
-        >
-          Download Resume
-        </button>
-        <button 
-          className="text-sm font-medium px-3 py-1.5 border border-orange-400 text-orange-400 rounded-lg hover:bg-orange-500 hover:border-orange-500 hover:text-black transition-colors"
-        >
-          Contact
-        </button>
-      </div>
-
-      {/* Mobile Menu Button */}
-      <button
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="md:hidden text-amber-400 hover:text-amber-500 transition-colors"
+    <NavigationContainer>
+      <motion.div 
+        layout
+        initial={{ opacity: 1 }}
+        className={`w-full flex justify-between items-center px-8 py-4 ${className}`}
       >
-        {isMenuOpen ? (
-          <XMarkIcon className="h-6 w-6" />
-        ) : (
-          <Bars3Icon className="h-6 w-6" />
-        )}
-      </button>
-
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: "linear" }}
-            className="fixed inset-0 bg-background-primary z-50 md:hidden"
+        {isViewingCaseStudy ? (
+          <button
+            onClick={onBack}
+            className="flex items-center gap-2 accent-secondary hover:text-amber-500 transition-colors"
           >
-            {/* Close Button */}
-            <button
-              onClick={() => setIsMenuOpen(false)}
-              className="absolute top-6 right-6 text-amber-400 hover:text-amber-500 transition-colors"
+            <svg
+              className="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <XMarkIcon className="h-6 w-6" />
-            </button>
+              <path d="M20 12H4M4 12l8-8M4 12l8 8" />
+            </svg>
+            Back
+          </button>
+        ) : (
+          <button onClick={handleLogoClick}>
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              width={48}
+              height={48}
+              className="w-12 h-12"
+            />
+          </button>
+        )}
 
-            <div className="flex flex-col items-center justify-center h-full gap-8">
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-8">
+          {menuItems.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className="label-large accent-secondary hover:text-amber-500 transition-colors"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <a
+            href="https://github.com/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="label-large accent-secondary hover:text-amber-500 transition-colors flex items-center gap-1"
+          >
+            GitHub
+            <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+          </a>
+        </div>
+
+        {/* Mobile Navigation */}
+        <button
+          className="md:hidden"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? (
+            <XMarkIcon className="w-6 h-6 accent-secondary" />
+          ) : (
+            <Bars3Icon className="w-6 h-6 accent-secondary" />
+          )}
+        </button>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="absolute top-full left-0 w-full bg-background-secondary py-4 px-8 flex flex-col gap-4 md:hidden"
+            >
               {menuItems.map((item) => (
-                <a
+                <Link
                   key={item.label}
                   href={item.href}
+                  className="label-large accent-secondary hover:text-amber-500 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-2xl text-white hover:text-amber-400 transition-colors"
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
-              <Link 
-                href="https://github.com/DadsDoingDesign" 
+              <a
+                href="https://github.com/yourusername"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-2xl text-white hover:text-amber-400 transition-colors"
+                className="label-large accent-secondary hover:text-amber-500 transition-colors flex items-center gap-1"
+                onClick={() => setIsMenuOpen(false)}
               >
                 GitHub
-              </Link>
-              <Link 
-                href="https://www.linkedin.com/" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-2xl text-white hover:text-amber-400 transition-colors"
-              >
-                LinkedIn
-              </Link>
-              <Link 
-                href="https://bsky.app/profile/dendendesign.bsky.social" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-2xl text-white hover:text-amber-400 transition-colors"
-              >
-                Bluesky
-              </Link>
-              <Link 
-                href="https://bsky.app/profile/eatmeart.bsky.social" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-2xl text-white hover:text-amber-400 transition-colors"
-              >
-                Art
-              </Link>
-              <button 
-                className="text-2xl text-white hover:text-amber-400 transition-colors"
-              >
-                Download Resume
-              </button>
-              <button 
-                className="text-2xl text-white hover:text-amber-400 transition-colors"
-              >
-                Contact
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+                <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+              </a>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    </NavigationContainer>
   );
 };
 

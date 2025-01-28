@@ -3,6 +3,36 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Surface: Hero */
+    --surface-hero-bg: #18181B;
+    --surface-hero-text: #FFFFFF;
+
+    /* Surface: Case Study */
+    --surface-case-study-bg: #27272A;
+    --surface-case-study-text: #FFFFFF;
+
+    /* Surface: Preview */
+    --surface-preview-bg: #18181B;
+    --surface-preview-text: #FFFFFF;
+
+    /* Surface: Content */
+    --surface-content-bg: transparent;
+    --surface-content-text: #FFFFFF;
+
+    /* Surface: Navigation */
+    --surface-navigation-bg: transparent;
+    --surface-navigation-text: #FFFFFF;
+
+    /* Surface: Frame */
+    --surface-frame-bg: transparent;
+    --surface-frame-text: #FFFFFF;
+
+    /* Accent Colors */
+    --accent-primary: #F97316;    /* orange-500 */
+    --accent-secondary: #FBBF24;  /* amber-400 */
+  }
+
   .display-large {
     @apply text-7xl font-bold tracking-tight;
   }
@@ -21,6 +51,58 @@
 
   body {
     @apply text-white;
+  }
+}
+
+/* Semantic Surface Classes */
+@layer components {
+  .surface-hero {
+    @apply bg-surface-hero text-surface-hero-text;
+  }
+
+  .surface-case-study {
+    @apply bg-surface-case-study text-surface-case-study-text;
+  }
+
+  .surface-preview {
+    @apply bg-surface-preview text-surface-preview-text;
+  }
+
+  .surface-content {
+    @apply bg-surface-content text-surface-content-text;
+  }
+
+  .surface-navigation {
+    @apply bg-surface-navigation text-surface-navigation-text;
+  }
+
+  .surface-frame {
+    @apply bg-surface-frame text-surface-frame-text;
+  }
+
+  /* Accent Classes */
+  .accent-primary {
+    @apply text-orange-400;
+  }
+
+  .accent-secondary {
+    @apply text-amber-400;
+  }
+
+  .accent-primary-border {
+    @apply border-orange-400;
+  }
+
+  .accent-secondary-border {
+    @apply border-amber-400;
+  }
+
+  .accent-primary-hover {
+    @apply hover:bg-orange-400 hover:text-black;
+  }
+
+  .accent-secondary-hover {
+    @apply hover:bg-amber-400 hover:text-black;
   }
 }
 

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Navigation from '@/components/navigation/Navigation';
+import { HeroContainer, NavigationContainer, ContentContainer } from '@/components/layout/containers';
 
 interface HeroProps {
   onCaseStudiesClick: () => void;
@@ -10,19 +11,20 @@ interface HeroProps {
 
 export const Hero = ({ onCaseStudiesClick }: HeroProps) => {
   return (
-    <>
-      <div className="w-full flex-none">
+    <HeroContainer>
+      <NavigationContainer>
         <Navigation isViewingCaseStudy={false} />
-      </div>
-      <motion.div 
-        className="h-full w-full flex flex-col justify-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      >
-        <h1 className="display-large mb-12">
+      </NavigationContainer>
+      
+      <ContentContainer className="flex-1 flex flex-col justify-center">
+        <motion.h1 
+          className="display-large mb-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
           <motion.span 
-            className="text-orange-400 block mb-4"
+            className="accent-primary block mb-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -30,18 +32,18 @@ export const Hero = ({ onCaseStudiesClick }: HeroProps) => {
             Create better products
           </motion.span>
           <motion.span 
-            className="text-amber-400 block"
+            className="accent-secondary block"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
             Grow your business
           </motion.span>
-        </h1>
+        </motion.h1>
         
         <motion.button
           onClick={onCaseStudiesClick}
-          className="w-fit label-large px-6 py-3 border border-amber-400 text-amber-400 rounded-lg hover:bg-amber-400 hover:text-black transition-all flex items-center gap-2"
+          className="w-fit label-large px-6 py-3 border accent-secondary-border accent-secondary accent-secondary-hover rounded-lg transition-all flex items-center gap-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
@@ -50,8 +52,8 @@ export const Hero = ({ onCaseStudiesClick }: HeroProps) => {
           See Case Studies
           <ArrowRightIcon className="w-5 h-5" />
         </motion.button>
-      </motion.div>
-    </>
+      </ContentContainer>
+    </HeroContainer>
   );
 };
 

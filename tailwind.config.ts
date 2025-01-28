@@ -10,6 +10,45 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Semantic color system
+        surface: {
+          hero: {
+            DEFAULT: "var(--surface-hero-bg)",
+            text: "var(--surface-hero-text)",
+          },
+          'case-study': {
+            DEFAULT: "var(--surface-case-study-bg)",
+            text: "var(--surface-case-study-text)",
+          },
+          preview: {
+            DEFAULT: "var(--surface-preview-bg)",
+            text: "var(--surface-preview-text)",
+          },
+          content: {
+            DEFAULT: "var(--surface-content-bg)",
+            text: "var(--surface-content-text)",
+          },
+          navigation: {
+            DEFAULT: "var(--surface-navigation-bg)",
+            text: "var(--surface-navigation-text)",
+          },
+          frame: {
+            DEFAULT: "var(--surface-frame-bg)",
+            text: "var(--surface-frame-text)",
+          }
+        },
+        // Semantic accent colors
+        accent: {
+          primary: {
+            DEFAULT: "var(--accent-primary)",
+            hover: "var(--accent-primary-hover)",
+          },
+          secondary: {
+            DEFAULT: "var(--accent-secondary)",
+            hover: "var(--accent-secondary-hover)",
+          }
+        },
+        // Legacy colors - to be migrated
         background: {
           primary: "#18181B",
           'inverse-primary': "#18181B",
@@ -49,18 +88,8 @@ export default {
             'background-size': '200% 200%',
             'background-position': 'right center'
           }
-        },
-        'gradient-xy': {
-          '0%, 100%': {
-            'background-size': '400% 400%',
-            'background-position': 'left center'
-          },
-          '50%': {
-            'background-size': '200% 200%',
-            'background-position': 'right center'
-          }
         }
-      },
+      }
     },
   },
   plugins: [],
