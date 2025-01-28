@@ -67,11 +67,15 @@
 
   /* Surface System */
   .surface-hero {
-    @apply bg-surface-hero-bg text-surface-hero-text min-h-screen flex flex-col;
+    @apply min-h-screen flex flex-col;
+    background-color: var(--surface-hero-bg);
+    color: var(--surface-hero-text);
   }
 
   .surface-navigation {
-    @apply bg-surface-navigation-bg text-surface-navigation-text w-full;
+    @apply w-full;
+    background-color: var(--surface-navigation-bg);
+    color: var(--surface-navigation-text);
   }
 
   /* Button System */
@@ -142,19 +146,23 @@
 
   /* Semantic Surface Classes */
   .surface-case-study {
-    @apply bg-surface-case-study-bg text-surface-case-study-text;
+    background-color: var(--surface-case-study-bg);
+    color: var(--surface-case-study-text);
   }
 
   .surface-preview {
-    @apply bg-surface-preview-bg text-surface-preview-text;
+    background-color: var(--surface-preview-bg);
+    color: var(--surface-preview-text);
   }
 
   .surface-content {
-    @apply bg-surface-content-bg text-surface-content-text;
+    background-color: var(--surface-content-bg);
+    color: var(--surface-content-text);
   }
 
   .surface-frame {
-    @apply bg-surface-frame-bg text-surface-frame-text;
+    background-color: var(--surface-frame-bg);
+    color: var(--surface-frame-text);
   }
 
   /* Accent Classes */
