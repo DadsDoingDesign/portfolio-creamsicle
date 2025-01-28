@@ -20,7 +20,7 @@ export default function AnimatedContainer({ children }: AnimatedContainerProps) 
         borderRadius: isViewingCaseStudy ? 0 : 16,
         padding: isViewingCaseStudy ? 0 : 32
       }}
-      transition={{ duration: 0.4, ease: "linear", delay: isViewingCaseStudy ? 0 : 1 }}
+      transition={{ duration: 0.4, ease: "linear", delay: isViewingCaseStudy ? 0 : 0.2 }}
     >
       {children}
     </motion.main>
