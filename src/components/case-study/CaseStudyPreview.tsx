@@ -3,10 +3,6 @@
 import { Project } from '@/lib/data';
 import CaseStudyContainer from './CaseStudyContainer';
 
-interface CaseStudyPreviewProps {
-  project: Project;
-}
-
-export default function CaseStudyPreview({ project }: CaseStudyPreviewProps) {
+export default function CaseStudyPreview({ project }: { project: Project }) {
   return <CaseStudyContainer project={project} />;
 }

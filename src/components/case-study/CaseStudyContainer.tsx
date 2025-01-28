@@ -1,17 +1,15 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { useRef, useEffect, useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
-import { Project } from '@/lib/data';
-import { CaseStudyFrame, ContentSection, BulletPointHeader } from '@/types/case-study';
+import { Project } from '../../lib/data';
+import { CaseStudyFrame } from '../../types/case-study';
 import Frame from './frames';
-import Navigation from '@/components/navigation/Navigation';
-
-// Type guard functions
-function isContentSection(section: ContentSection | BulletPointHeader): section is ContentSection {
-  return 'heading' in section;
-}
+import Navigation from './Navigation';
+import { isContentSection, isBulletPointHeader } from '../../lib/utils/type-guards';
+import { apploi } from '../../lib/case-studies/apploi';
+import { toProject } from '../../lib/utils/case-study';
 
 interface CaseStudyContainerProps {
   project: Project;
@@ -28,29 +26,16 @@ export default function CaseStudyContainer({ project }: CaseStudyContainerProps)
   useEffect(() => {
     if (!isReading) return;
 
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      if (isScrolling) return;
-
-      const scrollDown = e.deltaY > 0;
-      
-      if (scrollDown && currentFrame < frames.length - 1) {
+    const handleScroll = () => {
+      if (!isScrolling) {
         setIsScrolling(true);
-        setCurrentFrame(prev => prev + 1);
-        setTimeout(() => setIsScrolling(false), 500); // Debounce scroll
-      } else if (!scrollDown && currentFrame > 0) {
-        setIsScrolling(true);
-        setCurrentFrame(prev => prev - 1);
-        setTimeout(() => setIsScrolling(false), 500); // Debounce scroll
+        setTimeout(() => setIsScrolling(false), 150);
       }
     };
 
-    window.addEventListener('wheel', handleWheel, { passive: false });
-
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-    };
-  }, [isReading, currentFrame, frames.length, isScrolling]);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isReading, isScrolling]);
 
   const handleReadCaseStudy = useCallback(() => {
     setIsReading(true);
@@ -59,13 +44,13 @@ export default function CaseStudyContainer({ project }: CaseStudyContainerProps)
   const handleBack = useCallback(() => {
     if (isReading) {
       setIsReading(false);
-    } else {
-      // Handle closing the case study
+      setCurrentFrame(0);
     }
   }, [isReading]);
 
   const isLastFrame = currentFrame === frames.length - 1;
-  const nextCaseStudy = isLastFrame ? project.caseStudies.find(cs => cs.id === 'apploi') : null;
+  // Convert apploi case study to Project type for next case study
+  const nextCaseStudy = isLastFrame ? toProject(apploi) : null;
 
   return (
     <motion.div className="h-full w-full">
