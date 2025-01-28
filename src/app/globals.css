@@ -112,19 +112,23 @@
 
   /* Typography System */
   .typography-title {
-    @apply display-large mb-12;
+    @apply text-6xl font-bold mb-12;
   }
 
-  .typography-tagline {
-    @apply block;
+  .typography-heading {
+    @apply text-4xl font-bold mb-8;
   }
 
-  .typography-tagline--primary {
-    @apply text-orange-400 mb-4;
+  .typography-subheading {
+    @apply text-2xl font-semibold mb-6;
   }
 
-  .typography-tagline--secondary {
-    @apply text-amber-400;
+  .typography-body {
+    @apply text-base mb-4;
+  }
+
+  .typography-caption {
+    @apply text-sm text-gray-400;
   }
 
   /* Case Study Typography */
