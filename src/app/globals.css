@@ -33,36 +33,28 @@
     --accent-secondary: #FBBF24;  /* amber-400 */
   }
 
-  .display-large {
-    @apply text-8xl font-bold tracking-tight;
-  }
-
-  .label-large {
-    @apply text-base font-medium;
-  }
-
-  .label-tiny {
-    @apply text-sm font-medium;
-  }
-
-  h3 {
-    @apply text-orange-400 text-xl font-semibold;
+  html {
+    @apply h-full w-full;
   }
 
   body {
-    @apply text-white;
+    @apply h-full text-[#FFF7ED] font-sans antialiased;
+    background: linear-gradient(rgb(251, 159, 5), rgb(231, 59, 5));
   }
 }
 
-/* Semantic Surface Classes */
 @layer components {
   /* Layout System */
-  .layout-container {
+  .layout-root {
     @apply min-h-screen flex flex-col;
   }
 
+  .layout-main {
+    @apply flex-1 flex flex-col overflow-hidden;
+  }
+
   .layout-content {
-    @apply flex-1 flex flex-col;
+    @apply flex-1 flex flex-col px-4;
   }
 
   .layout-content--centered {
@@ -71,6 +63,15 @@
 
   .layout-navigation {
     @apply w-full flex justify-between items-center px-8 py-4;
+  }
+
+  /* Surface System */
+  .surface-hero {
+    @apply bg-surface-hero-bg text-surface-hero-text min-h-screen flex flex-col;
+  }
+
+  .surface-navigation {
+    @apply bg-surface-navigation-bg text-surface-navigation-text w-full;
   }
 
   /* Button System */
@@ -140,28 +141,20 @@
   }
 
   /* Semantic Surface Classes */
-  .surface-hero {
-    @apply bg-surface-hero text-surface-hero-text;
-  }
-
   .surface-case-study {
-    @apply bg-surface-case-study text-surface-case-study-text;
+    @apply bg-surface-case-study-bg text-surface-case-study-text;
   }
 
   .surface-preview {
-    @apply bg-surface-preview text-surface-preview-text;
+    @apply bg-surface-preview-bg text-surface-preview-text;
   }
 
   .surface-content {
-    @apply bg-surface-content text-surface-content-text;
-  }
-
-  .surface-navigation {
-    @apply bg-surface-navigation text-surface-navigation-text;
+    @apply bg-surface-content-bg text-surface-content-text;
   }
 
   .surface-frame {
-    @apply bg-surface-frame text-surface-frame-text;
+    @apply bg-surface-frame-bg text-surface-frame-text;
   }
 
   /* Accent Classes */

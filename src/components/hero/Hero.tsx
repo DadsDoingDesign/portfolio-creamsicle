@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Navigation from '@/components/navigation/Navigation';
-import { HeroContainer, NavigationContainer, ContentContainer } from '@/components/layout/containers';
 
 interface HeroProps {
   onCaseStudiesClick: () => void;
@@ -11,12 +10,12 @@ interface HeroProps {
 
 export const Hero = ({ onCaseStudiesClick }: HeroProps) => {
   return (
-    <HeroContainer>
-      <NavigationContainer>
+    <div className="surface-hero">
+      <nav className="surface-navigation">
         <Navigation isViewingCaseStudy={false} />
-      </NavigationContainer>
+      </nav>
       
-      <ContentContainer className="layout-content--centered">
+      <main className="layout-content layout-content--centered">
         <motion.h1 
           className="typography-title"
           initial={{ opacity: 0 }}
@@ -49,11 +48,11 @@ export const Hero = ({ onCaseStudiesClick }: HeroProps) => {
           transition={{ delay: 0.6 }}
           whileTap={{ scale: 0.95 }}
         >
-          See Case Studies
+          View Case Studies
           <ArrowRightIcon className="w-5 h-5" />
         </motion.button>
-      </ContentContainer>
-    </HeroContainer>
+      </main>
+    </div>
   );
 };
 

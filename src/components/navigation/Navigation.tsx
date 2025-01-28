@@ -30,19 +30,9 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
 
   return (
     <NavigationContainer>
-      <motion.div 
-        layout
-        initial={{ opacity: 1 }}
-        className={clsx(
-          'layout-navigation',
-          className
-        )}
-      >
+      <div className={clsx('layout-navigation', className)}>
         {isViewingCaseStudy ? (
-          <button
-            onClick={onBack}
-            className="button--nav-back"
-          >
+          <button onClick={onBack} className="button--nav-back">
             <svg
               className="w-5 h-5"
               viewBox="0 0 24 24"
@@ -129,7 +119,7 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="md:hidden"
+              className="md:hidden absolute top-full left-0 right-0 bg-zinc-900 border-t border-zinc-800"
             >
               <div className="flex flex-col items-center gap-4 py-4">
                 {menuItems.map((item) => (
@@ -145,11 +135,30 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
                     <ArrowTopRightOnSquareIcon className="w-4 h-4" />
                   </a>
                 ))}
+                <div className="flex flex-col items-center gap-4">
+                  <a
+                    href="/DenisDukhvalov_Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download="DenisDukhvalov_Resume.pdf"
+                    className="button button--primary"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Resume
+                  </a>
+                  <a
+                    href="mailto:denis.dukhvalov@gmail.com"
+                    className="button button--primary-outline"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Contact
+                  </a>
+                </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.div>
+      </div>
     </NavigationContainer>
   );
 };
