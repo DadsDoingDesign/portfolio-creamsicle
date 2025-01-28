@@ -18,9 +18,10 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    { label: 'Work', href: '#work' },
-    { label: 'About', href: '#about' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'GitHub', href: 'https://github.com/yourusername', external: true },
+    { label: 'LinkedIn', href: 'https://linkedin.com/in/yourusername', external: true },
+    { label: 'Bluesky', href: 'https://bsky.app/profile/yourusername', external: true },
+    { label: 'Art', href: 'https://yourartsite.com', external: true },
   ];
 
   const handleLogoClick = () => {
@@ -58,7 +59,7 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
         ) : (
           <button onClick={handleLogoClick} className="button--nav-menu">
             <Image
-              src="/logo.svg"
+              src="\dendenlogo.svg"
               alt="Logo"
               width={32}
               height={32}
@@ -69,24 +70,44 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          {menuItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="button--nav-menu"
+          <div className="flex items-center gap-8">
+            {menuItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="label-large accent-secondary hover:text-amber-500 transition-colors flex items-center gap-1"
+              >
+                {item.label}
+                <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+              </a>
+            ))}
+          </div>
+          <div className="flex items-center gap-4">
+            <a
+              href="/DenisDukhvalov_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="DenisDukhvalov_Resume.pdf"
+              className="button button--primary"
             >
-              {item.label}
-            </Link>
-          ))}
-          <a
-            href="https://github.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="label-large accent-secondary hover:text-amber-500 transition-colors flex items-center gap-1"
-          >
-            GitHub
-            <ArrowTopRightOnSquareIcon className="w-4 h-4" />
-          </a>
+              Resume
+            </a>
+            {/* TODO: Future enhancement - Replace mailto with a modal/popup contact form
+              Implementation options:
+              1. Use state to control modal visibility: const [isContactModalOpen, setIsContactModalOpen] = useState(false)
+              2. Create a ContactForm component with form validation and email sending functionality
+              3. Add modal/dialog component using headlessui/react or similar for accessibility
+              4. Handle form submission through a serverless function or API route
+            */}
+            <a
+              href="mailto:denis.dukhvalov@gmail.com"
+              className="button button--primary-outline"
+            >
+              Contact
+            </a>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -112,25 +133,18 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
             >
               <div className="flex flex-col items-center gap-4 py-4">
                 {menuItems.map((item) => (
-                  <Link
+                  <a
                     key={item.label}
                     href={item.href}
-                    className="button--nav-menu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="label-large accent-secondary hover:text-amber-500 transition-colors flex items-center gap-1"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
-                  </Link>
+                    <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+                  </a>
                 ))}
-                <a
-                  href="https://github.com/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="label-large accent-secondary hover:text-amber-500 transition-colors flex items-center gap-1"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  GitHub
-                  <ArrowTopRightOnSquareIcon className="w-4 h-4" />
-                </a>
               </div>
             </motion.div>
           )}

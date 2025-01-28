@@ -6,27 +6,27 @@
   :root {
     /* Surface: Hero */
     --surface-hero-bg: #18181B;
-    --surface-hero-text: #FFFFFF;
+    --surface-hero-text: #FFF7ED;
 
     /* Surface: Case Study */
     --surface-case-study-bg: #27272A;
-    --surface-case-study-text: #FFFFFF;
+    --surface-case-study-text: #FFF7ED;
 
     /* Surface: Preview */
     --surface-preview-bg: #18181B;
-    --surface-preview-text: #FFFFFF;
+    --surface-preview-text: #FFF7ED;
 
     /* Surface: Content */
     --surface-content-bg: transparent;
-    --surface-content-text: #FFFFFF;
+    --surface-content-text: #FFF7ED;
 
     /* Surface: Navigation */
     --surface-navigation-bg: transparent;
-    --surface-navigation-text: #FFFFFF;
+    --surface-navigation-text: #FFF7ED;
 
     /* Surface: Frame */
     --surface-frame-bg: transparent;
-    --surface-frame-text: #FFFFFF;
+    --surface-frame-text: #FFF7ED;
 
     /* Accent Colors */
     --accent-primary: #F97316;    /* orange-500 */
@@ -34,7 +34,7 @@
   }
 
   .display-large {
-    @apply text-7xl font-bold tracking-tight;
+    @apply text-8xl font-bold tracking-tight;
   }
 
   .label-large {
@@ -75,7 +75,7 @@
 
   /* Button System */
   .button {
-    @apply flex items-center gap-2 px-6 py-3 rounded-lg transition-all;
+    @apply w-fit flex items-center gap-2 px-6 py-3 rounded-lg transition-all;
   }
 
   /* Primary (Orange) */

@@ -43,7 +43,7 @@ export const Hero = ({ onCaseStudiesClick }: HeroProps) => {
         
         <motion.button
           onClick={onCaseStudiesClick}
-          className="button button--primary"
+          className="button button--secondary-outline"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
