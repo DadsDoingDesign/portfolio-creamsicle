@@ -5,27 +5,21 @@
 @layer base {
   :root {
     /* Surface: Hero */
-    --surface-hero-bg: #18181B;
     --surface-hero-text: #FFF7ED;
 
     /* Surface: Case Study */
-    --surface-case-study-bg: #27272A;
     --surface-case-study-text: #FFF7ED;
 
     /* Surface: Preview */
-    --surface-preview-bg: #18181B;
     --surface-preview-text: #FFF7ED;
 
     /* Surface: Content */
-    --surface-content-bg: transparent;
     --surface-content-text: #FFF7ED;
 
     /* Surface: Navigation */
-    --surface-navigation-bg: transparent;
     --surface-navigation-text: #FFF7ED;
 
     /* Surface: Frame */
-    --surface-frame-bg: transparent;
     --surface-frame-text: #FFF7ED;
 
     /* Accent Colors */
@@ -84,6 +78,7 @@
   /* Surface System */
   .surface-hero {
     @apply min-h-screen flex flex-col;
+    color: var(--surface-hero-text);
   }
 
   .surface-preview {
@@ -94,7 +89,6 @@
   .surface-case-study {
     @apply min-h-screen flex flex-col relative;
     color: var(--surface-case-study-text);
-    background-color: var(--surface-case-study-bg);
   }
 
   .surface-navigation {

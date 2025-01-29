@@ -41,8 +41,21 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
     if (!isOpen) {
       setIsReading(false);
       setCurrentFrame(0);
+      setBottomNavAnimated(false);
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    if (isReading) {
+      // Show bottom nav after a small delay when reading starts
+      const timer = setTimeout(() => {
+        setBottomNavAnimated(true);
+      }, 500);
+      return () => clearTimeout(timer);
+    } else {
+      setBottomNavAnimated(false);
+    }
+  }, [isReading]);
 
   useEffect(() => {
     if (!isReading) return;
