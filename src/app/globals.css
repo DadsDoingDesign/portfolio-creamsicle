@@ -68,14 +68,10 @@
   /* Surface System */
   .surface-hero {
     @apply min-h-screen flex flex-col;
-    background-color: var(--surface-hero-bg);
-    color: var(--surface-hero-text);
   }
 
   .surface-navigation {
     @apply w-full;
-    background-color: var(--surface-navigation-bg);
-    color: var(--surface-navigation-text);
   }
 
   /* Button System */
@@ -204,6 +200,117 @@
 
   .accent-secondary-hover {
     @apply hover:bg-amber-400 hover:text-black;
+  }
+
+  /* Case Study Semantic Classes */
+  .case-study-container {
+    @apply surface-case-study rounded-2xl p-8 mb-8;
+  }
+
+  .case-study-header {
+    @apply mb-8;
+  }
+
+  .case-study-title {
+    @apply typography-title text-orange-400;
+  }
+
+  .case-study-description {
+    @apply typography-subheading text-gray-300;
+  }
+
+  .case-study-categories {
+    @apply flex gap-4 mt-4;
+  }
+
+  .case-study-category {
+    @apply text-sm font-medium px-3 py-1 rounded-full bg-zinc-800 text-amber-400;
+  }
+
+  .case-study-frame {
+    @apply surface-frame rounded-xl p-6 mb-6;
+  }
+
+  .case-study-frame--intro {
+    @apply bg-gradient-to-br from-zinc-900 to-zinc-800;
+  }
+
+  .case-study-frame--research {
+    @apply bg-gradient-to-br from-zinc-800 to-zinc-700;
+  }
+
+  .case-study-frame--solution {
+    @apply bg-gradient-to-br from-orange-900/20 to-orange-800/20;
+  }
+
+  .case-study-frame--impact {
+    @apply bg-gradient-to-br from-amber-900/20 to-amber-800/20;
+  }
+
+  .case-study-section {
+    @apply mb-6;
+  }
+
+  .case-study-section-heading {
+    @apply typography-section-title--primary mb-3;
+  }
+
+  .case-study-section-text {
+    @apply typography-body;
+  }
+
+  .case-study-bullet-points {
+    @apply space-y-2 mt-4;
+  }
+
+  .case-study-bullet-point {
+    @apply flex items-center gap-2 text-gray-300;
+  }
+
+  .case-study-bullet-point::before {
+    content: "•";
+    @apply text-orange-400;
+  }
+
+  .case-study-team {
+    @apply grid grid-cols-2 gap-4 mt-6;
+  }
+
+  .case-study-team-member {
+    @apply flex items-center gap-2;
+  }
+
+  .case-study-team-member--highlight {
+    @apply text-orange-400 font-semibold;
+  }
+
+  .case-study-timeline {
+    @apply grid grid-cols-2 gap-4 mt-6;
+  }
+
+  .case-study-timeline-item {
+    @apply flex justify-between items-center;
+  }
+
+  .case-study-image {
+    @apply rounded-xl overflow-hidden mt-6;
+  }
+
+  /* Layout Variations */
+  .case-study-layout--full-width {
+    @apply w-full;
+  }
+
+  .case-study-layout--right-image {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-8 items-center;
+  }
+
+  .case-study-layout--left-image {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-8 items-center md:flex-row-reverse;
+  }
+
+  .case-study-layout--three-column {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8;
   }
 }
 
