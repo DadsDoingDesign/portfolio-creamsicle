@@ -144,7 +144,7 @@
   }
 
   .typography-tagline {
-    @apply block text-6xl font-bold;
+    @apply block text-8xl font-bold;
   }
 
   .typography-tagline--primary {

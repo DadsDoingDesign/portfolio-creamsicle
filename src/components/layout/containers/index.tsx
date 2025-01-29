@@ -43,8 +43,8 @@ export const PreviewContainer: React.FC<BaseContainerProps> = ({
 }) => (
   <BaseContainer 
     className={clsx(
-      "aspect-video overflow-hidden",
-      "surface-preview", // Semantic surface class
+      "container-screen min-h-screen flex flex-col",
+      "surface-hero", // Use the same surface styling as hero
       className
     )} 
     {...props}
