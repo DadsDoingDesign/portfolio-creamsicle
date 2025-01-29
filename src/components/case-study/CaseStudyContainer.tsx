@@ -96,8 +96,8 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
             className={clsx(
               "fixed inset-0 z-50 grid",
               isReading 
-                ? "grid-rows-[auto_1fr_auto] bg-background-inverse-primary" 
-                : "p-40 bg-transparent"
+                ? "grid-rows-[auto_1fr_auto]" 
+                : "p-40"
             )}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -129,13 +129,13 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                     <div className="absolute inset-0 flex items-center px-40">
                       <div className="w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] gap-20 items-center">
                         <div className="flex flex-col gap-4">
-                          <h1 className="text-4xl font-bold text-white">{frames[0].title}</h1>
+                          <h1 className="text-4xl font-bold">{frames[0].title}</h1>
                           {frames[0].content.sections?.find(isContentSection)?.text && (
                             <p className="text-gray-300">{frames[0].content.sections.find(isContentSection)?.text}</p>
                           )}
                           <button
                             onClick={handleReadCaseStudy}
-                            className="w-fit label-large px-6 py-3 border border-[var(--accent-secondary)] text-[var(--accent-secondary)] rounded-lg hover:bg-[var(--accent-secondary)] hover:text-black transition-all"
+                            className="w-fit label-large px-6 py-3 border border-[var(--accent-secondary)] text-[var(--accent-secondary)] rounded-lg hover:text-[var(--accent-secondary-hover)] transition-colors"
                           >
                             Read Case Study
                           </button>

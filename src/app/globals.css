@@ -88,15 +88,12 @@
 
   .surface-preview {
     @apply min-h-screen flex flex-col;
-    background-color: transparent;
     color: var(--surface-preview-text);
   }
 
-  .surface-preview-no-animate {
+  .surface-case-study {
     @apply min-h-screen flex flex-col;
-    background-color: var(--surface-preview-bg);
-    color: var(--surface-preview-text);
-    transition: none;
+    color: var(--surface-case-study-text);
   }
 
   .surface-navigation {
@@ -187,22 +184,18 @@
 
   /* Semantic Surface Classes */
   .surface-case-study {
-    background-color: var(--surface-case-study-bg);
     color: var(--surface-case-study-text);
   }
 
   .surface-preview {
-    background-color: var(--surface-preview-bg);
     color: var(--surface-preview-text);
   }
 
   .surface-content {
-    background-color: var(--surface-content-bg);
     color: var(--surface-content-text);
   }
 
   .surface-frame {
-    background-color: var(--surface-frame-bg);
     color: var(--surface-frame-text);
   }
 
@@ -233,7 +226,7 @@
 
   /* Case Study Semantic Classes */
   .case-study-container {
-    @apply surface-case-study rounded-2xl p-8 mb-8;
+    @apply rounded-2xl p-8 mb-8;
   }
 
   .case-study-header {
@@ -257,7 +250,7 @@
   }
 
   .case-study-frame {
-    @apply surface-frame rounded-xl p-6 mb-6;
+    @apply rounded-xl p-6 mb-6;
   }
 
   .case-study-frame--intro {
