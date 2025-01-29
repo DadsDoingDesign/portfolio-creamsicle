@@ -87,13 +87,13 @@
   }
 
   .surface-preview {
-    @apply min-h-screen flex flex-col px-40;
-    background-color: var(--surface-preview-bg);
+    @apply min-h-screen flex flex-col;
+    background-color: transparent;
     color: var(--surface-preview-text);
   }
 
   .surface-preview-no-animate {
-    @apply min-h-screen flex flex-col px-40;
+    @apply min-h-screen flex flex-col;
     background-color: var(--surface-preview-bg);
     color: var(--surface-preview-text);
     transition: none;

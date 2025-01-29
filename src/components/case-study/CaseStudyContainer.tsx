@@ -8,6 +8,7 @@ import { CaseStudyFrame, ContentSection, BulletPointHeader } from '@/types/case-
 import Frame from './frames';
 import Navigation from '@/components/navigation/Navigation';
 import { CaseStudyContainer as SemanticCaseStudyContainer } from '@/components/layout/containers';
+import clsx from 'clsx';
 
 // Type guard functions
 function isContentSection(section: ContentSection | BulletPointHeader): section is ContentSection {
@@ -92,7 +93,12 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
       {isOpen && (
         <SemanticCaseStudyContainer>
           <motion.div
-            className="fixed inset-0 z-50 grid grid-rows-[auto_1fr_auto] bg-background-inverse-primary"
+            className={clsx(
+              "fixed inset-0 z-50 grid",
+              isReading 
+                ? "grid-rows-[auto_1fr_auto] bg-background-inverse-primary" 
+                : "p-40 bg-transparent"
+            )}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
