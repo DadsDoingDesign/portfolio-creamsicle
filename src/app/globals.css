@@ -131,6 +131,18 @@
     @apply text-sm text-gray-400;
   }
 
+  .typography-tagline {
+    @apply block text-2xl font-semibold;
+  }
+
+  .typography-tagline--primary {
+    @apply text-[#F97316] mb-4;  /* orange-500 */
+  }
+
+  .typography-tagline--secondary {
+    @apply text-[#FBBF24];  /* amber-400 */
+  }
+
   /* Case Study Typography */
   .typography-section-title {
     @apply text-xl font-semibold mb-4;
