@@ -65,6 +65,19 @@
     @apply w-full flex justify-between items-center px-8 py-4;
   }
 
+  /* Container Layout Classes */
+  .container-full {
+    @apply w-full h-full;
+  }
+
+  .container-screen {
+    @apply min-h-screen;
+  }
+
+  .container-flex-column {
+    @apply flex flex-col;
+  }
+
   /* Surface System */
   .surface-hero {
     @apply min-h-screen flex flex-col;

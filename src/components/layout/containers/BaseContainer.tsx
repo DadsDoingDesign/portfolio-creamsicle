@@ -13,7 +13,7 @@ export const BaseContainer: React.FC<BaseContainerProps> = ({
 }) => (
   <div 
     className={clsx(
-      "relative w-full", // Base styles
+      "container-full", // Semantic base container class
       className
     )}
     {...props}

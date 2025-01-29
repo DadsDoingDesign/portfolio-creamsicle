@@ -26,8 +26,8 @@ export const CaseStudyContainer: React.FC<BaseContainerProps> = ({
 }) => (
   <BaseContainer 
     className={clsx(
-      "min-h-screen flex flex-col",
-      "surface-case-study", // Semantic surface class
+      "container-screen container-flex-column",
+      "surface-case-study", // Surface styling
       className
     )} 
     {...props}
