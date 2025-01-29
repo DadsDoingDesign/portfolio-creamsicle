@@ -136,33 +136,35 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <div className="flex flex-col gap-4">
-                  <h1 className="text-4xl font-bold">{frames[0].title}</h1>
-                  {frames[0].content.sections?.find(isContentSection)?.text && (
-                    <p className="text-gray-300">{frames[0].content.sections.find(isContentSection)?.text}</p>
-                  )}
-                  <button
-                    onClick={handleReadCaseStudy}
-                    className="w-fit label-large px-6 py-3 border border-[var(--accent-secondary)] text-[var(--accent-secondary)] rounded-lg hover:text-[var(--accent-secondary-hover)] transition-colors"
-                  >
-                    Read Case Study
-                  </button>
-                </div>
-                {frames[0]?.image && (
-                  <div className="flex items-center justify-center">
-                    <div className="relative max-h-[600px] w-full flex items-center justify-center">
-                      <Image
-                        src={frames[0].image.src}
-                        alt={frames[0].image.alt}
-                        width={1920}
-                        height={1080}
-                        className="w-auto h-auto max-w-full max-h-[600px] object-contain"
-                        style={{ objectFit: 'contain' }}
-                        priority
-                      />
-                    </div>
+                <div className="layout-content__grid">
+                  <div className="flex flex-col gap-4">
+                    <h1 className="text-4xl font-bold">{frames[0].title}</h1>
+                    {frames[0].content.sections?.find(isContentSection)?.text && (
+                      <p className="text-gray-300">{frames[0].content.sections.find(isContentSection)?.text}</p>
+                    )}
+                    <button
+                      onClick={handleReadCaseStudy}
+                      className="w-fit label-large px-6 py-3 border border-[var(--accent-secondary)] text-[var(--accent-secondary)] rounded-lg hover:text-[var(--accent-secondary-hover)] transition-colors"
+                    >
+                      Read Case Study
+                    </button>
                   </div>
-                )}
+                  {frames[0]?.image && (
+                    <div className="flex items-center justify-center">
+                      <div className="relative max-h-[600px] w-full flex items-center justify-center">
+                        <Image
+                          src={frames[0].image.src}
+                          alt={frames[0].image.alt}
+                          width={1920}
+                          height={1080}
+                          className="w-auto h-auto max-w-full max-h-[600px] object-contain"
+                          style={{ objectFit: 'contain' }}
+                          priority
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
               </motion.div>
             )}
           </motion.div>

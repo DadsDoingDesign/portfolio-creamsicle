@@ -62,6 +62,22 @@
     @apply w-full flex justify-between items-center px-8 py-4;
   }
 
+  .layout-content--centered {
+    @apply items-center justify-center px-8;
+  }
+
+  .layout-content--reading {
+    @apply overflow-hidden;
+  }
+
+  .layout-content__inner {
+    @apply w-full max-w-7xl mx-auto;
+  }
+
+  .layout-content__grid {
+    @apply w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] gap-20 items-center px-40;
+  }
+
   /* Container Layout Classes */
   .container-full {
     @apply w-full h-full relative overflow-hidden;
