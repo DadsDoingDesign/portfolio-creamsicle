@@ -43,8 +43,8 @@ export const PreviewContainer: React.FC<BaseContainerProps> = ({
 }) => (
   <BaseContainer 
     className={clsx(
-      "container-screen min-h-screen flex flex-col",
-      "surface-hero", // Use the same surface styling as hero
+      "container-screen",
+      "surface-preview", // Use the new preview surface class
       className
     )} 
     {...props}
