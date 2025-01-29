@@ -51,8 +51,8 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
             <Image
               src="\dendenlogo.svg"
               alt="Logo"
-              width={32}
-              height={32}
+              width={40}
+              height={40}
               className="w-8 h-8"
             />
           </button>
