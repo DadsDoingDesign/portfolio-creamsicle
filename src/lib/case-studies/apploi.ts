@@ -22,10 +22,10 @@ export const apploi: CaseStudy = {
           }
         ],
         bulletPoints: [
-          { text: 'Complex onboarding process', className: 'case-study-bullet-point' },
-          { text: 'User confusion with core features', className: 'case-study-bullet-point' },
-          { text: 'Low adoption rate', className: 'case-study-bullet-point' },
-          { text: 'High support ticket volume', className: 'case-study-bullet-point' }
+          'Complex onboarding process',
+          'User confusion with core features',
+          'Low adoption rate',
+          'High support ticket volume'
         ],
         team: [
           { role: 'Product Designer', highlight: true, className: 'case-study-team-member case-study-team-member--highlight' },
@@ -37,7 +37,8 @@ export const apploi: CaseStudy = {
           { phase: 'Research', activity: '2 weeks', className: 'case-study-timeline-item' },
           { phase: 'Design', activity: '4 weeks', className: 'case-study-timeline-item' },
           { phase: 'Development', activity: '6 weeks', className: 'case-study-timeline-item' }
-        ]
+        ],
+        className: 'case-study-content'
       },
       layout: 'full-width',
       layoutClassName: 'case-study-layout--full-width'
@@ -55,11 +56,12 @@ export const apploi: CaseStudy = {
           }
         ],
         bulletPoints: [
-          { text: 'Users struggle with the initial setup', className: 'case-study-bullet-point' },
-          { text: 'Core features are not intuitive', className: 'case-study-bullet-point' },
-          { text: 'Workflow is too complex', className: 'case-study-bullet-point' },
-          { text: 'Important information is hard to find', className: 'case-study-bullet-point' }
-        ]
+          'Users struggle with the initial setup',
+          'Core features are not intuitive',
+          'Workflow is too complex',
+          'Important information is hard to find'
+        ],
+        className: 'case-study-content'
       },
       layout: 'right-image',
       layoutClassName: 'case-study-layout--right-image',
@@ -82,11 +84,12 @@ export const apploi: CaseStudy = {
           }
         ],
         bulletPoints: [
-          { text: 'Simplified onboarding flow', className: 'case-study-bullet-point' },
-          { text: 'Redesigned navigation', className: 'case-study-bullet-point' },
-          { text: 'Clear status indicators', className: 'case-study-bullet-point' },
-          { text: 'Contextual help system', className: 'case-study-bullet-point' }
-        ]
+          'Simplified onboarding flow',
+          'Redesigned navigation',
+          'Clear status indicators',
+          'Contextual help system'
+        ],
+        className: 'case-study-content'
       },
       layout: 'left-image',
       layoutClassName: 'case-study-layout--left-image',
@@ -109,11 +112,12 @@ export const apploi: CaseStudy = {
           }
         ],
         bulletPoints: [
-          { text: '45% reduction in support tickets', className: 'case-study-bullet-point' },
-          { text: '72% increase in user activation', className: 'case-study-bullet-point' },
-          { text: '89% positive feedback from new users', className: 'case-study-bullet-point' },
-          { text: '3x increase in feature adoption', className: 'case-study-bullet-point' }
-        ]
+          '45% reduction in support tickets',
+          '72% increase in user activation',
+          '89% positive feedback from new users',
+          '3x increase in feature adoption'
+        ],
+        className: 'case-study-content'
       },
       layout: 'full-width',
       layoutClassName: 'case-study-layout--full-width',
