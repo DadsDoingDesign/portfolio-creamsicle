@@ -102,19 +102,20 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
   const nextCaseStudy = isLastFrame ? caseStudies.find(cs => cs.id === 'apploi') : null;
 
   return (
-    <SemanticCaseStudyContainer>
-      <div className="fixed top-0 left-0 right-0 z-50">
-        <Navigation 
-          isViewingCaseStudy={isReading} 
-          onBack={handleBack}
-        />
-      </div>
+    <div className="layout-root">
+      <Navigation 
+        isViewingCaseStudy={isReading} 
+        onBack={handleBack}
+        className="layout-navigation"
+      />
       
       <AnimatePresence mode="wait">
         {isOpen && (
-          <ContentContainer
-            as={motion.div}
-            className="w-full h-full pt-16"
+          <motion.div
+            className={clsx(
+              "layout-content",
+              isReading ? "layout-content--reading" : "layout-content--centered"
+            )}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
@@ -130,45 +131,41 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
             ) : (
               <motion.div
                 key="hero"
-                className="w-full h-full flex items-center"
+                className="layout-content__inner"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <div className="w-full flex items-center px-40">
-                  <div className="w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] gap-20 items-center">
-                    <div className="flex flex-col gap-4">
-                      <h1 className="text-4xl font-bold">{frames[0].title}</h1>
-                      {frames[0].content.sections?.find(isContentSection)?.text && (
-                        <p className="text-gray-300">{frames[0].content.sections.find(isContentSection)?.text}</p>
-                      )}
-                      <button
-                        onClick={handleReadCaseStudy}
-                        className="w-fit label-large px-6 py-3 border border-[var(--accent-secondary)] text-[var(--accent-secondary)] rounded-lg hover:text-[var(--accent-secondary-hover)] transition-colors"
-                      >
-                        Read Case Study
-                      </button>
-                    </div>
-                    {frames[0]?.image && (
-                      <div className="flex items-center justify-center w-full">
-                        <div className="relative max-h-[600px] w-full flex items-center justify-center">
-                          <Image
-                            src={frames[0].image.src}
-                            alt={frames[0].image.alt}
-                            width={1920}
-                            height={1080}
-                            className="w-auto h-auto max-w-full max-h-[600px] object-contain"
-                            style={{ objectFit: 'contain' }}
-                            priority
-                          />
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                <div className="flex flex-col gap-4">
+                  <h1 className="text-4xl font-bold">{frames[0].title}</h1>
+                  {frames[0].content.sections?.find(isContentSection)?.text && (
+                    <p className="text-gray-300">{frames[0].content.sections.find(isContentSection)?.text}</p>
+                  )}
+                  <button
+                    onClick={handleReadCaseStudy}
+                    className="w-fit label-large px-6 py-3 border border-[var(--accent-secondary)] text-[var(--accent-secondary)] rounded-lg hover:text-[var(--accent-secondary-hover)] transition-colors"
+                  >
+                    Read Case Study
+                  </button>
                 </div>
+                {frames[0]?.image && (
+                  <div className="flex items-center justify-center">
+                    <div className="relative max-h-[600px] w-full flex items-center justify-center">
+                      <Image
+                        src={frames[0].image.src}
+                        alt={frames[0].image.alt}
+                        width={1920}
+                        height={1080}
+                        className="w-auto h-auto max-w-full max-h-[600px] object-contain"
+                        style={{ objectFit: 'contain' }}
+                        priority
+                      />
+                    </div>
+                  </div>
+                )}
               </motion.div>
             )}
-          </ContentContainer>
+          </motion.div>
         )}
       </AnimatePresence>
 
@@ -245,7 +242,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
           )}
         </motion.div>
       )}
-    </SemanticCaseStudyContainer>
+    </div>
   );
 };
 
