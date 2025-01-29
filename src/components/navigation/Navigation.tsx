@@ -18,10 +18,10 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    { label: 'GitHub', href: 'https://github.com/yourusername', external: true },
-    { label: 'LinkedIn', href: 'https://linkedin.com/in/yourusername', external: true },
-    { label: 'Bluesky', href: 'https://bsky.app/profile/yourusername', external: true },
-    { label: 'Art', href: 'https://yourartsite.com', external: true },
+    { label: 'GitHub', href: 'https://github.com/DadsDoingDesign', external: true },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/denisdukhvalov/', external: true },
+    { label: 'Bluesky', href: 'https://bsky.app/profile/dendendesign.bsky.social', external: true },
+    { label: 'Art', href: 'https://bsky.app/profile/eatmeart.bsky.social', external: true },
   ];
 
   const handleLogoClick = () => {
