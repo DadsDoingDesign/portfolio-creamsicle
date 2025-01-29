@@ -103,21 +103,18 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
 
   return (
     <SemanticCaseStudyContainer>
-      <Navigation 
-        isViewingCaseStudy={isReading} 
-        onBack={handleBack}
-        className={clsx(
-          "z-50 fixed top-0 left-0 right-0",
-          "transition-opacity duration-300",
-          isOpen ? "opacity-100" : "opacity-0"
-        )}
-      />
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navigation 
+          isViewingCaseStudy={isReading} 
+          onBack={handleBack}
+        />
+      </div>
       
       <AnimatePresence mode="wait">
         {isOpen && (
           <ContentContainer
             as={motion.div}
-            className="pt-16" // Add padding top to account for fixed navigation
+            className="w-full h-full pt-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
@@ -133,12 +130,12 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
             ) : (
               <motion.div
                 key="hero"
-                className="w-full h-full flex items-center justify-center"
+                className="w-full h-full flex items-center"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <div className="absolute inset-0 flex items-center px-40">
+                <div className="w-full flex items-center px-40">
                   <div className="w-full grid grid-cols-1 md:grid-cols-[minmax(0,400px)_1fr] gap-20 items-center">
                     <div className="flex flex-col gap-4">
                       <h1 className="text-4xl font-bold">{frames[0].title}</h1>
