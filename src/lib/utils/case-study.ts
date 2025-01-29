@@ -18,9 +18,14 @@ export function toProject(caseStudy: CaseStudy): Project {
           return {
             heading: '',  // Empty heading for bullet point headers
             text: '',    // Empty text for bullet point headers
-            subtitle: section.subtitle // Preserve the subtitle
+            subtitle: section.subtitle, // Preserve the subtitle
+            className: section.className // Preserve the className
           };
-        })
+        }),
+        // Convert complex bullet points to simple strings
+        bulletPoints: frame.content.bulletPoints?.map(point => 
+          typeof point === 'string' ? point : point.text
+        )
       }
     }))
   };
