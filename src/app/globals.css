@@ -132,7 +132,7 @@
   }
 
   .typography-tagline {
-    @apply block text-2xl font-semibold;
+    @apply block text-6xl font-bold;
   }
 
   .typography-tagline--primary {

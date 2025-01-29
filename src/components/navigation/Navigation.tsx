@@ -67,7 +67,7 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="label-large accent-secondary hover:text-amber-500 transition-colors flex items-center gap-1"
+                className="label-large text-[var(--surface-navigation-text)] hover:text-[var(--accent-primary)] transition-colors flex items-center gap-1"
               >
                 {item.label}
                 <ArrowTopRightOnSquareIcon className="w-4 h-4" />
@@ -128,7 +128,7 @@ const Navigation = ({ className = '', isViewingCaseStudy = false, onBack }: Navi
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="label-large accent-secondary hover:text-amber-500 transition-colors flex items-center gap-1"
+                    className="label-large text-[var(--surface-navigation-text)] hover:text-[var(--accent-primary)] transition-colors flex items-center gap-1"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
