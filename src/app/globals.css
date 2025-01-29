@@ -70,11 +70,11 @@
 
   /* Container Layout Classes */
   .container-full {
-    @apply w-full h-full;
+    @apply w-full h-full relative overflow-hidden;
   }
 
   .container-screen {
-    @apply min-h-screen;
+    @apply min-h-screen w-full relative overflow-hidden;
   }
 
   .container-flex-column {
@@ -92,8 +92,9 @@
   }
 
   .surface-case-study {
-    @apply min-h-screen flex flex-col;
+    @apply min-h-screen flex flex-col relative;
     color: var(--surface-case-study-text);
+    background-color: var(--surface-case-study-bg);
   }
 
   .surface-navigation {
