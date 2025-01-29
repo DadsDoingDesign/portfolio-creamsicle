@@ -154,7 +154,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                           )}
                           <button
                             onClick={handleReadCaseStudy}
-                            className="w-fit label-large px-6 py-3 border border-amber-400 text-amber-400 rounded-lg hover:bg-amber-400 hover:text-black transition-all"
+                            className="w-fit label-large px-6 py-3 border border-[var(--accent-secondary)] text-[var(--accent-secondary)] rounded-lg hover:bg-[var(--accent-secondary)] hover:text-black transition-all"
                           >
                             Read Case Study
                           </button>
@@ -195,7 +195,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                     {currentFrame > 0 && (
                       <button 
                         onClick={() => setCurrentFrame(prev => prev - 1)}
-                        className="flex items-center gap-2 text-amber-400 hover:text-amber-500 transition-colors"
+                        className="flex items-center gap-2 text-[var(--accent-secondary)] hover:text-[var(--accent-secondary-hover)] transition-colors"
                       >
                         <svg
                           className="w-5 h-5"
@@ -211,11 +211,11 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                         Previous section
                       </button>
                     )}
-                    <div className="flex-1 mx-8 border-t border-amber-400" />
+                    <div className="flex-1 mx-8 border-t border-[var(--accent-secondary)]" />
                     {!isLastFrame && currentFrame < frames.length - 1 && (
                       <button
                         onClick={() => setCurrentFrame(prev => prev + 1)}
-                        className="flex items-center gap-2 text-amber-400 hover:text-amber-500 transition-colors"
+                        className="flex items-center gap-2 text-[var(--accent-secondary)] hover:text-[var(--accent-secondary-hover)] transition-colors"
                       >
                         <h2 className="font-medium">{frames[currentFrame + 1]?.title}</h2>
                         <svg
@@ -238,7 +238,7 @@ const CaseStudyContainer: React.FC<CaseStudyContainerProps> = ({
                           onClose();
                           // Add logic to navigate to next case study
                         }}
-                        className="flex items-center gap-2 text-orange-400 hover:text-orange-500 transition-colors"
+                        className="flex items-center gap-2 text-[var(--accent-primary)] hover:text-[var(--accent-primary-hover)] transition-colors"
                       >
                         <span>Next Case Study: {nextCaseStudy.title}</span>
                         <svg

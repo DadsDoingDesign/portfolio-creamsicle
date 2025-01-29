@@ -29,8 +29,11 @@
     --surface-frame-text: #FFF7ED;
 
     /* Accent Colors */
-    --accent-primary: #F97316;    /* orange-500 */
+    --accent-primary: #FB923C;    /* orange-400 */
     --accent-secondary: #FBBF24;  /* amber-400 */
+
+    --accent-primary-hover: #F97316;    /* orange-500 */
+    --accent-secondary-hover: #F59E0B;  /* amber-500 */
   }
 
   html {
@@ -94,29 +97,29 @@
 
   /* Primary (Orange) */
   .button--primary {
-    @apply bg-orange-400 text-zinc-900 hover:bg-orange-500;
+    @apply bg-[var(--accent-primary)] text-zinc-900 hover:bg-[var(--accent-primary-hover)];
   }
 
   .button--primary-outline {
-    @apply border border-orange-400 text-orange-400 hover:bg-orange-400 hover:text-zinc-900;
+    @apply border border-[var(--accent-primary)] text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-zinc-900;
   }
 
   /* Secondary (Amber) */
   .button--secondary {
-    @apply bg-amber-400 text-zinc-900 hover:bg-amber-500;
+    @apply bg-[var(--accent-secondary)] text-zinc-900 hover:bg-[var(--accent-secondary-hover)];
   }
 
   .button--secondary-outline {
-    @apply border border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-zinc-900;
+    @apply border border-[var(--accent-secondary)] text-[var(--accent-secondary)] hover:bg-[var(--accent-secondary)] hover:text-zinc-900;
   }
 
   /* Navigation Buttons */
   .button--nav-back {
-    @apply flex items-center gap-2 text-zinc-400 hover:text-orange-400 transition-colors;
+    @apply flex items-center gap-2 text-zinc-400 hover:text-[var(--accent-primary)] transition-colors;
   }
 
   .button--nav-menu {
-    @apply flex items-center gap-2 text-zinc-400 hover:text-amber-400 transition-colors;
+    @apply flex items-center gap-2 text-zinc-400 hover:text-[var(--accent-secondary)] transition-colors;
   }
 
   /* Typography System */
@@ -145,11 +148,11 @@
   }
 
   .typography-tagline--primary {
-    @apply text-[#F97316] mb-4;  /* orange-500 */
+    @apply text-[#FB923C] mb-4;  /* orange-400 */
   }
 
   .typography-tagline--secondary {
-    @apply text-[#FBBF24];  /* amber-400 */
+    @apply text-[#FBBF24] mb-4;  /* amber-400 */
   }
 
   /* Case Study Typography */
@@ -208,11 +211,11 @@
   }
 
   .accent-primary-hover {
-    @apply hover:bg-orange-400 hover:text-black;
+    @apply hover:bg-[var(--accent-primary)] hover:text-black;
   }
 
   .accent-secondary-hover {
-    @apply hover:bg-amber-400 hover:text-black;
+    @apply hover:bg-[var(--accent-secondary)] hover:text-black;
   }
 
   /* Case Study Semantic Classes */
